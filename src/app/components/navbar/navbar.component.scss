@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@600&display=swap');
+
+.navbar {
+    font-family: 'Baloo 2', cursive;
+    background-color: #61543e; // tom terroso mais claro
+    color: #f8cd7e;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
+    height: 64px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  
+    .logo {
+      font-size: 24px;
+      font-weight: 600;
+      color: #f8cd7e;
+    }
+  
+    .spacer {
+      flex: 1 1 auto;
+    }
+  
+    .nav-links {
+      display: flex;
+      gap: 16px;
+  
+      button {
+        background: none;
+        border: none;
+        color: #a7a4a0;
+        font-size: 16px;
+        cursor: pointer;
+        transition: color 0.3s;
+  
+        &:hover {
+          color: #f8cd7e;
+        }
+      }
+    }
+  }
+  
