@@ -1,0 +1,7 @@
+<article class="animal-card">
+  <img class="animal-card__photo" [src]="animal.photoUrl" [alt]="animal.name">
+  <h3 class="animal-card__name">{{ animal.name }}</h3>
+  <p class="animal-card__species">{{ animal.species }} • {{ animal.sex }}</p>
+  <span class="animal-card__age">Idade: {{ animal.age }} anos</span>
+  <p class="animal-card__location">{{ animal.city }} - {{ animal.neighborhood }}</p>
+</article>

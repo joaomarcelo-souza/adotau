@@ -1,0 +1,15 @@
+<section class="list">
+    <h2>Animais disponíveis</h2>
+    <ul class="list__grid">
+        @for (a of animals(); track a.id) {
+            <li>
+                <app-animal-card [animal]="a"></app-animal-card>
+
+                <!-- <button class="btn" (click)="remove(b.id)">Remover</button> -->
+            </li>
+        } @empty {
+            <p class="list__empty">Nenhum animal encontrado</p>
+        }
+    </ul>
+
+</section>
