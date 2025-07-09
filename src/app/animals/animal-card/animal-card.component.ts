@@ -3,11 +3,12 @@ import { Animal } from '../models/animal.model';
 
 @Component({
   selector: 'app-animal-card',
+  standalone: true,
   imports: [],
   templateUrl: './animal-card.component.html',
   styleUrl: './animal-card.component.scss'
 })
 export class AnimalCard {
-  @Input() animal!: {name: string, species: string, sex: string, age: number, size: string, description: string, city: string, neighborhood: string, photoUrl: string, donorId: number};
-
+  @Input() animal!: Animal;
+  
 }
