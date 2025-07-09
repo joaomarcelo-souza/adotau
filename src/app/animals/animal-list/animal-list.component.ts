@@ -12,7 +12,7 @@ import { Animal } from '../models/animal.model';
 })
 export class AnimalList {
   private animalService = inject(AbstractAnimalService);
-
+  
   animals = this.animalService.animals;
 
   // Corrigindo a tipagem do trackById
