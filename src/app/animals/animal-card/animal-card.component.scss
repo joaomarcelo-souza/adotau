@@ -74,8 +74,12 @@ $clr-text: #565959;
     margin-bottom: 0.5rem;
   }
 
-  &__location {
-    font-size: 0.85rem;
+  &__icon {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    cursor: pointer;
     color: $clr-text;
   }
+
 }
