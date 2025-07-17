@@ -7,40 +7,79 @@ $clr-text: #565959;
   border: 1px solid $clr-border;
   border-radius: 8px;
   background: $clr-bg;
-  padding: 1rem;
   max-width: 320px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
   font-family: Arial, Helvetica, sans-serif;
   text-align: center;
+  position: relative;
+  overflow: hidden;
 
-  &__photo {
+  &__menu {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    cursor: pointer;
+    color: $clr-name;
+    z-index: 2;
+    border-radius: 50%;
+    border: 0;
+    padding: 0.25rem;
+    background: rgba(255, 255, 255, 0.7);
+  }
+
+  mat-card-image {
+    margin-bottom: 0.75rem;
+    z-index: 1;
     width: 100%;
     height: auto;
-    border-radius: 6px;
-    margin-bottom: 0.75rem;
+    display: block;
+    border-radius: 8px;
+    object-fit: cover;
   }
 
-  &__name {
-    margin: 0 0 0.5rem;
+  mat-card-title {
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
     font-size: 1.2rem;
     color: $clr-name;
+    font-weight: bold;
   }
 
-  &__species {
-    margin: 0 0 0.5rem;
+  .animal-card__link {
+    text-decoration: none;
+    color: $clr-name;
+    font-weight: bold;
+  
+    &:hover {
+      color: darken($clr-name, 10%);
+    }
+  }
+
+  mat-card-title {
+    margin-bottom: 0.5rem;
+    font-size: 1.2rem;
+    color: $clr-name;
+    font-weight: bold;
+  }
+
+  mat-card-subtitle {
     font-size: 0.95rem;
     color: $clr-text;
   }
 
-  &__age {
-    display: block;
+  &__age,
+  &__location {
     font-size: 0.85rem;
     color: $clr-text;
     margin-bottom: 0.5rem;
   }
 
-  &__location {
-    font-size: 0.85rem;
+  &__icon {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    cursor: pointer;
     color: $clr-text;
   }
+
 }

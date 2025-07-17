@@ -1,4 +1,6 @@
 .list {
+    padding: 0 14rem;
+
     h2 {
         margin-bottom: 0.75rem;
         font-family: Arial, sans-serif;
@@ -8,8 +10,8 @@
         list-style: none;
         padding: 0;
         display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-        gap: 2rem; // ✅ espaçamento entre cards
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2rem;
     }
 
     .btn {
