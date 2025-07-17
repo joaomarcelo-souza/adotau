@@ -62,8 +62,7 @@ $clr-text: #565959;
     font-weight: bold;
   }
 
-  &__species {
-    margin: 0 0 0.5rem;
+  mat-card-subtitle {
     font-size: 0.95rem;
     color: $clr-text;
   }
