@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-animal-card',
   standalone: true,
-  imports: [],
+  imports: [MatCardModule, MatIconModule, MatMenuModule, RouterModule],
   templateUrl: './animal-card.component.html',
   styleUrl: './animal-card.component.scss'
 })
