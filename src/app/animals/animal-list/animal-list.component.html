@@ -1,0 +1,12 @@
+<section class="list">
+    <h2>Animais disponíveis</h2>
+    <ul class="list__grid">
+        @for (animal of animals(); track trackById($index, animal)) {
+            <li>
+                <app-animal-card [animal]="animal" />
+            </li>
+        } @empty {
+            <p class="list__empty">Nenhum animal encontrado</p>
+        }
+    </ul>
+</section>
