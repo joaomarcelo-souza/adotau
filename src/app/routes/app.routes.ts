@@ -10,5 +10,5 @@ export const routes: Routes = [
     { path: 'cadastrar', component: Register },
     { path: 'login',component: Login },
     { path: 'animais/:id', component: AnimalProfile }, 
-    { path: 'user-profile', component: UserProfile }
+    { path: 'profile/:id', component: UserProfile }
 ];
