@@ -157,10 +157,9 @@ export class MockUserService extends AbstractUserService {
     });
   }
 
-  user = computed(() => this._user());
+  user = computed(() => this._users());
 
   getUserById(id: number): Signal<User | undefined> {
-    return computed(() => this._user().find(a => a.id === id));
+    return computed(() => this._users().find(u => u.id === id));
   }
-
 }
