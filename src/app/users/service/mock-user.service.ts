@@ -1,12 +1,12 @@
 import { computed, Injectable, Signal, signal } from '@angular/core';
 import { AbstractUserService } from './abstract-user.service';
 import { User } from '../models/user.model';
+import { OperationResult } from '../../models/operation-result.model';
+import { Observable, of } from 'rxjs';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class MockUserService extends AbstractUserService {
-  private _user = signal<User[]>([
+  private _users = signal<User[]>([
     {
       id: 101,
       name: 'Robert',
