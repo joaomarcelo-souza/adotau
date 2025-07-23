@@ -1,19 +1,56 @@
-<app-navbar></app-navbar> 
+<app-navbar></app-navbar>
 
 <div class="profile-container">
-    
-    <div class="profile-image">
-      <img src="https://via.placeholder.com/150" alt="Foto do usuário"> <!-- Imagem placeholder -->
-    </div>
-  
-   
-    <div class="profile-info">
-      <h1>{{user.name}}</h1>
-      <p>{{user.city}}</p>
-      <p>Doador</p>
-    </div>
-  </div>
+  @if (user(); as user) {
+    <div class="profile-section">
+      <div class="profile-header">
+        <div class="profile-image">
+          <img [src]="user.photoUrl || 'assets/default-avatar.png'" alt="Foto do usuário">
+        </div>
+        
+        <div class="profile-info">
+          <h1>{{ user.name }}</h1>
+          <p><mat-icon>location_on</mat-icon> {{ user.neighborhood }}, {{ user.city }} - {{ user.state }}</p>
+          <p><mat-icon>person</mat-icon> {{ user.type_user }}</p>
+          <p><mat-icon>email</mat-icon> {{ user.email }}</p>
+          <p><mat-icon>phone</mat-icon> {{ user.phone  }}</p>
+          
+          @if (user.type_user === 'Doador') {
+            <button mat-raised-button color="primary" routerLink="/animal/register">
+              <mat-icon>add</mat-icon> Cadastrar Animal
+            </button>
+          }
+        </div>
+      </div>
 
+      Seção de animais apenas para doadores
+      @if (user.type_user === 'Doador') {
+        <div class="animals-section">
+          <h2>Animais disponíveis para adoção</h2>
+          
+          @if (userAnimals().length > 0) {
+            <div class="animals-grid">
+              @for (animal of userAnimals(); track animal.id) {
+                <mat-card class="animal-card" [routerLink]="['/animals', animal.id]">
+                  <img mat-card-image [src]="animal.photoUrl" [alt]="animal.name">
+                  <mat-card-content>
+                    <h3>{{ animal.name }}</h3>
+                    <p>{{ animal.species }} • {{ animal.sex }}</p>
+                    <p>{{ animal.age }} anos • {{ animal.size }}</p>
+                  </mat-card-content>
+                </mat-card>
+              }
+            </div>
+          } @else {
+            <p class="no-animals">Nenhum animal cadastrado para adoção.</p>
+          }
+        </div>
+      }
+    </div>
+  } @else {
+    <mat-spinner></mat-spinner>
+  }
+</div>
 
 
 
