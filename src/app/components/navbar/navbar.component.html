@@ -1,11 +1,31 @@
 <mat-toolbar class="navbar">
-    <img src="logo_sem_texto_adotau-removebg-preview.png" alt="Adotau" class="logo-img">
-    <span class="logo">Adotau!</span>
-    <span class="spacer"></span>
-    <div class="nav-links">
-      <button mat-button routerLink="/">Animais</button>
+  <img src="logo_sem_texto_adotau-removebg-preview.png" alt="Adotau" class="logo-img">
+  <span class="logo">Adotau!</span>
+  <span class="spacer"></span>
+  
+  <div class="nav-links">
+    <button mat-button routerLink="/">Animais</button>
+    
+    @if (!authService.isLoggedIn()) {
       <button mat-button routerLink="/login">Entrar</button>
-      <!-- <button mat-button routerLink="/cadastrar">Cadastrar</button>
-      <button mat-button routerLink="/user-profile">Perfil</button> -->
-    </div>
-</mat-toolbar>  
+    }
+    @else {
+      <button mat-button [matMenuTriggerFor]="userMenu" class="user-menu-button">
+        <mat-icon>account_circle</mat-icon>
+        {{ authService.getCurrentUser()?.name }}
+      </button>
+      
+      <mat-menu #userMenu="matMenu">
+        <button mat-menu-item routerLink="/profile">
+          <mat-icon>person</mat-icon>
+          <span>Perfil</span>
+        </button>
+        
+        <button mat-menu-item (click)="logout()">
+          <mat-icon>logout</mat-icon>
+          <span>Sair</span>
+        </button>
+      </mat-menu>
+    }
+  </div>
+</mat-toolbar>
