@@ -1,48 +1,171 @@
+// Variáveis de cores e espaçamento atualizadas
+$primary-color: #0f1111; // Cor do nome (clr-name)
+$secondary-color: #ffffff; // Cor de fundo (clr-bg)
+$text-color: #565959; // Cor do texto (clr-text)
+$border-color: #d5d9d9; // Cor da borda (clr-border)
+$border-radius: 8px;
+$spacing: 16px;
+$shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
 
 .profile-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $spacing * 2;
+  font-family: 'Roboto', Arial, sans-serif;
+  color: $text-color;
+  text-align: center;
+  background-color: $secondary-color;
+}
+
+.profile-section {
+  background: $secondary-color;
+  border-radius: $border-radius;
+  box-shadow: $shadow;
+  padding: $spacing * 2;
+  margin-bottom: $spacing * 2;
+  border: 1px solid $border-color;
+}
+
+.profile-header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 100vh; 
-  text-align: center;
-  font-family: Arial, sans-serif;
-  background-color: #f5f5f5; /* Cor de fundo opcional */
-  
+  padding-bottom: $spacing * 2;
+  border-bottom: 1px solid $border-color;
 }
 
-/* Imagem de perfil em círculo */
 .profile-image {
-
   width: 200px;
   height: 200px;
-  border-radius: 50%; /* Transforma em círculo */
-  overflow: hidden; /* Garante que a imagem não ultrapasse o círculo */
-  border: 3px solid #000; /* Borda branca (opcional) */
-  position: relative;
-  top: -200px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid $border-color;
+  margin-bottom: $spacing;
 
-
-  img  {
+  img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* Garante que a imagem cubra o espaço sem distorcer */
+    object-fit: cover;
   }
 }
 
-/* Estilo das informações do usuário */
 .profile-info {
-  position: relative;
-  top: -190px;
-
   h1 {
-    margin: 0;
-    color: #333;
-    font-size: 24px;
+    margin: 0 0 $spacing 0;
+    font-size: 28px;
+    color: $primary-color;
   }
 
   p {
-    margin: 5px 0;
-    color: #666;
+    margin: 8px 0;
+    color: $text-color;
+    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    mat-icon {
+      margin-right: $spacing/2;
+      color: $primary-color;
+    }
+  }
+
+  button {
+    margin-top: $spacing;
+    display: inline-flex;
+    align-items: center;
+    background-color: $primary-color;
+    color: $secondary-color;
+
+    mat-icon {
+      color: $secondary-color;
+      margin-right: $spacing/2;
+    }
+  }
+}
+
+.animals-section {
+  margin-top: $spacing * 3;
+  text-align: left;
+  background-color: $secondary-color;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  padding: $spacing * 2;
+
+  h2 {
+    font-size: 22px;
+    margin-bottom: $spacing * 1.5;
+    color: $primary-color;
+    text-align: center;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: $primary-color;
+      margin: $spacing auto 0;
+    }
+  }
+}
+
+.animals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: $spacing * 1.5;
+  margin-top: $spacing;
+}
+
+.animal-card {
+  cursor: pointer;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: $border-radius;
+  overflow: hidden;
+  border: 1px solid $border-color;
+  background-color: $secondary-color;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  }
+
+  img {
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid $border-color;
+  }
+
+  mat-card-content {
+    padding: $spacing;
+
+    h3 {
+      margin: 0 0 $spacing/2 0;
+      font-size: 18px;
+      color: $primary-color;
+    }
+
+    p {
+      margin: 4px 0;
+      font-size: 14px;
+      color: $text-color;
+    }
+  }
+}
+
+.no-animals {
+  text-align: center;
+  padding: $spacing * 2;
+  color: $text-color;
+  font-style: italic;
+  background-color: lighten($border-color, 10%);
+  border-radius: $border-radius;
+}
+
+// Estilo do spinner de carregamento
+mat-spinner {
+  margin: $spacing * 4 auto;
+  circle {
+    stroke: $primary-color;
   }
 }
