@@ -1,12 +1,13 @@
 export interface User{
     id: number;
     name: string;
-    sex: string;
     age: number;
+    sex: string;
     city: string;
     state: string;
     neighborhood: string;
+    type_user: string;
     photoUrl: string;
-    UserId: number
-
+    phone: number;
+    email: string;
 }
