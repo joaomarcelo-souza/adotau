@@ -1,6 +1,6 @@
 import { computed, Injectable, Signal, signal } from '@angular/core';
 import { AbstractUserService } from './abstract-user.service';
-import { User } from './models/user.model';
+import { User } from '../models/user.model';
 
 @Injectable({
   providedIn: 'root'
