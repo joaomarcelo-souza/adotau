@@ -1,6 +1,7 @@
 import { Signal } from "@angular/core";
 import { User } from "../models/user.model";
 import { Observable } from "rxjs";
+import { OperationResult } from "../../models/operation-result.model";
 
 export abstract class AbstractUserService {
   abstract users: Signal<User[]>;
@@ -10,4 +11,5 @@ export abstract class AbstractUserService {
   abstract update(user: User): Observable<OperationResult>;
   abstract search_by_id(id: number): Observable<OperationResult>;
   abstract login(query: any): Observable<OperationResult>;
+  abstract getUserById(id: number): Signal<User | undefined>;
 }
