@@ -1,11 +1,18 @@
-import { computed, Injectable, Signal, signal } from '@angular/core';
+import { computed, inject, Injectable, Signal, signal } from '@angular/core';
 import { AbstractUserService } from './abstract-user.service';
 import { User } from '../models/user.model';
 import { OperationResult } from '../../models/operation-result.model';
 import { Observable, of } from 'rxjs';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Injectable()
 export class MockUserService extends AbstractUserService {
+  private authService = inject(AuthService);
+
+  constructor() {
+    super();
+  }
+
   private _users = signal<User[]>([
     {
       id: 101,
@@ -138,24 +145,28 @@ export class MockUserService extends AbstractUserService {
   }
 
   login(query: any): Observable<OperationResult> {
-    const { email, password } = query;
-    const user = this._users().find(u => 
-      u.email === email && u.password === password
-    );
-    
-    if (!user) {
-      return of({ 
-        sucess: false, 
-        status: 401,
-        error: 'Credenciais inválidas'
-      });
-    }
-    
+  const { email, password } = query;
+  const user = this._users().find(u => 
+    u.email === email && u.password === password
+  );
+  
+  if (!user) {
     return of({ 
-      sucess: true, 
-      status: 200 
+      sucess: false, 
+      status: 401,
+      error: 'Credenciais inválidas'
     });
   }
+  
+  // Autentica o usuário
+  this.authService.login(user); // <--- ADIÇÃO IMPORTANTE
+  
+  return of({ 
+    sucess: true, 
+    status: 200,
+    data: user // Retorna dados do usuário
+  });
+}
 
   user = computed(() => this._users());
 
