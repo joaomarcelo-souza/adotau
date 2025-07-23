@@ -1,4 +1,4 @@
-export interface User{
+export interface User {
     id: number;
     name: string;
     age: number;
@@ -10,4 +10,7 @@ export interface User{
     photoUrl: string;
     phone: number;
     email: string;
+    password: string;
+    isActive: boolean;
+    createdDate: Date;
 }
