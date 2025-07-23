@@ -12,6 +12,7 @@ import { Animal } from '../../animals/models/animal.model';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-user-profile',
@@ -32,16 +33,9 @@ export class UserProfile {
   private route = inject(ActivatedRoute);
   private userService = inject(AbstractUserService);
   private animalService = inject(AbstractAnimalService);
+  private authService = inject(AuthService);
 
-  userId = toSignal(this.route.params.pipe(
-    map(params => parseInt(params['id']))
-  ));
-
-  user = computed(() => {
-    const id = this.userId();
-    if (!id) return undefined;
-    return this.userService.getUserById(id)();
-  });
+  user = computed(() => this.authService.getCurrentUser());
 
   userAnimals: Signal<Animal[]> = computed(() => {
     const user = this.user();
