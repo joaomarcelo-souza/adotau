@@ -38,15 +38,15 @@
 
     ::ng-deep .mdc-text-field--outlined {
         border-radius: 100px !important;
-        height: 50px  !important; // deixa a altura automática
+        height: 50px  !important;
         padding: 0 12px;
     }
 
     ::ng-deep .mdc-text-field__input {
-        padding: 2px 0 !important; // ajuste mais equilibrado
+        padding: 2px 0 !important;
         font-size: 14px;
-        height: 100% !important;    // garante que o input ocupe o espaço disponível
-        box-sizing: border-box;     // evita que o padding ultrapasse os limites
+        height: 100% !important;
+        box-sizing: border-box;
     }
     }
 
