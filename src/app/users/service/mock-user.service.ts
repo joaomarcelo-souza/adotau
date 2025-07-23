@@ -11,6 +11,7 @@ export class MockUserService extends AbstractUserService {
       id: 101,
       name: 'Robert',
       age: 26,
+      sex: 'masculino',
       city: 'São Paulo',
       state: 'SP',
       neighborhood: 'Moema',
@@ -18,12 +19,15 @@ export class MockUserService extends AbstractUserService {
       photoUrl: 'avatar.avif',
       phone: 995313111,
       email: 'robert@gmail.com',
-      sex: 'masculino'
+      password: '123456',
+      isActive: true,
+      createdDate: new Date()
     },
     {
       id: 102,
       name: 'Jose',
       age: 25,
+      sex: 'masculino',
       city: 'Rio de Janeiro',
       state: 'RJ',
       neighborhood: 'Copacabana',
@@ -31,12 +35,15 @@ export class MockUserService extends AbstractUserService {
       photoUrl: 'avatar.avif',
       phone: 895489623,
       email: 'jose@gmail.com',
-      sex: 'masculino'
+      password: '123456',
+      isActive: true,
+      createdDate: new Date()
     },
     {
       id: 103,
       name: 'Renata',
       age: 22,
+      sex: 'Feminino',
       city: 'Manaus',
       state: 'AM',
       neighborhood: 'Compensa',
