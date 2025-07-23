@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { Navbar } from '../../components/navbar/navbar.component';
-import { UserForm } from '../../users/user-form/user-form.component';
+import { LoginForm } from '../../users/login-form/login-form.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [Navbar, UserForm],
+  imports: [Navbar, LoginForm],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
 })
