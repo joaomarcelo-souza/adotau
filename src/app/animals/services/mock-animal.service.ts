@@ -31,7 +31,7 @@ export class MockAnimalService extends AbstractAnimalService {
     city: 'Manaus',
     neighborhood: 'Flores',
     photoUrl: 'assets/cat-1.jpg',
-    donorId: 102
+    donorId: 101
   },
   {
     id: 3,
@@ -44,7 +44,7 @@ export class MockAnimalService extends AbstractAnimalService {
     city: 'Manaus',
     neighborhood: 'Aleixo',
     photoUrl: 'assets/dog-1.jpg',
-    donorId: 103
+    donorId: 101
   },
   {
     id: 4,
@@ -57,7 +57,7 @@ export class MockAnimalService extends AbstractAnimalService {
     city: 'Manaus',
     neighborhood: 'Adrianópolis',
     photoUrl: 'assets/cat-1.jpg',
-    donorId: 104
+    donorId: 102
   },
   {
     id: 5,
@@ -70,7 +70,7 @@ export class MockAnimalService extends AbstractAnimalService {
     city: 'Manaus',
     neighborhood: 'Cidade Nova',
     photoUrl: 'assets/dog-1.jpg',
-    donorId: 105
+    donorId: 102
   },
   {
     id: 6,
@@ -83,7 +83,7 @@ export class MockAnimalService extends AbstractAnimalService {
     city: 'Manaus',
     neighborhood: 'São Jorge',
     photoUrl: 'assets/cat-1.jpg',
-    donorId: 106
+    donorId: 102
   },
   {
     id: 7,
@@ -96,7 +96,7 @@ export class MockAnimalService extends AbstractAnimalService {
     city: 'Manaus',
     neighborhood: 'Japiim',
     photoUrl: 'assets/dog-1.jpg',
-    donorId: 107
+    donorId: 103
   },
   {
     id: 8,
@@ -109,7 +109,7 @@ export class MockAnimalService extends AbstractAnimalService {
     city: 'Manaus',
     neighborhood: 'Ponta Negra',
     photoUrl: 'assets/cat-1.jpg',
-    donorId: 108
+    donorId: 103
   },
   {
     id: 9,
@@ -122,7 +122,7 @@ export class MockAnimalService extends AbstractAnimalService {
     city: 'Manaus',
     neighborhood: 'Coroado',
     photoUrl: 'assets/dog-1.jpg',
-    donorId: 109
+    donorId: 103
   },
   {
     id: 10,
@@ -135,7 +135,7 @@ export class MockAnimalService extends AbstractAnimalService {
     city: 'Manaus',
     neighborhood: 'Compensa',
     photoUrl: 'assets/cat-1.jpg',
-    donorId: 110
+    donorId: 103
   }
 ]);
 
