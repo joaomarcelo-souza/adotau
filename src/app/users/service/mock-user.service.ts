@@ -23,6 +23,7 @@ export class MockUserService extends AbstractUserService {
       state: 'SP',
       neighborhood: 'Moema',
       type_user: 'Doador',
+      isDonor: true,
       photoUrl: 'avatar.avif',
       phone: 995313111,
       email: 'robert@gmail.com',
@@ -39,6 +40,7 @@ export class MockUserService extends AbstractUserService {
       state: 'RJ',
       neighborhood: 'Copacabana',
       type_user: 'Adotante',
+      isDonor: false,
       photoUrl: 'avatar.avif',
       phone: 895489623,
       email: 'jose@gmail.com',
@@ -55,6 +57,7 @@ export class MockUserService extends AbstractUserService {
       state: 'AM',
       neighborhood: 'Compensa',
       type_user: 'Doador',
+      isDonor: true,
       photoUrl: 'avatar.avif',
       phone:  991145654,
       email: 'renata@gmail.com',
@@ -76,7 +79,8 @@ export class MockUserService extends AbstractUserService {
     const newUser: User = {
       ...user,
       id: Math.max(0, ...this._users().map(u => u.id)) + 1,
-      createdDate: new Date()
+    createdDate: new Date(),
+    isDonor: user.type_user === 'Doador'
     };
     
     this._users.update(users => [...users, newUser]);
