@@ -1,0 +1,30 @@
+<mat-card class="animal-card">
+  <button mat-icon-button [matMenuTriggerFor]="userMenu" aria-label="Animal" class="animal-card__menu">
+    <mat-icon>more_vert</mat-icon>
+  </button>
+
+  <mat-menu #userMenu="matMenu">
+    <button mat-menu-item [routerLink]="['/animais', animal.id]">
+      <mat-icon>person</mat-icon>
+      <span>Perfil</span>
+    </button>
+    <button mat-menu-item [routerLink]="['/alterar-animal', animal.id]">
+      <mat-icon>pets</mat-icon>
+      <span>Alterar</span>
+    </button>
+  </mat-menu>
+  
+  <img mat-card-image [src]="animal.photoUrl" [alt]="animal.name" />
+  <mat-card-title>
+    <a [routerLink]="['/animais', animal.id]" class="animal-card__link">
+      {{ animal.name }}
+    </a>
+  </mat-card-title>
+
+  <mat-card-subtitle>{{ animal.species }} • {{ animal.sex }}</mat-card-subtitle>
+  
+  <mat-card-content>
+    <p class="animal-card__age">Idade: {{ animal.age }} anos</p>
+    <p class="animal-card__location">{{ animal.city }} - {{ animal.neighborhood }}</p>
+  </mat-card-content>
+</mat-card>

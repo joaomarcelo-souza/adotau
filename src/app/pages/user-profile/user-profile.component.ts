@@ -11,7 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AuthService } from '../../services/auth/auth.service';
-import { AnimalCard } from '../../animals/animal-card/animal-card.component';
+import { AnimalUserCard } from '../../animals/animal-user-card/animal-user-card.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -24,7 +24,7 @@ import { AnimalCard } from '../../animals/animal-card/animal-card.component';
     MatButtonModule,
     RouterLink,
     MatProgressSpinnerModule,
-    AnimalCard
+    AnimalUserCard
   ],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.scss'
