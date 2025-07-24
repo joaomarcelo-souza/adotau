@@ -3,11 +3,11 @@ import { Navbar } from '../../components/navbar/navbar.component';
 import { AnimalForm } from '../../animals/animal-form/animal-form.component';
 
 @Component({
-  selector: 'app-register',
-  imports: [Navbar],
-  templateUrl: './register.component.html',
-  styleUrl: './register.component.scss'
+  selector: 'app-register-animals',
+  imports: [Navbar, AnimalForm],
+  templateUrl: './register-animals.html',
+  styleUrl: './register-animals.scss'
 })
-export class Register {
+export class RegisterAnimals {
 
 }
