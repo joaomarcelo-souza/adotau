@@ -3,8 +3,6 @@ import { Navbar } from '../../components/navbar/navbar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { ActivatedRoute } from '@angular/router';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { map } from 'rxjs';
 import { AbstractUserService } from '../../users/service/abstract-user.service';
 import { CommonModule } from '@angular/common';
 import { AbstractAnimalService } from '../../animals/services/abstract-animal.service';
@@ -13,6 +11,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { RouterLink } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AuthService } from '../../services/auth/auth.service';
+import { AnimalCard } from '../../animals/animal-card/animal-card.component';
 
 @Component({
   selector: 'app-user-profile',
@@ -24,7 +23,8 @@ import { AuthService } from '../../services/auth/auth.service';
     CommonModule,
     MatButtonModule,
     RouterLink,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
+    AnimalCard
   ],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.scss'

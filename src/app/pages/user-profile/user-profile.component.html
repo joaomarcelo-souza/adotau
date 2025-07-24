@@ -16,14 +16,13 @@
           <p><mat-icon>phone</mat-icon> {{ user.phone  }}</p>
           
           @if (user.type_user === 'Doador') {
-            <button mat-raised-button color="primary" routerLink="/animal/register">
+            <button mat-raised-button color="primary" routerLink="/cadastrar-animal">
               <mat-icon>add</mat-icon> Cadastrar Animal
             </button>
           }
         </div>
       </div>
 
-      Seção de animais apenas para doadores
       @if (user.type_user === 'Doador') {
         <div class="animals-section">
           <h2>Animais disponíveis para adoção</h2>
@@ -31,14 +30,7 @@
           @if (userAnimals().length > 0) {
             <div class="animals-grid">
               @for (animal of userAnimals(); track animal.id) {
-                <mat-card class="animal-card" [routerLink]="['/animals', animal.id]">
-                  <img mat-card-image [src]="animal.photoUrl" [alt]="animal.name">
-                  <mat-card-content>
-                    <h3>{{ animal.name }}</h3>
-                    <p>{{ animal.species }} • {{ animal.sex }}</p>
-                    <p>{{ animal.age }} anos • {{ animal.size }}</p>
-                  </mat-card-content>
-                </mat-card>
+                  <app-animal-card [animal]="animal" />
               }
             </div>
           } @else {
