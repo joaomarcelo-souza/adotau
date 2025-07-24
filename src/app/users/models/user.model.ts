@@ -7,6 +7,7 @@ export interface User {
     state: string;
     neighborhood: string;
     type_user: string;
+    isDonor: boolean;
     photoUrl: string;
     phone: number;
     email: string;

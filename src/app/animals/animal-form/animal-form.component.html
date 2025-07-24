@@ -1,0 +1,96 @@
+<div class="form-animal-page">
+  <mat-card class="animal-form-card">
+    <h2>{{ isEditMode ? 'Editar Animal' : 'Cadastrar Novo Animal' }}</h2>
+
+    <form [formGroup]="animalForm" (ngSubmit)="onSubmit()">
+      <mat-form-field appearance="outline" floatLabel="always" class="full-width">
+        <mat-label>Nome</mat-label>
+        <input matInput formControlName="name" required />
+        @if (animalForm.get('name')?.hasError('required')) {
+          <mat-error>Nome é obrigatório</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" floatLabel="always" class="full-width">
+        <mat-label>Espécie</mat-label>
+        <input matInput formControlName="species" required />
+        @if (animalForm.get('species')?.hasError('required')) {
+          <mat-error>Espécie é obrigatória</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" floatLabel="always" class="full-width">
+        <mat-label>Sexo</mat-label>
+        <mat-select formControlName="sex" required>
+          <mat-option value="Macho">Macho</mat-option>
+          <mat-option value="Fêmea">Fêmea</mat-option>
+        </mat-select>
+        @if (animalForm.get('sex')?.hasError('required')) {
+          <mat-error>Sexo é obrigatório</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" floatLabel="always" class="full-width">
+        <mat-label>Idade (anos)</mat-label>
+        <input matInput formControlName="age" type="number" min="0" required />
+        @if (animalForm.get('age')?.hasError('required')) {
+          <mat-error>Idade é obrigatória</mat-error>
+        }
+        @if (animalForm.get('age')?.hasError('min')) {
+          <mat-error>Idade deve ser positiva</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" floatLabel="always" class="full-width">
+        <mat-label>Porte</mat-label>
+        <mat-select formControlName="size" required>
+          <mat-option value="Pequeno">Pequeno</mat-option>
+          <mat-option value="Médio">Médio</mat-option>
+          <mat-option value="Grande">Grande</mat-option>
+        </mat-select>
+        @if (animalForm.get('size')?.hasError('required')) {
+          <mat-error>Porte é obrigatório</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" floatLabel="always" class="full-width">
+        <mat-label>Descrição</mat-label>
+        <textarea matInput formControlName="description" required></textarea>
+        @if (animalForm.get('description')?.hasError('required')) {
+          <mat-error>Descrição é obrigatória</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" floatLabel="always" class="full-width">
+        <mat-label>Cidade</mat-label>
+        <input matInput formControlName="city" required />
+        @if (animalForm.get('city')?.hasError('required')) {
+          <mat-error>Cidade é obrigatória</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field appearance="outline" floatLabel="always" class="full-width">
+        <mat-label>Bairro</mat-label>
+        <input matInput formControlName="neighborhood" required />
+        @if (animalForm.get('neighborhood')?.hasError('required')) {
+          <mat-error>Bairro é obrigatório</mat-error>
+        }
+      </mat-form-field>
+
+      <div class="form-actions">
+        <button
+          mat-flat-button
+          color="primary"
+          type="submit"
+          [disabled]="isLoading || animalForm.invalid"
+        >
+          {{ isEditMode ? 'Atualizar' : 'Cadastrar' }}
+        </button>
+      </div>
+    </form>
+
+    <div class="form-links">
+      <a mat-button routerLink="/animais">Voltar para a lista de animais</a>
+    </div>
+  </mat-card>
+</div>

@@ -23,6 +23,7 @@ export class MockUserService extends AbstractUserService {
       state: 'SP',
       neighborhood: 'Moema',
       type_user: 'Doador',
+      isDonor: true,
       photoUrl: 'avatar.avif',
       phone: 995313111,
       email: 'robert@gmail.com',
@@ -39,6 +40,7 @@ export class MockUserService extends AbstractUserService {
       state: 'RJ',
       neighborhood: 'Copacabana',
       type_user: 'Adotante',
+      isDonor: false,
       photoUrl: 'avatar.avif',
       phone: 895489623,
       email: 'jose@gmail.com',
@@ -55,6 +57,7 @@ export class MockUserService extends AbstractUserService {
       state: 'AM',
       neighborhood: 'Compensa',
       type_user: 'Doador',
+      isDonor: true,
       photoUrl: 'avatar.avif',
       phone:  991145654,
       email: 'renata@gmail.com',
@@ -74,25 +77,22 @@ export class MockUserService extends AbstractUserService {
 
   add(user: Omit<User, 'id' | 'createdDate'>): Observable<OperationResult> {
     const newUser: User = {
-      ...user,
-      id: Math.max(0, ...this._users().map(u => u.id)) + 1,
-      createdDate: new Date()
-    };
-    
-    this._users.update(users => [...users, newUser]);
-    
-    return of({ 
-      sucess: true, 
-      status: 200 
-    })
-  }
+    ...user,
+    id: Math.max(0, ...this._users().map(u => u.id)) + 1,
+    createdDate: new Date(),
+    isDonor: user.type_user === 'Doador'
+  };
+  
+  this._users.update(users => [...users, newUser]);
+  return of({ success: true, status: 200 });
+}
 
   remove(id: number): Observable<OperationResult> {
     const userExists = this._users().some(u => u.id === id);
     
     if (!userExists) {
       return of({ 
-        sucess: false, 
+        success: false, 
         status: 404,
         error: `Usuário com ID ${id} não encontrado`
       })
@@ -101,7 +101,7 @@ export class MockUserService extends AbstractUserService {
     this._users.update(users => users.filter(u => u.id !== id));
     
     return of({ 
-      sucess: true, 
+      success: true, 
       status: 200 
     });
   }
@@ -111,7 +111,7 @@ export class MockUserService extends AbstractUserService {
     
     if (!existingUser) {
       return of({ 
-        sucess: false, 
+        success: false, 
         status: 404,
         error: `Usuário com ID ${user.id} não encontrado`
       });
@@ -122,7 +122,7 @@ export class MockUserService extends AbstractUserService {
     );
     
     return of({ 
-      sucess: true, 
+      success: true, 
       status: 200 
     });
   }
@@ -132,14 +132,14 @@ export class MockUserService extends AbstractUserService {
     
     if (!user) {
       return of({ 
-        sucess: false, 
+        success: false, 
         status: 404,
         error: `Usuário com ID ${id} não encontrado`
       });
     }
     
     return of({ 
-      sucess: true, 
+      success: true, 
       status: 200 
     });
   }
@@ -152,19 +152,18 @@ export class MockUserService extends AbstractUserService {
   
   if (!user) {
     return of({ 
-      sucess: false, 
+      success: false, 
       status: 401,
       error: 'Credenciais inválidas'
     });
   }
   
-  // Autentica o usuário
-  this.authService.login(user); // <--- ADIÇÃO IMPORTANTE
+  this.authService.login(user);
   
   return of({ 
-    sucess: true, 
+    success: true, 
     status: 200,
-    data: user // Retorna dados do usuário
+    data: user
   });
 }
 

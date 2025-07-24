@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs';
 
 @Injectable()
 export class UserService extends AbstractUserService {
-  // Implementação mínima do Signal para satisfazer a interface
+
   private _users = signal<User[]>([]);
   users = this._users.asReadonly();
 
@@ -16,12 +16,11 @@ export class UserService extends AbstractUserService {
   }
 
   refresh(): void {
-    // Implementação vazia
   }
 
   add(user: Omit<User, 'id' | 'createdDate'>): Observable<OperationResult> {
     return of({ 
-      sucess: false, 
+      success: false, 
       status: 501,
       error: 'Método não implementado' 
     });
@@ -29,7 +28,7 @@ export class UserService extends AbstractUserService {
 
   remove(id: number): Observable<OperationResult> {
     return of({ 
-      sucess: false, 
+      success: false, 
       status: 501,
       error: 'Método não implementado' 
     });
@@ -37,7 +36,7 @@ export class UserService extends AbstractUserService {
 
   update(user: User): Observable<OperationResult> {
     return of({ 
-      sucess: false, 
+      success: false, 
       status: 501,
       error: 'Método não implementado' 
     });
@@ -45,7 +44,7 @@ export class UserService extends AbstractUserService {
 
   search_by_id(id: number): Observable<OperationResult> {
     return of({ 
-      sucess: false, 
+      success: false, 
       status: 501,
       error: 'Método não implementado' 
     });
@@ -53,7 +52,7 @@ export class UserService extends AbstractUserService {
 
   login(credentials: any): Observable<OperationResult> {
     return of({ 
-      sucess: false, 
+      success: false, 
       status: 501,
       error: 'Método não implementado' 
     });

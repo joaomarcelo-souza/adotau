@@ -1,18 +1,49 @@
+@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap');
+
 $clr-border: #d5d9d9;
 $clr-bg: #ffffff;
 $clr-name: #0f1111;
 $clr-text: #565959;
+$primary-color: #0f1111;
+$secondary-color: #ffffff;
+$text-color: #565959;
+$border-color: #d5d9d9;
+$border-radius: 12px;
+$spacing: 20px;
+$shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 
 .animal-card {
   border: 1px solid $clr-border;
-  border-radius: 8px;
+  border-radius: $border-radius;
   background: $clr-bg;
   max-width: 320px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
-  font-family: Arial, Helvetica, sans-serif;
+  box-shadow: $shadow;
+  font-family: 'Baloo 2', cursive;
   text-align: center;
   position: relative;
   overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+  }
+
+  img {
+    height: 220px;
+    object-fit: cover;
+    border-bottom: 1px solid $border-color;
+  }
+
+  mat-card-content {
+    padding: $spacing;
+
+    p {
+      margin: 4px 0;
+      font-size: 16px;
+      color: $text-color;
+    }
+  }
 
   &__menu {
     position: absolute;
@@ -24,7 +55,7 @@ $clr-text: #565959;
     border-radius: 50%;
     border: 0;
     padding: 0.25rem;
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.8);
   }
 
   mat-card-image {
@@ -33,13 +64,12 @@ $clr-text: #565959;
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 8px;
+    border-radius: $border-radius;
     object-fit: cover;
   }
 
   mat-card-title {
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    margin: 0.5rem 0;
     font-size: 1.2rem;
     color: $clr-name;
     font-weight: bold;
@@ -49,27 +79,20 @@ $clr-text: #565959;
     text-decoration: none;
     color: $clr-name;
     font-weight: bold;
-  
+
     &:hover {
       color: darken($clr-name, 10%);
     }
   }
 
-  mat-card-title {
-    margin-bottom: 0.5rem;
-    font-size: 1.2rem;
-    color: $clr-name;
-    font-weight: bold;
-  }
-
   mat-card-subtitle {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
     color: $clr-text;
   }
 
   &__age,
   &__location {
-    font-size: 0.85rem;
+    font-size: 0.9rem;
     color: $clr-text;
     margin-bottom: 0.5rem;
   }
@@ -81,5 +104,4 @@ $clr-text: #565959;
     cursor: pointer;
     color: $clr-text;
   }
-
 }

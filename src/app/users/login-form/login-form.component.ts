@@ -6,23 +6,24 @@ import { MatIconModule } from '@angular/material/icon';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AbstractUserService } from '../service/abstract-user.service';
 import { Router } from '@angular/router';
-import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { RouterModule } from '@angular/router';
-
+import { FeedbackService } from '../../services/feedback/feedback.service';
+import { OperationResult } from '../../models/operation-result.model';
 
 @Component({
   selector: 'app-login-form',
   standalone: true,
-  imports: [MatCard, MatInputModule,  MatFormFieldModule, MatIconModule, MatProgressSpinnerModule, ReactiveFormsModule, RouterModule],
+  imports: [MatCard, MatInputModule, MatFormFieldModule, MatIconModule, MatProgressSpinnerModule, ReactiveFormsModule, RouterModule],
   templateUrl: './login-form.component.html',
   styleUrl: './login-form.component.scss'
 })
 export class LoginForm {
+  
   private fb = inject(FormBuilder);
   private userService = inject(AbstractUserService);
   private router = inject(Router);
-  private snackBar = inject(MatSnackBar);
+  private feedbackService = inject(FeedbackService);
 
   loginForm: FormGroup;
   showPassword = false;
@@ -44,26 +45,37 @@ export class LoginForm {
     const credentials = this.loginForm.value;
 
     this.userService.login(credentials).subscribe({
-    next: (result) => {
-      this.isLoading = false;
-      if (result.sucess) {
-        this.router.navigate(['/']); 
-      } else {
-        this.showError(result.error || 'Credenciais inválidas');
-      }
-    },
+      next: (result: OperationResult) => {
+        this.isLoading = false;
+        if (result.success) {
+          this.router.navigate(['/']);
+          this.feedbackService.success('Login realizado com sucesso!');
+        } else {
+          this.handleError(result);
+        }
+      },
       error: () => {
         this.isLoading = false;
-        this.showError('Erro na conexão com o servidor');
+        this.feedbackService.error('Erro na conexão com o servidor');
       }
     });
   }
 
-  private showError(message: string): void {
-    this.snackBar.open(message, 'Fechar', {
-      duration: 5000,
-      panelClass: ['error-snackbar']
-    });
+  private handleError(result: OperationResult): void {
+    let message = 'Ocorreu um erro';
+    switch (result.status) {
+      case 401:
+        message = 'Credenciais inválidas';
+        break;
+      case 403:
+        message = 'Acesso negado';
+        break;
+      case 500:
+        message = 'Erro interno do servidor';
+        break;
+      default:
+        message = result.error || 'Erro desconhecido';
+    }
+    this.feedbackService.error(message);
   }
-  
 }

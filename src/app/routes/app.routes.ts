@@ -5,11 +5,18 @@ import { AnimalProfile } from '../pages/animal-profile/animal-profile.component'
 import { UserProfile } from '../pages/user-profile/user-profile.component';
 import { Login } from '../pages/login/login.component';
 import { authGuard } from '../services/auth/auth.guard';
+import { donorGuard } from '../services/auth/donor.guard';
+import { RegisterAnimals } from '../pages/register-animals/register-animals';
 
 export const routes: Routes = [
     { path: '', component: Animals },
-    { path: 'login', component: Login},
-    { path: 'animais/:id', component: AnimalProfile }, 
+
+    { path: 'cadastrar', component: Register },
+    { path: 'login', component: Login },
+    { path: 'animais/:id', component: AnimalProfile },
     { path: 'profile', component: UserProfile, canActivate: [authGuard] },
-    { path: 'register', component: Register}
+    { path: 'cadastrar-animal', component: RegisterAnimals, canActivate: [authGuard, donorGuard] },
+    { path: 'alterar-animal/:id', component: Register, canActivate: [authGuard, donorGuard] }
+
+
 ];
