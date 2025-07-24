@@ -2,7 +2,7 @@
 
 .navbar {
     font-family: 'Baloo 2', cursive;
-    background-color: #f8cd7e; // tom terroso mais claro
+    background-color: #f8cd7e;
     color: #f8cd7e;
     display: flex;
     align-items: center;
@@ -19,8 +19,16 @@
     .logo-img{
       max-height: 100%;
       height: 100%;
-      object-fit: contain; /* ou 'cover' se quiser preencher todo o espaço */
+      object-fit: contain;
       display: block;
+    }
+    .logo-link{
+      max-height: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: flex;
+      text-decoration: none;
+      align-items: center;
     }
   
     .spacer {
@@ -38,10 +46,6 @@
         font-size: 16px;
         cursor: pointer;
         transition: color 0.3s;
-  
-        // &:hover {
-        //   color: #61543e;
-        // }
       }
     }
   }
