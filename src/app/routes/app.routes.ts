@@ -16,7 +16,7 @@ export const routes: Routes = [
     { path: 'animais/:id', component: AnimalProfile },
     { path: 'profile', component: UserProfile, canActivate: [authGuard] },
     { path: 'cadastrar-animal', component: RegisterAnimals, canActivate: [authGuard, donorGuard] },
-    { path: 'alterar-animal/:id', component: Register, canActivate: [authGuard, donorGuard] }
+    { path: 'alterar-animal/:id', component: RegisterAnimals, canActivate: [authGuard, donorGuard] }
 
 
 ];
