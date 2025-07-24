@@ -30,7 +30,7 @@
           @if (userAnimals().length > 0) {
             <div class="animals-grid">
               @for (animal of userAnimals(); track animal.id) {
-                  <app-animal-card [animal]="animal" />
+                  <app-animal-user-card [animal]="animal"></app-animal-user-card>
 
               }
             </div>
