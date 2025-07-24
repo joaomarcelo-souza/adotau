@@ -16,7 +16,7 @@
           <p><mat-icon>phone</mat-icon> {{ user.phone  }}</p>
           
           @if (user.type_user === 'Doador') {
-            <button mat-raised-button color="primary" routerLink="/animal/register">
+            <button mat-button color="primary" routerLink="/register">
               <mat-icon>add</mat-icon> Cadastrar Animal
             </button>
           }
@@ -31,7 +31,7 @@
           @if (userAnimals().length > 0) {
             <div class="animals-grid">
               @for (animal of userAnimals(); track animal.id) {
-                <mat-card class="animal-card" [routerLink]="['/animals', animal.id]">
+                <mat-card class="animal-card" [routerLink]="['/animais', animal.id]">
                   <img mat-card-image [src]="animal.photoUrl" [alt]="animal.name">
                   <mat-card-content>
                     <h3>{{ animal.name }}</h3>
