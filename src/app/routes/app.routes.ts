@@ -8,7 +8,6 @@ import { authGuard } from '../services/auth/auth.guard';
 
 export const routes: Routes = [
     { path: '', component: Animals },
-    { path: 'cadastrar', component: Register },
     { path: 'login', component: Login},
     { path: 'animais/:id', component: AnimalProfile }, 
     { path: 'profile', component: UserProfile, canActivate: [authGuard] },
