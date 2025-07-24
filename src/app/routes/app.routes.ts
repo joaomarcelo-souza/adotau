@@ -11,5 +11,6 @@ export const routes: Routes = [
     { path: 'cadastrar', component: Register },
     { path: 'login', component: Login},
     { path: 'animais/:id', component: AnimalProfile }, 
-    { path: 'profile', component: UserProfile, canActivate: [authGuard] }
+    { path: 'profile', component: UserProfile, canActivate: [authGuard] },
+    { path: 'register', component: Register}
 ];
