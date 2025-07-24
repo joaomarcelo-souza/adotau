@@ -9,14 +9,14 @@ $secondary-color: #ffffff;
 $text-color: #565959;
 $border-color: #d5d9d9;
 $border-radius: 12px;
-$spacing: 20px;
+$spacing: 10px;
 $shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 
 .animal-card {
   border: 1px solid $clr-border;
   border-radius: $border-radius;
   background: $clr-bg;
-  max-width: 320px;
+  max-width: 400px;
   box-shadow: $shadow;
   font-family: 'Baloo 2', cursive;
   text-align: center;
@@ -103,5 +103,9 @@ $shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     right: 0.5rem;
     cursor: pointer;
     color: $clr-text;
+  }
+
+  &__adopt {
+    color: #61543e;
   }
 }

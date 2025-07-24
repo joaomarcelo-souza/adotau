@@ -1,18 +1,4 @@
 <mat-card class="animal-card">
-  <button mat-icon-button [matMenuTriggerFor]="userMenu" aria-label="Animal" class="animal-card__menu">
-    <mat-icon>more_vert</mat-icon>
-  </button>
-
-  <mat-menu #userMenu="matMenu">
-    <button mat-menu-item [routerLink]="['/animais', animal.id]">
-      <mat-icon>person</mat-icon>
-      <span>Perfil</span>
-    </button>
-    <button mat-menu-item>
-      <mat-icon>pets</mat-icon>
-      <span>Adotar</span>
-    </button>
-  </mat-menu>
   
   <img mat-card-image [src]="animal.photoUrl" [alt]="animal.name" />
   <mat-card-title>
@@ -27,6 +13,12 @@
     <p class="animal-card__age">Idade: {{ animal.age }} anos</p>
     <p class="animal-card__location">{{ animal.city }} - {{ animal.neighborhood }}</p>
   </mat-card-content>
+
+  <button mat-button class="animal-card__adopt">
+    <mat-icon>pets</mat-icon>
+    <span>Adotar</span>
+  </button>
+
 </mat-card>
 
 
