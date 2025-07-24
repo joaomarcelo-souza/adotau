@@ -1,5 +1,10 @@
 import { Component, computed, inject } from '@angular/core';
 import { Navbar } from '../../components/navbar/navbar.component';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
+import { CommonModule } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { AbstractAnimalService } from '../../animals/services/abstract-animal.service';
 import { ActivatedRoute } from '@angular/router';
