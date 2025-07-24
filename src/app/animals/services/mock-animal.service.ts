@@ -1,9 +1,14 @@
-import { computed, Injectable, Signal, signal } from '@angular/core';
+import { computed, inject, Injectable, Signal, signal } from '@angular/core';
 import { AbstractAnimalService } from './abstract-animal.service';
 import { Animal } from '../models/animal.model';
+import { Observable, of } from 'rxjs';
+import { OperationResult } from '../../models/operation-result.model';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Injectable()
 export class MockAnimalService extends AbstractAnimalService {
+  private authService = inject(AuthService);
+
   private _animals = signal<Animal[]>([
   {
     id: 1,
@@ -55,7 +60,7 @@ export class MockAnimalService extends AbstractAnimalService {
     city: 'Manaus',
     neighborhood: 'Adrianópolis',
     photoUrl: 'assets/cat-1.jpg',
-    donorId: 102
+    donorId: 101
   },
   {
     id: 5,
@@ -68,7 +73,7 @@ export class MockAnimalService extends AbstractAnimalService {
     city: 'Manaus',
     neighborhood: 'Cidade Nova',
     photoUrl: 'assets/dog-1.jpg',
-    donorId: 102
+    donorId: 101
   },
   {
     id: 6,
@@ -81,7 +86,7 @@ export class MockAnimalService extends AbstractAnimalService {
     city: 'Manaus',
     neighborhood: 'São Jorge',
     photoUrl: 'assets/cat-1.jpg',
-    donorId: 102
+    donorId: 103
   },
   {
     id: 7,
@@ -143,4 +148,72 @@ export class MockAnimalService extends AbstractAnimalService {
     return computed(() => this._animals().find(a => a.id === id));
   }
 
+  add(animal: Omit<Animal, 'id'>): Observable<OperationResult<Animal>> {
+    const user = this.authService.getCurrentUser();
+    
+    if (!user || !user.isDonor) {
+      return of({ 
+        success: false, 
+        status: 403, 
+        error: 'Apenas doadores podem cadastrar animais' 
+      });
+    }
+    
+    const newAnimal: Animal = {
+      ...animal,
+      id: Math.max(0, ...this._animals().map(a => a.id)) + 1,
+      donorId: user.id
+    };
+    
+    this._animals.update(animals => [...animals, newAnimal]);
+    
+    return of({ 
+      success: true, 
+      status: 200,
+      data: newAnimal
+    });
+  }
+
+  update(animal: Animal): Observable<OperationResult> {
+    const user = this.authService.getCurrentUser();
+    
+    if (!user || user.id !== animal.donorId) {
+      return of({ 
+        success: false, 
+        status: 403, 
+        error: 'Apenas o doador pode atualizar este animal' 
+      });
+    }
+    
+    this._animals.update(animals => 
+      animals.map(a => a.id === animal.id ? animal : a)
+    );
+    
+    return of({ success: true, status: 200 });
+  }
+
+  remove(id: number): Observable<OperationResult> {
+    const animal = this._animals().find(a => a.id === id);
+    
+    if (!animal) {
+      return of({ 
+        success: false, 
+        status: 404, 
+        error: 'Animal não encontrado' 
+      });
+    }
+    
+    const user = this.authService.getCurrentUser();
+    
+    if (!user || user.id !== animal.donorId) {
+      return of({ 
+        success: false, 
+        status: 403, 
+        error: 'Apenas o doador pode remover este animal' 
+      });
+    }
+    
+    this._animals.update(animals => animals.filter(a => a.id !== id));
+    return of({ success: true, status: 200 });
+  }
 }
