@@ -14,7 +14,7 @@ $clr-text: #565959;
         background: $clr-bg;
         padding: 2rem;
         box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
-        font-family: Arial, Helvetica, sans-serif;
+        font-family: 'Baloo 2', cursive;
     }
 
     &__header {
@@ -84,9 +84,18 @@ $clr-text: #565959;
         color: $clr-text;
     }
 
+    
+
     &__loading {
         text-align: center;
         font-size: 1.2rem;
         color: $clr-text;
     }
+
+    .animal-profile__adopt {
+        color: #61543e;
+        font-family: 'Baloo 2', cursive;
+    }
+
+    
 }
