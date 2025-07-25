@@ -45,9 +45,18 @@ export class AnimalProfile {
     return this.animalService.getAnimalById(id)();
   });
 
+  
   isLoading = computed(() => !this.animal());
 
   goBack() {
     this.location.back();
   }
+
+  user = computed(() => {
+    const donorId = this.animal()?.donorId;
+    if (!donorId) return undefined;
+    return this.userService.getUserById(donorId)();
+
+  });
+
 }
