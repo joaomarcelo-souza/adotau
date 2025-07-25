@@ -13,7 +13,10 @@
 
       <mat-form-field appearance="outline" floatLabel="always" class="full-width">
         <mat-label>Espécie</mat-label>
-        <input matInput formControlName="species" required />
+        <mat-select formControlName="species" required>
+          <mat-option value="Cachorro">Cachorro</mat-option>
+          <mat-option value="Gato">Gato</mat-option>
+        </mat-select>
         @if (animalForm.get('species')?.hasError('required')) {
           <mat-error>Espécie é obrigatória</mat-error>
         }

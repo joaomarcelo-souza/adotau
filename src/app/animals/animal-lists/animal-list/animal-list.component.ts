@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
-import { AbstractAnimalService } from '../services/abstract-animal.service';
-import { AnimalCard } from "../animal-card/animal-card.component";
-import { Animal } from '../models/animal.model';
+import { AbstractAnimalService } from '../../services/abstract-animal.service';
+import { AnimalCard } from "../../animal-card/animal-card.component";
+import { Animal } from '../../models/animal.model';
 
 @Component({
   selector: 'app-animal-list',
@@ -15,6 +15,5 @@ export class AnimalList {
   
   animals = this.animalService.animals;
 
-  // Corrigindo a tipagem do trackById
   trackById = (index: number, animal: Animal) => animal.id;
 }

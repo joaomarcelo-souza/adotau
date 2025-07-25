@@ -8,7 +8,6 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
 import { AbstractAnimalService } from '../../animals/services/abstract-animal.service';
-import { Animal } from '../../animals/models/animal.model';
 import { Location } from '@angular/common';
 import { AbstractUserService } from '../../users/service/abstract-user.service';
 

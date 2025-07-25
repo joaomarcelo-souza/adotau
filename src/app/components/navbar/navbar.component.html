@@ -6,7 +6,11 @@
   <span class="spacer"></span>
   
   <div class="nav-links">
-    <button mat-button routerLink="/">Animais</button>
+    <button mat-button routerLink="/">Home</button>
+
+    <button mat-button routerLink="/cachorros">Cachorros</button>
+
+    <button mat-button routerLink="/gatos">Gatos</button>
     
     @if (!authService.isLoggedIn()) {
       <button mat-button routerLink="/login">Entrar</button>
