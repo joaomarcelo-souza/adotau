@@ -10,6 +10,7 @@ import { map } from 'rxjs';
 import { AbstractAnimalService } from '../../animals/services/abstract-animal.service';
 import { Animal } from '../../animals/models/animal.model';
 import { Location } from '@angular/common';
+import { AbstractUserService } from '../../users/service/abstract-user.service';
 
 @Component({
   selector: 'app-animal-profile',
@@ -25,10 +26,14 @@ import { Location } from '@angular/common';
   templateUrl: './animal-profile.component.html',
   styleUrl: './animal-profile.component.scss'
 })
+
 export class AnimalProfile {
   private route = inject(ActivatedRoute);
   private animalService = inject(AbstractAnimalService);
+  private userService = inject(AbstractUserService);
   private location = inject(Location);
+
+  
 
   animalId = toSignal(this.route.params.pipe(
     map(params => parseInt(params['id']))
