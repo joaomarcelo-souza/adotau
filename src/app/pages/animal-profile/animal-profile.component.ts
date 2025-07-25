@@ -4,7 +4,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { CommonModule } from '@angular/common';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { map } from 'rxjs';
 import { AbstractAnimalService } from '../../animals/services/abstract-animal.service';
@@ -19,7 +19,8 @@ import { Location } from '@angular/common';
     MatIconModule,
     MatCardModule,
     MatButtonModule,
-    CommonModule
+    CommonModule,
+    RouterModule
   ],
   templateUrl: './animal-profile.component.html',
   styleUrl: './animal-profile.component.scss'
