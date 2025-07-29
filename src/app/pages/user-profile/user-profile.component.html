@@ -4,14 +4,17 @@
   @if (user(); as user) {
     <div class="profile-section">
       <div class="profile-header">
-        <div class="profile-image">
-          <img [src]="user.photoUrl || 'assets/default-avatar.png'" alt="Foto do usuário">
-        </div>
-        
+        <div class="profile-position">
+          <div class="profile-image">
+            <img [src]="user.photoUrl || 'assets/default-avatar.png'" alt="Foto do usuário">
+          </div>
+       </div>
+
+       
         <div class="profile-info">
-          <h1>{{ user.name }}</h1>
+          <h1>{{ user.name }} {{ user.last_name }}</h1>
+          <p><mat-icon>person</mat-icon>{{ user.type_user }}</p>
           <p><mat-icon>location_on</mat-icon> {{ user.neighborhood }}, {{ user.city }} - {{ user.state }}</p>
-          <p><mat-icon>person</mat-icon> {{ user.type_user }}</p>
           <p><mat-icon>email</mat-icon> {{ user.email }}</p>
           <p><mat-icon>phone</mat-icon> {{ user.phone  }}</p>
           
