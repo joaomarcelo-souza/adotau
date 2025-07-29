@@ -17,6 +17,7 @@ export class MockUserService extends AbstractUserService {
     {
       id: 101,
       name: 'Robert',
+      last_name: 'Navarro',
       age: 26,
       sex: 'masculino',
       city: 'São Paulo',
@@ -34,6 +35,7 @@ export class MockUserService extends AbstractUserService {
     {
       id: 102,
       name: 'Jose',
+      last_name: 'Carlos',
       age: 25,
       sex: 'masculino',
       city: 'Rio de Janeiro',
@@ -51,6 +53,7 @@ export class MockUserService extends AbstractUserService {
     {
       id: 103,
       name: 'Renata',
+      last_name: 'Beltrão',
       age: 22,
       sex: 'Feminino',
       city: 'Manaus',
