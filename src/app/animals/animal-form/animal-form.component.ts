@@ -1,5 +1,11 @@
+import { MatIconModule } from '@angular/material/icon';
 import { Component, inject, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { Animal } from '../models/animal.model';
 import { AbstractAnimalService } from '../services/abstract-animal.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -13,9 +19,16 @@ import { OperationResult } from '../../models/operation-result.model';
 @Component({
   selector: 'app-animal-form',
   standalone: true,
-  imports: [MatCardModule, MatInputModule, MatFormFieldModule, MatSelectModule, ReactiveFormsModule],
+  imports: [
+    MatCardModule,
+    MatIconModule,
+    MatInputModule,
+    MatFormFieldModule,
+    MatSelectModule,
+    ReactiveFormsModule,
+  ],
   templateUrl: './animal-form.component.html',
-  styleUrls: ['./animal-form.component.scss']
+  styleUrls: ['./animal-form.component.scss'],
 })
 export class AnimalForm implements OnInit {
   private fb = inject(FormBuilder);
@@ -39,7 +52,8 @@ export class AnimalForm implements OnInit {
       size: ['', Validators.required],
       description: ['', Validators.required],
       city: ['', Validators.required],
-      neighborhood: ['', Validators.required]
+      neighborhood: ['', Validators.required],
+      photoUrl: ['', Validators.required],
     });
   }
 
@@ -64,7 +78,8 @@ export class AnimalForm implements OnInit {
         size: animal.size,
         description: animal.description,
         city: animal.city,
-        neighborhood: animal.neighborhood
+        neighborhood: animal.neighborhood,
+        photoUrl: animal.photoUrl,
       });
     } else {
       this.feedbackService.error('Animal não encontrado');
@@ -83,7 +98,7 @@ export class AnimalForm implements OnInit {
     if (this.isEditMode && this.currentAnimalId && this.currentAnimal) {
       const updatedAnimal: Animal = {
         ...this.currentAnimal,
-        ...animalData
+        ...animalData,
       };
       this.updateAnimal(updatedAnimal);
     } else {
@@ -105,7 +120,7 @@ export class AnimalForm implements OnInit {
       error: () => {
         this.isLoading = false;
         this.feedbackService.error('Erro na conexão com o servidor');
-      }
+      },
     });
   }
 
@@ -123,7 +138,7 @@ export class AnimalForm implements OnInit {
       error: () => {
         this.isLoading = false;
         this.feedbackService.error('Erro na conexão com o servidor');
-      }
+      },
     });
   }
 
