@@ -6,6 +6,7 @@ import { AuthService } from '../../services/auth/auth.service';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIcon } from '@angular/material/icon';
 import { FeedbackService } from '../../services/feedback/feedback.service';
+import { Search } from '../search/search.component';
 
 @Component({
   selector: 'app-navbar',
@@ -15,7 +16,8 @@ import { FeedbackService } from '../../services/feedback/feedback.service';
     MatButtonModule,
     MatMenuModule,
     MatIcon,
-    RouterModule
+    RouterModule,
+    Search
   ],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
