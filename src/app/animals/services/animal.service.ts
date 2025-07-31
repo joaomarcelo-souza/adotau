@@ -55,4 +55,14 @@ export class AnimalService extends AbstractAnimalService {
     );
     return of({ success: true, status: 200 });
   }
+
+  override search(query: string): Observable<OperationResult> {
+        return of()
+    }
+
+  override search_by_id(id: number): Observable<OperationResult> {
+        return of()
+    }
+
+
 }
