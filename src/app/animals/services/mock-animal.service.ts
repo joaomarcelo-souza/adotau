@@ -227,9 +227,7 @@ export class MockAnimalService extends AbstractAnimalService {
                 const lowerQuery = query.trim().toLowerCase()
 
                 const filtered = this._animals().filter(animal=>
-                    animal.name.toLowerCase().includes(lowerQuery) ||
-                    animal.city.toLowerCase().includes(lowerQuery) ||
-                    animal.age.toString().includes(lowerQuery))
+                    animal.name.toLowerCase().includes(lowerQuery))
 
                 return of({success: true, status: 200, data: filtered})
                 
