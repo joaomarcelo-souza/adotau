@@ -1,7 +1,7 @@
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker, Session, DeclarativeBase
 
-DATABASE_URL = "sqlit:///./adotau.db"
+DATABASE_URL = "sqlite:///./adotau.db"
 
 engine = create_engine(
     DATABASE_URL, echo=True, connect_args={"check_same_thread": False}
