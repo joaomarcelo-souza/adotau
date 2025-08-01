@@ -9,4 +9,6 @@ export abstract class AbstractAnimalService {
     abstract add(animal: Omit<Animal, 'id'>): Observable<OperationResult<Animal>>;
     abstract update(animal: Animal): Observable<OperationResult>;
     abstract remove(id: number): Observable<OperationResult>;
+    abstract search(query: string): Observable<OperationResult>;
+    abstract search_by_id(id: number): Observable<OperationResult>;
 }

@@ -1,0 +1,60 @@
+.search-box {
+  position: relative;
+  width: 430px;
+  margin-left: 110px;
+}
+
+.search-input {
+  width: 400px;
+  padding: 10px 14px;
+  border: 1px solid #d5d9d9;
+  border-radius: 20px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.3s;
+
+  &:focus {
+    border-color: #0f1111;
+  }
+}
+
+.suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 300px; /* Altura máxima com scroll se necessário */
+  overflow-y: auto; /* Adiciona scroll se o conteúdo for muito longo */
+  margin-top: 4px;
+  list-style: none;
+  padding: 0;
+  border: 1px solid #d5d9d9;
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+
+  li {
+    padding: 10px 14px;
+    display: flex; /* Alinha os spans horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    gap: 8px; /* Espaçamento entre os spans */
+    transition: background-color 0.2s;
+
+    &:hover {
+      background-color: #f9f9f9;
+      cursor: pointer;
+    }
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    span {
+      color: #565959;
+      white-space: nowrap; /* Impede que o texto quebre em várias linhas */
+      overflow: hidden;
+      text-overflow: ellipsis; /* Adiciona "..." se o texto for muito longo */
+    }
+  }
+}

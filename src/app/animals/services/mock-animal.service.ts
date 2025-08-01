@@ -216,4 +216,24 @@ export class MockAnimalService extends AbstractAnimalService {
     this._animals.update(animals => animals.filter(a => a.id !== id));
     return of({ success: true, status: 200 });
   }
+
+  override search_by_id(id: number): Observable<OperationResult> {
+            return of()
+        }
+
+        override search(query: string): Observable<OperationResult> {
+            try{
+
+                const lowerQuery = query.trim().toLowerCase()
+
+                const filtered = this._animals().filter(animal=>
+                    animal.name.toLowerCase().includes(lowerQuery))
+
+                return of({success: true, status: 200, data: filtered})
+                
+            }catch(error){
+                return of({success: false, status: 400, data: error})
+
+            }
+        }
 }
