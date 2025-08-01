@@ -1,14 +1,8 @@
-// .search-box {
-//   position: relative;
-//   width: 100%;
-//   max-width: 500px;
-//   margin: 0 auto;
-//   padding: 8px;
-//   background-color: #ffffff;
-//   border: 1px solid #d5d9d9;
-//   border-radius: 12px;
-//   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
-// }
+.search-box {
+  position: relative;
+  width: 430px;
+  margin-left: 110px;
+}
 
 .search-input {
   width: 400px;
@@ -17,7 +11,6 @@
   border-radius: 20px;
   font-size: 16px;
   outline: none;
-  margin-left: 110px;
   transition: border-color 0.3s;
 
   &:focus {
@@ -26,33 +19,42 @@
 }
 
 .suggestions {
-  margin-top: 8px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  max-height: 300px; /* Altura máxima com scroll se necessário */
+  overflow-y: auto; /* Adiciona scroll se o conteúdo for muito longo */
+  margin-top: 4px;
   list-style: none;
   padding: 0;
-  border-top: 1px solid #d5d9d9;
-  width: 430px;
-  margin-left: 110px;
+  border: 1px solid #d5d9d9;
+  border-radius: 20px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
 
   li {
-
     padding: 10px 14px;
-    border-bottom: 1px solid #f0f0f0;
-    background-color: #ffffff;
-    border-radius: 20px;
+    display: flex; /* Alinha os spans horizontalmente */
+    align-items: center; /* Centraliza verticalmente */
+    gap: 8px; /* Espaçamento entre os spans */
     transition: background-color 0.2s;
-    
 
     &:hover {
       background-color: #f9f9f9;
       cursor: pointer;
     }
 
-    strong {
-      color: #0f1111;
+    &:last-child {
+      border-bottom: none;
     }
 
     span {
       color: #565959;
+      white-space: nowrap; /* Impede que o texto quebre em várias linhas */
+      overflow: hidden;
+      text-overflow: ellipsis; /* Adiciona "..." se o texto for muito longo */
     }
   }
 }
