@@ -1,0 +1,111 @@
+<app-navbar></app-navbar>
+
+<div class="profile-container">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="profile-section">
+  
+      <div class="profile-header">
+        
+        <div class="profile-position">
+          <div class="profile-image">
+            <img [src]="userForm.get('photoUrl')?.value || 'assets/default-avatar.png'" alt="foto">
+          </div>
+    
+          <mat-form-field appearance="outline" floatLabel="always" class="photo-url-field">
+            <mat-label>URL da Foto</mat-label>
+            <input matInput formControlName="photoUrl" placeholder="Cole o link da foto">
+          </mat-form-field>
+        </div>
+
+  
+        <div class="profile-info">
+    
+          <div class="name-fields">
+            <mat-form-field appearance="outline" floatLabel="always" class="name-field">
+              <mat-label>Nome</mat-label>
+              <input matInput formControlName="name" required>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline" floatLabel="always" class="last-name-field">
+              <mat-label>Sobrenome</mat-label>
+              <input matInput formControlName="last_name" required>
+            </mat-form-field>
+          </div>
+
+          
+          <div class="form-row">
+            <mat-icon class="form-icon">person</mat-icon>
+            <mat-form-field appearance="outline" floatLabel="always" class="type-field">
+              <mat-label>Tipo de Usuário</mat-label>
+              <mat-select formControlName="type_user" required>
+                <mat-option value="Doador">Doador</mat-option>
+                <mat-option value="Adotante">Adotante</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          
+          <div class="form-row">
+            <mat-icon class="form-icon">location_on</mat-icon>
+            <mat-form-field appearance="outline" floatLabel="always" class="neighborhood-field">
+              <mat-label>Bairro</mat-label>
+              <input matInput formControlName="neighborhood" required>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline" floatLabel="always" class="city-field">
+              <mat-label>Cidade</mat-label>
+              <input matInput formControlName="city" required>
+            </mat-form-field>
+            
+            <mat-form-field appearance="outline" floatLabel="always" class="state-field">
+              <mat-label>UF</mat-label>
+              <input matInput formControlName="state" required maxlength="2">
+            </mat-form-field>
+          </div>
+
+    
+          <div class="form-row">
+            <mat-icon class="form-icon">email</mat-icon>
+            <mat-form-field appearance="outline" floatLabel="always" class="email-field">
+              <mat-label>Email</mat-label>
+              <input matInput formControlName="email" type="email" required>
+            </mat-form-field>
+          </div>
+
+    
+          <div class="form-row">
+            <mat-icon class="form-icon">lock</mat-icon>
+            <mat-form-field appearance="outline" floatLabel="always" class="password-field">
+              <mat-label>Senha</mat-label>
+              <input matInput formControlName="password" type="password" required>
+            </mat-form-field>
+          </div>
+
+        
+          <div class="form-row">
+            <mat-icon class="form-icon">phone</mat-icon>
+            <mat-form-field appearance="outline" floatLabel="always" class="phone-field">
+              <mat-label>Telefone</mat-label>
+              <input matInput formControlName="phone" required>
+            </mat-form-field>
+          </div>
+
+          
+          @if (userForm.get('type_user')?.value === 'Doador') {
+            <button mat-raised-button color="primary" routerLink="/cadastrar-animal" type="button" class="action-button">
+              <mat-icon>add</mat-icon> Cadastrar Animal
+            </button>
+          }
+
+          
+          <div class="form-actions">
+            <button mat-raised-button color="primary" type="submit" class="submit-button" [disabled]="userForm.invalid">
+              <mat-icon>save</mat-icon> Salvar Alterações
+            </button>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+  </form>
+</div>
