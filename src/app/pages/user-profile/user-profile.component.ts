@@ -12,22 +12,24 @@ import { RouterLink } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AuthService } from '../../services/auth/auth.service';
 import { AnimalUserCard } from '../../animals/animal-user-card/animal-user-card.component';
+import { Breadcrumb } from '../../components/breadcrumb/breadcrumb.component';
 
 @Component({
   selector: 'app-user-profile',
   standalone: true,
   imports: [
-    Navbar, 
-    MatIconModule, 
-    MatCardModule, 
+    Navbar,
+    MatIconModule,
+    MatCardModule,
     CommonModule,
     MatButtonModule,
     RouterLink,
     MatProgressSpinnerModule,
-    AnimalUserCard
+    AnimalUserCard,
+    Breadcrumb,
   ],
   templateUrl: './user-profile.component.html',
-  styleUrl: './user-profile.component.scss'
+  styleUrl: './user-profile.component.scss',
 })
 export class UserProfile {
   private route = inject(ActivatedRoute);
@@ -40,6 +42,8 @@ export class UserProfile {
   userAnimals: Signal<Animal[]> = computed(() => {
     const user = this.user();
     if (!user) return [];
-    return this.animalService.animals().filter(animal => animal.donorId === user.id);
+    return this.animalService
+      .animals()
+      .filter((animal) => animal.donorId === user.id);
   });
 }
