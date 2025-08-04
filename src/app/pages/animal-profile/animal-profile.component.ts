@@ -10,6 +10,7 @@ import { map } from 'rxjs';
 import { AbstractAnimalService } from '../../animals/services/abstract-animal.service';
 import { Location } from '@angular/common';
 import { AbstractUserService } from '../../users/service/abstract-user.service';
+import { Breadcrumb } from '../../components/breadcrumb/breadcrumb.component';
 
 @Component({
   selector: 'app-animal-profile',
@@ -20,23 +21,21 @@ import { AbstractUserService } from '../../users/service/abstract-user.service';
     MatCardModule,
     MatButtonModule,
     CommonModule,
-    RouterModule
+    RouterModule,
+    Breadcrumb,
   ],
   templateUrl: './animal-profile.component.html',
-  styleUrl: './animal-profile.component.scss'
+  styleUrl: './animal-profile.component.scss',
 })
-
 export class AnimalProfile {
   private route = inject(ActivatedRoute);
   private animalService = inject(AbstractAnimalService);
   private userService = inject(AbstractUserService);
   private location = inject(Location);
 
-  
-
-  animalId = toSignal(this.route.params.pipe(
-    map(params => parseInt(params['id']))
-  ));
+  animalId = toSignal(
+    this.route.params.pipe(map((params) => parseInt(params['id'])))
+  );
 
   animal = computed(() => {
     const id = this.animalId();
@@ -44,7 +43,6 @@ export class AnimalProfile {
     return this.animalService.getAnimalById(id)();
   });
 
-  
   isLoading = computed(() => !this.animal());
 
   goBack() {
@@ -55,7 +53,5 @@ export class AnimalProfile {
     const donorId = this.animal()?.donorId;
     if (!donorId) return undefined;
     return this.userService.getUserById(donorId)();
-
   });
-
 }

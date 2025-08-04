@@ -1,14 +1,12 @@
 import { Component } from '@angular/core';
 import { Navbar } from '../../components/navbar/navbar.component';
-import { AnimalForm } from '../../animals/animal-form/animal-form.component';
 import { UserForm } from '../../users/user-form/user-form.component';
+import { Breadcrumb } from '../../components/breadcrumb/breadcrumb.component';
 
 @Component({
   selector: 'app-register',
-  imports: [UserForm],
+  imports: [UserForm, Navbar, Breadcrumb],
   templateUrl: './register.component.html',
-  styleUrl: './register.component.scss'
+  styleUrl: './register.component.scss',
 })
-export class Register {
-
-}
+export class Register {}

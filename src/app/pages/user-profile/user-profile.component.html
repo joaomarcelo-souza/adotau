@@ -1,52 +1,59 @@
 <app-navbar></app-navbar>
+<app-breadcrumb></app-breadcrumb>
 
 <div class="profile-container">
   @if (user(); as user) {
-    <div class="profile-section">
-      <div class="profile-header">
-        <div class="profile-position">
-          <div class="profile-image">
-            <img [src]="user.photoUrl || 'assets/default-avatar.png'" alt="Foto do usuário">
-          </div>
-       </div>
-
-       
-        <div class="profile-info">
-          <h1>{{ user.name }} {{ user.last_name }}</h1>
-          <p><mat-icon>person</mat-icon>{{ user.type_user }}</p>
-          <p><mat-icon>location_on</mat-icon> {{ user.neighborhood }}, {{ user.city }} - {{ user.state }}</p>
-          <p><mat-icon>email</mat-icon> {{ user.email }}</p>
-          <p><mat-icon>phone</mat-icon> {{ user.phone  }}</p>
-          
-          @if (user.type_user === 'Doador') {
-            <button mat-raised-button color="primary" routerLink="/cadastrar-animal">
-              <mat-icon>add</mat-icon> Cadastrar Animal
-            </button>
-          }
+  <div class="profile-section">
+    <div class="profile-header">
+      <div class="profile-position">
+        <div class="profile-image">
+          <img
+            [src]="user.photoUrl || 'assets/default-avatar.png'"
+            alt="Foto do usuário"
+          />
         </div>
       </div>
 
-      @if (user.type_user === 'Doador') {
-        <div class="animals-section">
-          <h2>Animais disponíveis para adoção</h2>
-          
-          @if (userAnimals().length > 0) {
-            <div class="animals-grid">
-              @for (animal of userAnimals(); track animal.id) {
-                  <app-animal-user-card [animal]="animal"></app-animal-user-card>
+      <div class="profile-info">
+        <h1>{{ user.name }} {{ user.last_name }}</h1>
+        <p><mat-icon>person</mat-icon>{{ user.type_user }}</p>
+        <p>
+          <mat-icon>location_on</mat-icon> {{ user.neighborhood }},
+          {{ user.city }} - {{ user.state }}
+        </p>
+        <p><mat-icon>email</mat-icon> {{ user.email }}</p>
+        <p><mat-icon>phone</mat-icon> {{ user.phone }}</p>
 
-              }
-            </div>
-          } @else {
-            <p class="no-animals">Nenhum animal cadastrado para adoção.</p>
-          }
-        </div>
+        @if (user.type_user === 'Doador') {
+        <button
+          mat-raised-button
+          color="primary"
+          routerLink="/profile/cadastrar-animal"
+        >
+          <mat-icon>add</mat-icon> Cadastrar Animal
+        </button>
+        }
+      </div>
+    </div>
+
+    @if (user.type_user === 'Doador') {
+    <div class="animals-section">
+      <h2>Animais disponíveis para adoção</h2>
+
+      @if (userAnimals().length > 0) {
+      <div class="animals-grid">
+        @for (animal of userAnimals(); track animal.id) {
+        <app-animal-user-card [animal]="animal"></app-animal-user-card>
+
+        }
+      </div>
+      } @else {
+      <p class="no-animals">Nenhum animal cadastrado para adoção.</p>
       }
     </div>
+    }
+  </div>
   } @else {
-    <mat-spinner></mat-spinner>
+  <mat-spinner></mat-spinner>
   }
 </div>
-
-
-
