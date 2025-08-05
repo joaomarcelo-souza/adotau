@@ -1,0 +1,31 @@
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.75rem 1rem;
+  list-style: none;
+  border-radius: 0.25rem;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+
+  & + &::before {
+    content: ">";
+    padding: 0 0.5rem;
+    color: #6c757d;
+  }
+
+  &.active {
+    color: #6c757d;
+  }
+
+  a {
+    color: #0d6efd;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

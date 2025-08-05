@@ -1,10 +1,11 @@
 <app-navbar></app-navbar>
+<app-breadcrumb></app-breadcrumb>
 @if (currentRoute() === '/') {
-    <app-animal-list />
-} @else if (currentRoute() === '/cachorros') {
-    <app-dog-list />
-} @else if (currentRoute() === '/gatos') {
-    <app-cat-list />
+<app-animal-list />
+} @else if (currentRoute() === '/animais/cachorros') {
+<app-dog-list />
+} @else if (currentRoute() === '/animais/gatos') {
+<app-cat-list />
 } @else {
-    <app-animal-list />
+<app-animal-list />
 }
