@@ -1,23 +1,21 @@
-<div class = "search-box">
+<div class="search-box">
+  <input type="text" 
+         [(ngModel)]="searchQuery"
+         (ngModelChange)="onSearchChange($event)"
+         placeholder="Buscar Animal..."
+         class="search-input"/>
 
-        <input type="text" 
-        [(ngModel)]="searchQuery"
-        (ngModelChange)="onSearchChange($event)"
-        placeholder="Buscar Animal..."
-        class="search-input"/>
-
-        <ul class="suggestions" [hidden]="showSuggestions">
-                @if(filteredAnimals.length==0){
-                        <li>
-                                <strong> Animal não encontrado</strong>
-                        </li>
-                } @else{
-                        @for (animal of filteredAnimals; track animal.id){
-                                <li>
-                                        <span [innerHTML]="highlightMatch(animal.name, searchQuery)"></span> 
-                                        
-                                </li>
-                        }
-                }
-        </ul>
+  <ul class="suggestions" [hidden]="showSuggestions || searchQuery.length === 0">
+    @if(filteredAnimals.length == 0 && searchQuery.length > 0) {
+      <li>
+        <strong>Animal não encontrado</strong>
+      </li>
+    } @else {
+      @for (animal of filteredAnimals; track animal.id) {
+        <li (click)="navigateToAnimalProfile(animal.id)">
+          <span [innerHTML]="highlightMatch(animal.name, searchQuery)"></span>
+        </li>
+      }
+    }
+  </ul>
 </div>
