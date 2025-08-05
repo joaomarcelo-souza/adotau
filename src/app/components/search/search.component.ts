@@ -3,36 +3,60 @@ import { CommonModule } from '@angular/common';
 import { Animal } from '../../animals/models/animal.model';
 import { AbstractAnimalService } from '../../animals/services/abstract-animal.service';
 import { firstValueFrom } from 'rxjs';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Router } from '@angular/router';
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-search',
+  standalone: true,
   imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './search.component.html',
-  styleUrl: './search.component.scss'
+  styleUrls: ['./search.component.scss']
 })
 export class Search {
+  private service = inject(AbstractAnimalService);
+  private router = inject(Router);
 
-  private service = inject(AbstractAnimalService)
-  filteredAnimals: Animal[] = []
-  searchQuery: string = ''
-  showSuggestions = true
+  filteredAnimals: Animal[] = [];
+  searchQuery: string = '';
+  showSuggestions = true;
 
-  async onSearchChange(query:string): Promise<void>{
-    this.searchQuery = query
-    const result = await firstValueFrom(
-      this.service.search(query)
-    )
-    this.filteredAnimals = result.success && result.data ? result.data : []
-    this.showSuggestions = query.length <=0
+  async onSearchChange(query: string): Promise<void> {
+    this.searchQuery = query;
+    const result = await firstValueFrom(this.service.search(query));
     
+    const currentRoute = this.router.url;
+    let speciesFilter: string | undefined;
+
+    if (currentRoute.includes('cachorros')) {
+      speciesFilter = 'cachorro';
+    } else if (currentRoute.includes('gatos')) {
+      speciesFilter = 'gato';
+    }
+
+    this.filteredAnimals = result.success && result.data 
+      ? speciesFilter 
+        ? result.data.filter((animal: Animal) => animal.species.toLowerCase() === speciesFilter) 
+
+        
+        : result.data
+      : [];
+    
+    this.showSuggestions = query.length <= 0;
   }
 
-  highlightMatch(text: string, query: string): string{
-    if(!query) return text
-    const regex = new RegExp(`(${query})`,'gi')
-    return text.replace(regex,'<strong>$1</strong>')
+  highlightMatch(text: string, query: string): string {
+    if (!query) return text;
+    const regex = new RegExp(`(${query})`, 'gi');
+    return text.replace(regex, '<strong>$1</strong>');
+  }
+
+  
+  navigateToAnimalProfile(animalId: number): void {
+    this.router.navigate(['/animais', animalId]);
+    this.showSuggestions = true;
+    this.searchQuery = '';
+    this.filteredAnimals = [];
   }
 
 }
