@@ -6,16 +6,17 @@ import {
   ReactiveFormsModule,
   Validators,
 } from '@angular/forms';
-import { User } from '../models/user.model'; // Supondo que você tenha um modelo User
-import { AbstractUserService } from '../service/abstract-user.service'; // Supondo que você tenha um serviço de usuário
-import { Router, ActivatedRoute } from '@angular/router';
+import { User } from '../models/user.model';
+import { AbstractUserService } from '../service/abstract-user.service';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { FeedbackService } from '../../services/feedback/feedback.service';
 import { MatCardModule } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { OperationResult } from '../../models/operation-result.model';
-import { Navbar } from "../../components/navbar/navbar.component";
+import { filter } from 'rxjs/operators';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-user-form',
@@ -27,8 +28,8 @@ import { Navbar } from "../../components/navbar/navbar.component";
     MatFormFieldModule,
     MatSelectModule,
     ReactiveFormsModule,
-    Navbar
-],
+    CommonModule
+  ],
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.scss'],
 })
@@ -39,6 +40,7 @@ export class UserForm implements OnInit {
   private feedbackService = inject(FeedbackService);
   private route = inject(ActivatedRoute);
 
+  public isCadastroPage: boolean = false;
   userForm: FormGroup;
   isEditMode = false;
   isLoading = false;
@@ -50,7 +52,7 @@ export class UserForm implements OnInit {
       name: ['', Validators.required],
       last_name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required,Validators.minLength(8)]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
       phone: ['', Validators.required],
       type_user: ['', Validators.required],
       city: ['', Validators.required],
@@ -61,6 +63,16 @@ export class UserForm implements OnInit {
   }
 
   ngOnInit(): void {
+    
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        this.isCadastroPage = event.url.includes('/cadastrar');
+      });
+
+  
+    this.isCadastroPage = this.router.url.includes('/cadastrar');
+
     const userId = this.route.snapshot.paramMap.get('id');
     if (userId) {
       this.isEditMode = true;
@@ -68,7 +80,7 @@ export class UserForm implements OnInit {
       this.loadUser(this.currentUserId);
     }
   }
-
+        
   private loadUser(id: number): void {
     const user = this.userService.getUserById(id)();
     if (user) {
