@@ -84,6 +84,12 @@ export const routes: Routes = [
         canActivate: [authGuard, donorGuard],
         data: { breadcrumb: 'Editar Animal' },
       },
+      {
+        path: 'alterar-user/:id',
+        component: Register,
+        canActivate: [authGuard, donorGuard],
+        data: { breadcrumb: 'Editar Usuario' },
+      },
     ],
   },
 ];
