@@ -44,7 +44,7 @@
 
             <div class="form-actions">
                 <button 
-                    mat-flat-button 
+                    mat-button 
                     color="primary" 
                     type="submit"
                     [disabled]="isLoading || loginForm.invalid">
@@ -53,7 +53,7 @@
                         <span>Login</span>
                     }
                     @if (isLoading) {
-                        <mat-spinner diameter="20"></mat-spinner>
+                        <mat-spinner diameter="30"></mat-spinner>
                     }
                 </button>
             </div>
