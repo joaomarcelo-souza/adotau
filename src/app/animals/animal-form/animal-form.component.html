@@ -108,13 +108,11 @@
 
       <div class="form-actions">
         <button
-          mat-raised-button
-          color="primary"
+          mat-button
           type="submit"
           class="submit-button"
           [disabled]="isLoading || animalForm.invalid"
         >
-          <mat-icon>pets</mat-icon>
           {{ isEditMode ? "Atualizar" : "Cadastrar" }}
         </button>
       </div>

@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { AbstractAnimalService } from '../../services/abstract-animal.service';
-import { AnimalCard } from "../../animal-card/animal-card.component";
+import { AnimalCard } from '../../animal-cards/animal-card/animal-card.component';
 import { Animal } from '../../models/animal.model';
 
 @Component({
@@ -8,11 +8,11 @@ import { Animal } from '../../models/animal.model';
   standalone: true,
   imports: [AnimalCard],
   templateUrl: './animal-list.component.html',
-  styleUrl: './animal-list.component.scss'
+  styleUrl: './animal-list.component.scss',
 })
 export class AnimalList {
   private animalService = inject(AbstractAnimalService);
-  
+
   animals = this.animalService.animals;
 
   trackById = (index: number, animal: Animal) => animal.id;

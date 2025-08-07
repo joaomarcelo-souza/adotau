@@ -1,66 +1,76 @@
 <div class="form-login-page">
-    <mat-card class="login-card">
-        <div class="image-logo">
-            <img src="logo_adotau-removebg-preview.png" alt="Adotau-logo">
-        </div>
-        
-        <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
-            <mat-form-field appearance="outline" floatLabel="always" class="full-width">
-                <mat-label>Email</mat-label>
-                <input 
-                    matInput 
-                    formControlName="email" 
-                    required
-                    type="email">
-                
-                @if (loginForm.get('email')?.hasError('required')) {
-                    <mat-error>Email é obrigatório</mat-error>
-                }
-                @if (loginForm.get('email')?.hasError('email')) {
-                    <mat-error>Por favor, insira um email válido</mat-error>
-                }
-            </mat-form-field>
-            
-            <mat-form-field appearance="outline" floatLabel="always" class="full-width">
-                <mat-label>Senha</mat-label>
-                <input 
-                    matInput
-                    [type]="showPassword ? 'text' : 'password'"
-                    formControlName="password"
-                    required>
-                <button 
-                    mat-icon-button 
-                    matSuffix
-                    (click)="showPassword = !showPassword"
-                    type="button"
-                    [attr.aria-label]="showPassword ? 'Ocultar senha' : 'Mostrar senha'">
-                    <mat-icon>{{showPassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-                </button>
-                
-                @if (loginForm.get('password')?.hasError('required')) {
-                    <mat-error>Senha é obrigatória</mat-error>
-                }
-            </mat-form-field>
+  <mat-card class="login-card">
+    <div class="image-logo">
+      <img
+        src="logo_sem_texto_adotau-removebg-preview.png"
+        alt="Adotau"
+        class="logo-img"
+      />
+      <span class="logo">Adotau!</span>
+    </div>
 
-            <div class="form-actions">
-                <button 
-                    mat-button 
-                    color="primary" 
-                    type="submit"
-                    [disabled]="isLoading || loginForm.invalid">
-                    
-                    @if (!isLoading) {
-                        <span>Login</span>
-                    }
-                    @if (isLoading) {
-                        <mat-spinner diameter="30"></mat-spinner>
-                    }
-                </button>
-            </div>
-        </form>
+    <form [formGroup]="loginForm" (ngSubmit)="onLogin()">
+      <mat-form-field
+        appearance="outline"
+        floatLabel="always"
+        class="full-width"
+      >
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" required type="email" />
 
-        <div class="form-links">
-            <a mat-button routerLink="/cadastrar">Não tem uma conta? Cadastre-se</a>
-        </div>
-    </mat-card>
+        @if (loginForm.get('email')?.hasError('required')) {
+        <mat-error>Email é obrigatório</mat-error>
+        } @if (loginForm.get('email')?.hasError('email')) {
+        <mat-error>Por favor, insira um email válido</mat-error>
+        }
+      </mat-form-field>
+
+      <mat-form-field
+        appearance="outline"
+        floatLabel="always"
+        class="full-width"
+      >
+        <mat-label>Senha</mat-label>
+        <input
+          matInput
+          [type]="showPassword ? 'text' : 'password'"
+          formControlName="password"
+          required
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="showPassword = !showPassword"
+          type="button"
+          [attr.aria-label]="showPassword ? 'Ocultar senha' : 'Mostrar senha'"
+        >
+          <mat-icon>{{
+            showPassword ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </button>
+
+        @if (loginForm.get('password')?.hasError('required')) {
+        <mat-error>Senha é obrigatória</mat-error>
+        }
+      </mat-form-field>
+
+      <div class="form-actions">
+        <button
+          mat-button
+          type="submit"
+          [disabled]="isLoading || loginForm.invalid"
+        >
+          @if (!isLoading) {
+          <span>Login</span>
+          } @if (isLoading) {
+          <mat-spinner diameter="30"></mat-spinner>
+          }
+        </button>
+      </div>
+    </form>
+
+    <div class="form-links">
+      <a mat-button routerLink="/cadastrar">Não tem uma conta? Cadastre-se</a>
+    </div>
+  </mat-card>
 </div>
