@@ -2,7 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 80vh;
 }
 
 .form-actions {
@@ -10,11 +10,22 @@
   justify-content: center;
   margin-bottom: 24px;
 }
+.form-actions button:enabled {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.form-actions button:enabled:hover {
+  background-color: #e0e0e0; // ou qualquer cor de destaque
+}
 
 .form-actions button {
-  min-width: 160px;
-  font-size: 16px;
-  padding: 8px 20px;
+  border-radius: 1rem;
+  border: 0;
+  vertical-align: middle;
+  margin: 0rem auto 0.75rem auto;
+  font-size: 1.2rem;
+  padding: 0.5rem 2.3rem;
+  font-family: "Baloo 2", cursive;
 }
 
 .login-card {
@@ -30,33 +41,38 @@
 
   .image-logo {
     display: flex;
-    justify-content: center;
-    margin-bottom: 24px;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
 
-    img {
-      height: 130px;
-      width: 160px;
-    }
+  .logo-img {
+    height: 6rem;
+    object-fit: contain;
+  }
+
+  .logo {
+    font-size: 2rem;
+    font-weight: 600;
+    color: #150f03;
+    font-family: "Baloo 2", cursive;
   }
 
   .full-width {
     width: 100%;
+    font-family: "Baloo 2", cursive;
 
     ::ng-deep .mat-mdc-form-field {
       width: 100%;
     }
 
     ::ng-deep .mdc-text-field--outlined {
-      border-radius: 100px !important;
-      height: 50px !important;
-      padding: 0 12px;
+      min-height: 2.5rem;
+      padding: 0 0.5rem;
     }
 
     ::ng-deep .mdc-text-field__input {
-      padding: 2px 0 !important;
-      font-size: 14px;
-      height: 100% !important;
-      box-sizing: border-box;
+      font-size: 1.3rem;
+      line-height: 1.2rem;
     }
   }
 

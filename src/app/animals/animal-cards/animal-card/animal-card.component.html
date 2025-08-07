@@ -1,5 +1,4 @@
 <mat-card class="animal-card">
-  
   <img mat-card-image [src]="animal.photoUrl" [alt]="animal.name" />
   <mat-card-title>
     <a [routerLink]="['/animais', animal.id]" class="animal-card__link">
@@ -8,17 +7,20 @@
   </mat-card-title>
 
   <mat-card-subtitle>{{ animal.species }} • {{ animal.sex }}</mat-card-subtitle>
-  
+
   <mat-card-content>
     <p class="animal-card__age">Idade: {{ animal.age }} anos</p>
-    <p class="animal-card__location">{{ animal.city }} - {{ animal.neighborhood }}</p>
+    <p class="animal-card__location">
+      {{ animal.city }} - {{ animal.neighborhood }}
+    </p>
   </mat-card-content>
 
-  <button mat-button [routerLink]="['/animais', animal.id]" class="animal-card__adopt">
+  <button
+    mat-button
+    [routerLink]="['/animais', animal.id]"
+    class="animal-card__adopt"
+  >
     <mat-icon>pets</mat-icon>
     <span>Adotar</span>
   </button>
-
 </mat-card>
-
-

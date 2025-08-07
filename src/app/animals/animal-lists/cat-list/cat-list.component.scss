@@ -1,32 +1,23 @@
 .list {
-    padding: 0 14rem;
+  padding: 0 14rem;
+  font-family: "Baloo 2", cursive;
 
-    h2 {
-        margin-bottom: 0.75rem;
-        font-family: Arial, sans-serif;
-    }
+  h2 {
+    font-size: 2.5rem;
+    margin-bottom: 0.75rem;
+  }
 
-    &__grid {
-        list-style: none;
-        padding: 0;
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        gap: 2rem;
-    }
+  &__grid {
+    list-style: none;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2rem;
+  }
 
-    .btn {
-        margin-top: 0.5rem;
-        padding: 0.35rem;
-        font-size: 0.8rem;
-        border: 1px solid whitesmoke;
-        border-radius: 4px;
-        background: white;
-        cursor: pointer;
-    }
-
-    &__empty {
-        margin-top: 1rem;
-        text-align: center;
-        color: #666;
-    }
+  &__empty {
+    margin-top: 1rem;
+    text-align: center;
+    color: #666;
+  }
 }

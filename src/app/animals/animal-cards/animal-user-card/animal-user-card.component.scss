@@ -1,47 +1,41 @@
-@import url('https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&display=swap');
-
 $clr-border: #d5d9d9;
 $clr-bg: #ffffff;
 $clr-name: #0f1111;
 $clr-text: #565959;
-$primary-color: #0f1111;
-$secondary-color: #ffffff;
-$text-color: #565959;
-$border-color: #d5d9d9;
-$border-radius: 12px;
-$spacing: 20px;
-$shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+$border-radius: 0.75rem;
+$spacing: 0.625rem;
+$shadow: 0 0.25rem 1.25rem rgba(0, 0, 0, 0.1);
 
 .animal-card {
   border: 1px solid $clr-border;
   border-radius: $border-radius;
   background: $clr-bg;
-  max-width: 320px;
+  max-width: 25rem;
   box-shadow: $shadow;
-  font-family: 'Baloo 2', cursive;
   text-align: center;
   position: relative;
   overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    transform: translateY(-0.3125rem);
+    box-shadow: 0 0.5rem 1.875rem rgba(0, 0, 0, 0.15);
   }
 
   img {
-    height: 220px;
+    height: 13.75rem;
     object-fit: cover;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid $clr-border;
   }
 
   mat-card-content {
     padding: $spacing;
 
     p {
-      margin: 4px 0;
-      font-size: 16px;
-      color: $text-color;
+      margin: 0.25rem 0;
+      font-size: 1.1rem;
+      color: $clr-text;
+      font-family: "Baloo 2", cursive;
     }
   }
 
@@ -69,39 +63,22 @@ $shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   }
 
   mat-card-title {
-    margin: 0.5rem 0;
-    font-size: 1.2rem;
+    margin: 0.8rem 0;
+    font-size: 1.8rem;
     color: $clr-name;
     font-weight: bold;
+    font-family: "Baloo 2", cursive;
   }
 
   .animal-card__link {
     text-decoration: none;
     color: $clr-name;
     font-weight: bold;
-
-    &:hover {
-      color: darken($clr-name, 10%);
-    }
   }
 
   mat-card-subtitle {
-    font-size: 0.9rem;
+    font-size: 1.3rem;
     color: $clr-text;
-  }
-
-  &__age,
-  &__location {
-    font-size: 0.9rem;
-    color: $clr-text;
-    margin-bottom: 0.5rem;
-  }
-
-  &__icon {
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    cursor: pointer;
-    color: $clr-text;
+    font-family: "Baloo 2", cursive;
   }
 }
