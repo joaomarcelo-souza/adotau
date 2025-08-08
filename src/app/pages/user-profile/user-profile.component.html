@@ -15,7 +15,17 @@
       </div>
 
       <div class="profile-info">
-        <h1>{{ user.name }} {{ user.last_name }}</h1>
+        <h1>{{ user.name }} {{ user.last_name }}
+          <button
+            mat-icon-button
+            [routerLink]= "['/profile/alterar-user', user.id]"
+            class="edit-button"
+            aria-label="Editar perfil"
+          >
+            <mat-icon>edit</mat-icon>
+          </button>
+        </h1>
+
         <p><mat-icon>person</mat-icon>{{ user.type_user }}</p>
         <p>
           <mat-icon>location_on</mat-icon> {{ user.neighborhood }},

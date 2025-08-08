@@ -13,7 +13,8 @@ import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { AuthService } from '../../services/auth/auth.service';
 import { AnimalUserCard } from '../../animals/animal-cards/animal-user-card/animal-user-card.component';
 import { Breadcrumb } from '../../components/breadcrumb/breadcrumb.component';
-
+import { User } from '../../users/models/user.model';
+import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-user-profile',
   standalone: true,
@@ -27,6 +28,7 @@ import { Breadcrumb } from '../../components/breadcrumb/breadcrumb.component';
     MatProgressSpinnerModule,
     AnimalUserCard,
     Breadcrumb,
+    RouterModule
   ],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.scss',
