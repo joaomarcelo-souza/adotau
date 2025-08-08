@@ -13,6 +13,7 @@ class AnimalBase(BaseModel):
     state: str
     neighborhood: str
     photourl: str
+    donor_id: int
 
 
 class AnimalCreate(AnimalBase):

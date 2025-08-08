@@ -1,7 +1,6 @@
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from adotau_api.db.database_config import Base
-from adotau_api.models.user import User
 
 
 class Animal(Base):
@@ -22,3 +21,6 @@ class Animal(Base):
     donor_id: Mapped[int] = mapped_column(ForeignKey("user.id"))
 
     user: Mapped["User"] = relationship(back_populates="animals")
+
+
+from adotau_api.models.user import User

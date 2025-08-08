@@ -42,5 +42,4 @@ class UserUpdate(BaseModel):
     isdonor: Optional[bool] = None
     photourl: Optional[str] = None
     phone: Optional[str] = None
-    password: Optional[str] = None
     isactive: Optional[bool] = None

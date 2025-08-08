@@ -1,7 +1,6 @@
 from typing import List
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from adotau_api.db.database_config import Base
-from adotau_api.models.animal import Animal
 
 
 class User(Base):
@@ -25,3 +24,6 @@ class User(Base):
     animals: Mapped[List["Animal"]] = relationship(
         back_populates="user", cascade="all, delete"
     )
+
+
+from adotau_api.models.animal import Animal
