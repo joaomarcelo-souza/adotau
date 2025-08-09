@@ -1,6 +1,7 @@
 """User routes of API"""
 
 from fastapi import APIRouter, status, Depends, HTTPException
+from fastapi.security import OAuth2PasswordBearer
 from adotau_api.schemas.user import UserCreate, UserRead, UserUpdate
 from adotau_api.services.user_service import (
     create_user,
