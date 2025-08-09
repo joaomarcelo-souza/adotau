@@ -15,7 +15,6 @@ from adotau_api.db.database_config import get_db, Session
 
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/token")
-
 router = APIRouter(prefix="/v1/animal", tags=["Animal"])
 
 
@@ -23,7 +22,10 @@ router = APIRouter(prefix="/v1/animal", tags=["Animal"])
     "/user/{donor_id}", response_model=AnimalRead, status_code=status.HTTP_200_OK
 )
 def create_new_animal(
-    animal: AnimalCreate, donor_id: int, db: Session = Depends(get_db)
+    animal: AnimalCreate,
+    donor_id: int,
+    db: Session = Depends(get_db),
+    token: str = Depends(oauth2_scheme),
 ):
     """Route that creates a new Animal"""
 
@@ -56,7 +58,10 @@ def get_animal_by_id(animal_id: int, db: Session = Depends(get_db)):
 
 @router.put("/{animal_id}", response_model=AnimalRead, status_code=status.HTTP_200_OK)
 def update_animal_by_id(
-    animal_id: int, animal: AnimalUpdate, db: Session = Depends(get_db)
+    animal_id: int,
+    animal: AnimalUpdate,
+    db: Session = Depends(get_db),
+    token: str = Depends(oauth2_scheme),
 ):
     """Route that updates an Animal by his id"""
 
@@ -76,7 +81,9 @@ def update_animal_by_id(
 
 
 @router.delete("/{animal_id}", status_code=status.HTTP_200_OK)
-def delete_animal_by_id(animal_id: int, db: Session = Depends(get_db)):
+def delete_animal_by_id(
+    animal_id: int, db: Session = Depends(get_db), token: str = Depends(oauth2_scheme)
+):
     """Route that deletes an Animal"""
 
     if not decodeing_token_user(token):
