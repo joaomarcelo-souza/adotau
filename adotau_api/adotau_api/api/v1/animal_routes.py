@@ -14,7 +14,9 @@ from adotau_api.db.database_config import get_db, Session
 router = APIRouter(prefix="/v1/animal", tags=["Animal"])
 
 
-@router.post("/", response_model=AnimalRead, status_code=status.HTTP_200_OK)
+@router.post(
+    "/user/{donor_id}", response_model=AnimalRead, status_code=status.HTTP_200_OK
+)
 def create_new_animal(
     animal: AnimalCreate, donor_id: int, db: Session = Depends(get_db)
 ):
