@@ -10,7 +10,9 @@ from adotau_api.services.animal_service import (
     delete_animal,
     update_animal,
 )
+from adotau_api.core.auth import decodeing_token_user
 from adotau_api.db.database_config import get_db, Session
+
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/token")
 
@@ -24,6 +26,11 @@ def create_new_animal(
     animal: AnimalCreate, donor_id: int, db: Session = Depends(get_db)
 ):
     """Route that creates a new Animal"""
+
+    if not decodeing_token_user(token):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED, detail="Erro ao validar token"
+        )
     return create_animal(db, animal, donor_id)
 
 
@@ -53,6 +60,11 @@ def update_animal_by_id(
 ):
     """Route that updates an Animal by his id"""
 
+    if not decodeing_token_user(token):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED, detail="Erro ao validar token"
+        )
+
     updated = update_animal(db, animal_id, animal)
 
     if not updated:
@@ -66,6 +78,11 @@ def update_animal_by_id(
 @router.delete("/{animal_id}", status_code=status.HTTP_200_OK)
 def delete_animal_by_id(animal_id: int, db: Session = Depends(get_db)):
     """Route that deletes an Animal"""
+
+    if not decodeing_token_user(token):
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED, detail="Erro ao validar token"
+        )
 
     deleted = delete_animal(db, animal_id)
 
