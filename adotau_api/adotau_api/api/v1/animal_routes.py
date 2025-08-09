@@ -1,6 +1,7 @@
 """Animal routes of API"""
 
 from fastapi import APIRouter, status, Depends, HTTPException
+from fastapi.security import OAuth2PasswordBearer
 from adotau_api.schemas.animal import AnimalCreate, AnimalRead, AnimalUpdate
 from adotau_api.services.animal_service import (
     get_animal,
@@ -10,6 +11,8 @@ from adotau_api.services.animal_service import (
     update_animal,
 )
 from adotau_api.db.database_config import get_db, Session
+
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/token")
 
 router = APIRouter(prefix="/v1/animal", tags=["Animal"])
 
