@@ -19,7 +19,6 @@ class User(Base):
     photourl: Mapped[str]
     phone: Mapped[str]
     password: Mapped[str]
-    isactive: Mapped[bool]
 
     animals: Mapped[List["Animal"]] = relationship(
         back_populates="user", cascade="all, delete"

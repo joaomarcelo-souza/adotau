@@ -15,7 +15,6 @@ class UserBase(BaseModel):
     photourl: str
     phone: str
     password: str
-    isactive: bool
 
 
 class UserCreate(UserBase):
@@ -27,7 +26,7 @@ class UserRead(UserBase):
     animals: List[AnimalRead] = []
 
     class Config:
-        orm_mode = True
+        from_attributes = True
 
 
 class UserUpdate(BaseModel):
@@ -42,4 +41,8 @@ class UserUpdate(BaseModel):
     isdonor: Optional[bool] = None
     photourl: Optional[str] = None
     phone: Optional[str] = None
-    isactive: Optional[bool] = None
+
+
+class UserLogin(BaseModel):
+    email: EmailStr
+    password: str

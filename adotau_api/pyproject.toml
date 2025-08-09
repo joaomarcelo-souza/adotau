@@ -9,6 +9,9 @@ readme = "README.md"
 python = "^3.11"
 fastapi = {extras = ["standard"], version = "^0.116.1"}
 sqlalchemy = "^2.0.42"
+python-jose = "^3.5.0"
+passlib = "^1.7.4"
+bcrypt = "^4.3.0"
 
 
 [build-system]
