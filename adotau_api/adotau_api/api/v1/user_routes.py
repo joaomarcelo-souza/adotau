@@ -12,6 +12,7 @@ from adotau_api.services.user_service import (
 )
 from adotau_api.db.database_config import get_db, Session
 
+oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/token")
 router = APIRouter(prefix="/v1/user", tags=["User"])
 
 
