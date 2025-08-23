@@ -7,12 +7,13 @@ import { Login } from '../pages/login/login.component';
 import { authGuard } from '../services/auth/auth.guard';
 import { donorGuard } from '../services/auth/donor.guard';
 import { RegisterAnimals } from '../pages/register-animals/register-animals';
+import { Home } from '../pages/home/home.component';
 
 export const routes: Routes = [
   // Home
   {
     path: '',
-    component: Animals,
+    component: Home,
     data: { breadcrumb: 'Home' },
   },
 
