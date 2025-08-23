@@ -10,18 +10,17 @@
 
   <span class="spacer"></span>
 
-  @if(router.url === "/" || router.url === "/animais/cachorros" || router.url === "/animais/gatos" ){
+  @if(router.url === "/animais" || router.url === "/animais/cachorros" ||
+  router.url === "/animais/gatos" ){
   <div class="search-bar-center">
     <app-search></app-search>
   </div>
- }
- @else{
-  
- }
-
+  } @else{ }
 
   <div class="nav-links">
     <button mat-button routerLink="/">Home</button>
+
+    <button mat-button routerLink="/animais">Animais</button>
 
     <button mat-button routerLink="/animais/cachorros">Cachorros</button>
 
