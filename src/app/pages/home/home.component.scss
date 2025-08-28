@@ -155,7 +155,7 @@
 
 /* Featured Section */
 .featured-section {
-  background: #F5F5F5;
+  background: #f5f5f5;
   padding: 3rem 0 2.5rem 0;
   display: flex;
   flex-direction: column;
@@ -185,4 +185,85 @@
   display: flex;
   justify-content: center;
   margin-top: 2rem;
+}
+
+/* Howto Section Styles */
+.howto-section {
+  background: #ffffff;
+  padding: 3rem 2rem;
+  font-family: "Baloo 2", cursive, sans-serif;
+
+  .howto-header {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    .howto-title {
+      font-size: 2.1rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+
+    .howto-description {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  .howto-steps {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+
+    .howto-step {
+      flex: 1;
+      min-width: 250px;
+      max-width: 300px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .howto-icon {
+        margin-bottom: 1rem;
+        color: #f8cd7e;
+
+        mat-icon {
+          font-size: 3rem;
+          width: 3rem;
+          height: 3rem;
+        }
+      }
+
+      .howto-step-title {
+        font-size: 1.4rem;
+        font-weight: 400;
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      .howto-step-description {
+        font-size: 1rem;
+        color: #555;
+        line-height: 1.5;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 2rem 1rem;
+
+    .howto-steps {
+      flex-direction: column;
+      align-items: center;
+
+      .howto-step {
+        margin-bottom: 2rem;
+        max-width: 100%;
+      }
+    }
+  }
 }
