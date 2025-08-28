@@ -152,3 +152,37 @@
   box-shadow: 0 4px 24px #0002;
   object-fit: cover;
 }
+
+/* Featured Section */
+.featured-section {
+  background: #F5F5F5;
+  padding: 3rem 0 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Baloo 2", cursive, sans-serif;
+}
+
+.featured-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.featured-title {
+  font-size: 2.1rem;
+  font-weight: 400;
+  margin-bottom: 0.3rem;
+  font-family: "Baloo 2", cursive, sans-serif;
+}
+
+.featured-description {
+  font-size: 1.1rem;
+  color: #555;
+  font-family: "Baloo 2", cursive, sans-serif;
+}
+
+.featured-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
