@@ -57,7 +57,7 @@
   </aside>
 </main>
 
-<section class="featured-section">
+<section class="featured-section" id="featured-section">
   <div class="featured-header">
     <h2 class="featured-title">Animais em Destaque</h2>
     <p class="featured-description">
@@ -74,7 +74,7 @@
   </div>
 </section>
 
-<section class="howto-section">
+<section class="howto-section" id="howto-section">
   <div class="howto-header">
     <h2 class="howto-title">Como Funciona a Adoção</h2>
     <p class="howto-description">
@@ -118,3 +118,32 @@
     </div>
   </div>
 </section>
+
+<section class="review-section">
+  <div class="reviews-header">
+    <h2 class="reviews-title">Histórias de Sucesso</h2>
+    <p class="reviews-description">
+      Veja o que nossas famílias têm a dizer sobre a experiência de adoção
+    </p>
+  </div>
+
+  <app-review-list></app-review-list>
+
+  <div class="reviews-cta">
+    <h3 class="cta-title">Quer fazer parte dessas histórias?</h3>
+    <p class="cta-text">Comece sua jornada de adoção hoje mesmo!</p>
+
+    <div class="rating-display">
+      <div class="stars-container">
+        <mat-icon class="star-icon">star</mat-icon>
+        <mat-icon class="star-icon">star</mat-icon>
+        <mat-icon class="star-icon">star</mat-icon>
+        <mat-icon class="star-icon">star</mat-icon>
+        <mat-icon class="star-icon">star</mat-icon>
+      </div>
+      <span class="rating-value">4.9/5 (120+ avaliações)</span>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>
