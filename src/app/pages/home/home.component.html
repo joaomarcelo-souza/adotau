@@ -1,0 +1,149 @@
+<app-navbar></app-navbar>
+
+<main class="home-container">
+  <section class="home-content">
+    <header class="home-header">
+      <h1>
+        Encontre seu<br />
+        <span class="highlight">melhor amigo</span>
+      </h1>
+      <p class="subtitle">
+        Conectamos corações e transformamos vidas. Descubra o pet perfeito para
+        sua família e ofereça um lar cheio de amor.
+      </p>
+    </header>
+
+    <div class="home-stats">
+      <div class="stat-item">
+        <mat-icon>pets</mat-icon>
+        <span class="stat-number">1.200+</span>
+        <span class="stat-label">Animais adotados</span>
+      </div>
+      <div class="stat-item">
+        <mat-icon>diversity_3</mat-icon>
+        <span class="stat-number">950+</span>
+        <span class="stat-label">Famílias Felizes</span>
+      </div>
+      <div class="stat-item">
+        <mat-icon>handshake</mat-icon>
+        <span class="stat-number">30+</span>
+        <span class="stat-label">Parceiros</span>
+      </div>
+    </div>
+
+    <div class="home-actions">
+      <button
+        class="btn btn-primary"
+        onclick="document.getElementById('featured-section')
+        .scrollIntoView({ behavior: 'smooth', block: 'center' });"
+      >
+        Adotar Agora <span class="arrow-icon">→</span>
+      </button>
+      <button
+        class="btn btn-secondary"
+        onclick="document.getElementById('howto-section')
+        .scrollIntoView({ behavior: 'smooth', block: 'center' });"
+      >
+        Como Funciona
+      </button>
+    </div>
+  </section>
+
+  <aside class="home-image">
+    <img
+      src="https://images.unsplash.com/photo-1718488978779-df2a39884775?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYXBweSUyMGRvZyUyMGNhdCUyMGZhbWlseXxlbnwxfHx8fDE3NTU5MDgwMzd8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
+      alt="Família feliz com cães e gatos"
+    />
+  </aside>
+</main>
+
+<section class="featured-section" id="featured-section">
+  <div class="featured-header">
+    <h2 class="featured-title">Animais em Destaque</h2>
+    <p class="featured-description">
+      Conheça alguns dos animais que estão esperando por uma família amorosa
+    </p>
+  </div>
+
+  <app-featured-animals></app-featured-animals>
+
+  <div class="featured-actions">
+    <button class="btn btn-secondary" routerLink="/animais">
+      Ver Todos os Animais
+    </button>
+  </div>
+</section>
+
+<section class="howto-section" id="howto-section">
+  <div class="howto-header">
+    <h2 class="howto-title">Como Funciona a Adoção</h2>
+    <p class="howto-description">
+      Um processo simples e cuidadoso para garantir que cada pet encontre o lar
+      ideal
+    </p>
+  </div>
+
+  <div class="howto-steps">
+    <div class="howto-step">
+      <div class="howto-icon">
+        <mat-icon aria-label="Encontrar pet">search</mat-icon>
+      </div>
+      <h3 class="howto-step-title">Encontre seu Pet</h3>
+      <p class="howto-step-description">
+        Explore nossa galeria e descubra animais cheios de carinho esperando por
+        um lar. Use os filtros para encontrar aquele que combina com você.
+      </p>
+    </div>
+
+    <div class="howto-step">
+      <div class="howto-icon">
+        <mat-icon aria-label="Manifestar interesse">favorite</mat-icon>
+      </div>
+      <h3 class="howto-step-title">Manifeste Interesse</h3>
+      <p class="howto-step-description">
+        Sentiu aquela conexão especial? Clique em Quero Adotar e fale com o
+        responsável pela doação.
+      </p>
+    </div>
+
+    <div class="howto-step">
+      <div class="howto-icon">
+        <mat-icon aria-label="Levar para casa">home</mat-icon>
+      </div>
+      <h3 class="howto-step-title">Leve para Casa</h3>
+      <p class="howto-step-description">
+        Depois do contato e do acordo, é hora de abrir a porta da sua casa — e
+        do seu coração — para seu novo melhor amigo.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="review-section">
+  <div class="reviews-header">
+    <h2 class="reviews-title">Histórias de Sucesso</h2>
+    <p class="reviews-description">
+      Veja o que nossas famílias têm a dizer sobre a experiência de adoção
+    </p>
+  </div>
+
+  <app-review-list></app-review-list>
+
+  <div class="reviews-cta">
+    <h3 class="cta-title">Quer fazer parte dessas histórias?</h3>
+    <p class="cta-text">Comece sua jornada de adoção hoje mesmo!</p>
+
+    <div class="rating-display">
+      <div class="stars-container">
+        <mat-icon class="star-icon">star</mat-icon>
+        <mat-icon class="star-icon">star</mat-icon>
+        <mat-icon class="star-icon">star</mat-icon>
+        <mat-icon class="star-icon">star</mat-icon>
+        <mat-icon class="star-icon">star</mat-icon>
+      </div>
+      <span class="rating-value">4.9/5 (120+ avaliações)</span>
+    </div>
+  </div>
+</section>
+
+<app-footer></app-footer>

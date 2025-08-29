@@ -1,0 +1,348 @@
+@import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&display=swap");
+
+.home-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 80vh;
+  max-width: 1400px;
+  margin: 0 auto;
+  gap: 1.5rem;
+  padding: 2rem 4vw;
+  font-family: "Baloo 2", cursive, sans-serif;
+
+  @media (max-width: 900px) {
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2rem 2vw;
+  }
+}
+
+.home-content {
+  flex: 1;
+  max-width: 520px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.home-header h1 {
+  font-size: 2.8rem;
+  font-weight: 400;
+  margin-bottom: 0.5rem;
+  line-height: 1.1;
+  font-family: "Baloo 2", cursive, sans-serif;
+}
+
+.highlight {
+  color: #f8cd7e;
+  font-weight: 400;
+  font-size: 3.1rem;
+  display: block;
+  line-height: 1.1;
+}
+
+.subtitle {
+  font-size: 1.15rem;
+  color: #555;
+  margin-bottom: 2rem;
+  font-family: "Baloo 2", cursive, sans-serif;
+}
+
+.home-stats {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: #f7f7f7;
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  min-width: 110px;
+  box-shadow: 0 2px 8px #0001;
+}
+
+.home-stats {
+  .stat-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .mat-icon {
+      font-size: 1.3rem;
+      margin-bottom: 0.3rem;
+    }
+  }
+}
+
+.stat-number {
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: #111;
+}
+
+.stat-label {
+  font-size: 0.95rem;
+  color: #444;
+  margin-top: 0.2rem;
+  text-align: center;
+}
+
+.home-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.btn {
+  padding: 0.6rem 0.9rem;
+  border: none;
+  border-radius: 0.4rem;
+  font-size: 0.92rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background: #f8cd7e;
+  color: #111;
+  box-shadow: 0 4px 16px 0 #f8cd7e55;
+
+  &:hover {
+    background: darken(#f8cd7e, 7%);
+    color: #111;
+    box-shadow: 0 6px 20px 0 #f8cd7e77;
+  }
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #111;
+  border: 1px solid #111;
+
+  &:hover {
+    background: #111;
+    color: #fff;
+  }
+}
+
+.arrow-icon {
+  font-size: 1.2em;
+  margin-left: 0.3em;
+  display: inline-block;
+}
+
+.home-image {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 260px;
+}
+
+.home-image img {
+  width: 100%;
+  max-width: 600px;
+  border-radius: 1.5rem;
+  box-shadow: 0 4px 24px #0002;
+  object-fit: cover;
+}
+
+/* Featured Section */
+.featured-section {
+  background: #f5f5f5;
+  padding: 3rem 0 2.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: "Baloo 2", cursive, sans-serif;
+}
+
+.featured-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.featured-title {
+  font-size: 2.1rem;
+  font-weight: 400;
+  margin-bottom: 0.3rem;
+  font-family: "Baloo 2", cursive, sans-serif;
+}
+
+.featured-description {
+  font-size: 1.1rem;
+  color: #555;
+  font-family: "Baloo 2", cursive, sans-serif;
+}
+
+.featured-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* Howto Section Styles */
+.howto-section {
+  background: #ffffff;
+  padding: 3rem 2rem;
+  font-family: "Baloo 2", cursive, sans-serif;
+
+  .howto-header {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    .howto-title {
+      font-size: 2.1rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      color: #333;
+    }
+
+    .howto-description {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+  }
+
+  .howto-steps {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+
+    .howto-step {
+      flex: 1;
+      min-width: 250px;
+      max-width: 300px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      .howto-icon {
+        margin-bottom: 1rem;
+        color: #f8cd7e;
+
+        mat-icon {
+          font-size: 3rem;
+          width: 3rem;
+          height: 3rem;
+        }
+      }
+
+      .howto-step-title {
+        font-size: 1.4rem;
+        font-weight: 400;
+        margin-bottom: 1rem;
+        color: #333;
+      }
+
+      .howto-step-description {
+        font-size: 1rem;
+        color: #555;
+        line-height: 1.5;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    padding: 2rem 1rem;
+
+    .howto-steps {
+      flex-direction: column;
+      align-items: center;
+
+      .howto-step {
+        margin-bottom: 2rem;
+        max-width: 100%;
+      }
+    }
+  }
+}
+.review-section {
+  background: #f5f5f5;
+  padding: 3rem 0;
+  font-family: "Baloo 2", cursive, sans-serif;
+  text-align: center;
+
+  .reviews-header {
+    margin-bottom: 2.5rem;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .reviews-title {
+      font-size: 2.8rem;
+      font-weight: 400;
+      margin-bottom: 0.5rem;
+      line-height: 1.1;
+      color: #2c3e50;
+    }
+
+    .reviews-description {
+      font-size: 1.15rem;
+      color: #555;
+    }
+  }
+
+  .reviews-cta {
+    background: white;
+    border-radius: 1rem;
+    padding: 2.5rem;
+    max-width: 800px;
+    margin: 2rem auto 0;
+    box-shadow: 0 2px 8px #0001;
+
+    .cta-title {
+      font-size: 1.8rem;
+      font-weight: 400;
+      margin-bottom: 1rem;
+      color: #2c3e50;
+    }
+
+    .cta-text {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 1.5rem;
+    }
+
+    .rating-display {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+
+      .stars-container {
+        display: flex;
+        color: #f8cd7e;
+
+        .star-icon {
+          font-size: 1.3rem;
+          margin-right: 0.2rem;
+        }
+      }
+
+      .rating-value {
+        font-weight: 500;
+        font-size: 1rem;
+        color: #555;
+      }
+    }
+  }
+}
