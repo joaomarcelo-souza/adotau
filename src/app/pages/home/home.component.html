@@ -32,10 +32,20 @@
     </div>
 
     <div class="home-actions">
-      <button class="btn btn-primary">
+      <button
+        class="btn btn-primary"
+        onclick="document.getElementById('featured-section')
+        .scrollIntoView({ behavior: 'smooth', block: 'center' });"
+      >
         Adotar Agora <span class="arrow-icon">→</span>
       </button>
-      <button class="btn btn-secondary">Como Funciona</button>
+      <button
+        class="btn btn-secondary"
+        onclick="document.getElementById('howto-section')
+        .scrollIntoView({ behavior: 'smooth', block: 'center' });"
+      >
+        Como Funciona
+      </button>
     </div>
   </section>
 
@@ -58,7 +68,9 @@
   <app-featured-animals></app-featured-animals>
 
   <div class="featured-actions">
-    <button class="btn btn-secondary">Ver Todos os Animais</button>
+    <button class="btn btn-secondary" routerLink="/animais">
+      Ver Todos os Animais
+    </button>
   </div>
 </section>
 
