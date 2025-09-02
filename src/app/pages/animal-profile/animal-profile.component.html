@@ -35,6 +35,7 @@
           color="primary"
           [routerLink]="['/animais', animal.id]"
           class="animal-profile__adopt"
+          (click)="openContactDialog()"
         >
           <mat-icon>pets</mat-icon>
           <span>Adotar</span>
