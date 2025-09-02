@@ -11,6 +11,8 @@ import { AbstractAnimalService } from '../../animals/services/abstract-animal.se
 import { Location } from '@angular/common';
 import { AbstractUserService } from '../../users/service/abstract-user.service';
 import { Breadcrumb } from '../../components/breadcrumb/breadcrumb.component';
+import { MatDialog } from '@angular/material/dialog';
+import { ContactDialog } from '../../components/contact-dialog/contact-dialog.component';
 
 @Component({
   selector: 'app-animal-profile',
@@ -32,6 +34,7 @@ export class AnimalProfile {
   private animalService = inject(AbstractAnimalService);
   private userService = inject(AbstractUserService);
   private location = inject(Location);
+  private dialog = inject(MatDialog);
 
   animalId = toSignal(
     this.route.params.pipe(map((params) => parseInt(params['id'])))
@@ -54,4 +57,11 @@ export class AnimalProfile {
     if (!donorId) return undefined;
     return this.userService.getUserById(donorId)();
   });
+
+  openContactDialog(): void {
+    this.dialog.open(ContactDialog, {
+      width: '550px',
+      data: { animalId: this.animalId() },
+    });
+  }
 }
