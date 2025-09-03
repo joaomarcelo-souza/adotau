@@ -23,6 +23,7 @@ class UserCreate(UserBase):
 
 
 class UserRead(UserBase):
+    isdonor: bool
     id: int
     animals: List[AnimalRead] = []
 

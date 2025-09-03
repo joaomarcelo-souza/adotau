@@ -8,8 +8,8 @@ export interface User {
     state: string;
     neighborhood: string;
     type_user: string;
-    isDonor: boolean;
-    photoUrl: string;
+  isdonor: boolean;
+  photourl: string;
     phone: number;
   login: string;
     password: string;

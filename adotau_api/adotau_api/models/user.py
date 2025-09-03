@@ -15,11 +15,11 @@ class User(Base):
     state: Mapped[str]
     neighborhood: Mapped[str]
     type_user: Mapped[str]
-    isdonor: Mapped[bool]
     photourl: Mapped[str]
     phone: Mapped[str]
     login: Mapped[str] = mapped_column(unique=True)
     password: Mapped[str]
+    isdonor: Mapped[bool]
 
     animals: Mapped[List["Animal"]] = relationship(
         back_populates="user", cascade="all, delete"

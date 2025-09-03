@@ -3,7 +3,7 @@ import { Injectable, PLATFORM_ID, signal, inject, computed, effect } from '@angu
 import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private currentUser = signal<User | null>(null);
@@ -13,7 +13,7 @@ export class AuthService {
 
   isDonor = computed(() => {
     const user = this.currentUser();
-    return user ? user.isDonor : false;
+    return user ? user.isdonor : false;
   });
 
   isLoggedIn = computed(() => this._isAuthenticated());

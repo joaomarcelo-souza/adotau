@@ -24,8 +24,8 @@ export class MockUserService extends AbstractUserService {
       state: 'SP',
       neighborhood: 'Moema',
       type_user: 'Doador',
-      isDonor: true,
-      photoUrl: 'avatar.avif',
+      isdonor: true,
+      photourl: 'avatar.avif',
       phone: 995313111,
       email: 'robert@gmail.com',
       login: 'robert21',
@@ -43,8 +43,8 @@ export class MockUserService extends AbstractUserService {
       state: 'RJ',
       neighborhood: 'Copacabana',
       type_user: 'Adotante',
-      isDonor: false,
-      photoUrl: 'avatar.avif',
+      isdonor: false,
+      photourl: 'avatar.avif',
       phone: 895489623,
       email: 'jose@gmail.com',
       login: 'jose22',
@@ -62,9 +62,9 @@ export class MockUserService extends AbstractUserService {
       state: 'AM',
       neighborhood: 'Compensa',
       type_user: 'Doador',
-      isDonor: true,
-      photoUrl: 'avatar.avif',
-      phone:  991145654,
+      isdonor: true,
+      photourl: 'avatar.avif',
+      phone: 991145654,
       email: 'renata@gmail.com',
       login: 'renata123',
       password: '123456',
@@ -84,9 +84,8 @@ export class MockUserService extends AbstractUserService {
   add(user: Omit<User, 'id' | 'createdDate'>): Observable<OperationResult> {
     const newUser: User = {
     ...user,
-    id: Math.max(0, ...this._users().map(u => u.id)) + 1,
-    createdDate: new Date(),
-    isDonor: user.type_user === 'Doador'
+      id: Math.max(0, ...this._users().map((u) => u.id)) + 1,
+      isdonor: user.type_user === 'Doador',
   };
   
   this._users.update(users => [...users, newUser]);

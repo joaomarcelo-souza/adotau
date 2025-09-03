@@ -94,7 +94,7 @@ export class UserForm implements OnInit {
         city: user.city,
         state: user.state,
         neighborhood: user.neighborhood,
-        photoUrl: user.photoUrl,
+        photoUrl: user.photourl,
       });
     } else {
       this.feedbackService.error('Usuário não encontrado');
