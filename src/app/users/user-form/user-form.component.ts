@@ -28,7 +28,7 @@ import { CommonModule } from '@angular/common';
     MatFormFieldModule,
     MatSelectModule,
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
   ],
   templateUrl: './user-form.component.html',
   styleUrls: ['./user-form.component.scss'],
@@ -63,14 +63,12 @@ export class UserForm implements OnInit {
   }
 
   ngOnInit(): void {
-    
     this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
+      .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe((event: NavigationEnd) => {
         this.isCadastroPage = event.url.includes('/cadastrar');
       });
 
-  
     this.isCadastroPage = this.router.url.includes('/cadastrar');
 
     const userId = this.route.snapshot.paramMap.get('id');
@@ -80,7 +78,7 @@ export class UserForm implements OnInit {
       this.loadUser(this.currentUserId);
     }
   }
-        
+
   private loadUser(id: number): void {
     const user = this.userService.getUserById(id)();
     if (user) {
