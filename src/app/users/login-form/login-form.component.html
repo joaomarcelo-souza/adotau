@@ -15,13 +15,11 @@
         floatLabel="always"
         class="full-width"
       >
-        <mat-label>Email</mat-label>
-        <input matInput formControlName="email" required type="email" />
+        <mat-label>Login</mat-label>
+        <input matInput formControlName="login" />
 
-        @if (loginForm.get('email')?.hasError('required')) {
-        <mat-error>Email é obrigatório</mat-error>
-        } @if (loginForm.get('email')?.hasError('email')) {
-        <mat-error>Por favor, insira um email válido</mat-error>
+        @if (loginForm.get('login')?.hasError('required')) {
+        <mat-error>Login é obrigatório</mat-error>
         }
       </mat-form-field>
 

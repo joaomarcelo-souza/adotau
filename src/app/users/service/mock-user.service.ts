@@ -18,56 +18,47 @@ export class MockUserService extends AbstractUserService {
       id: 101,
       name: 'Robert',
       last_name: 'Navarro',
-      age: 26,
-      sex: 'masculino',
       city: 'São Paulo',
       state: 'SP',
       neighborhood: 'Moema',
       type_user: 'Doador',
-      isDonor: true,
-      photoUrl: 'avatar.avif',
+      isdonor: true,
+      photourl: 'avatar.avif',
       phone: 995313111,
       email: 'robert@gmail.com',
+      login: 'robert21',
       password: '123456',
-      isActive: true,
-      createdDate: new Date()
     },
     {
       id: 102,
       name: 'Jose',
       last_name: 'Carlos',
-      age: 25,
-      sex: 'masculino',
       city: 'Rio de Janeiro',
       state: 'RJ',
       neighborhood: 'Copacabana',
       type_user: 'Adotante',
-      isDonor: false,
-      photoUrl: 'avatar.avif',
+      isdonor: false,
+      photourl: 'avatar.avif',
       phone: 895489623,
       email: 'jose@gmail.com',
+      login: 'jose22',
       password: '123456',
-      isActive: true,
-      createdDate: new Date()
     },
     {
       id: 103,
       name: 'Renata',
       last_name: 'Beltrão',
-      age: 22,
-      sex: 'Feminino',
       city: 'Manaus',
       state: 'AM',
       neighborhood: 'Compensa',
       type_user: 'Doador',
-      isDonor: true,
-      photoUrl: 'avatar.avif',
-      phone:  991145654,
+      isdonor: true,
+      photourl: 'avatar.avif',
+      phone: 991145654,
       email: 'renata@gmail.com',
+      login: 'renata123',
       password: '123456',
-      isActive: true,
-      createdDate: new Date()
-    }
+    },
   ]);
 
   users = computed(() => this._users());
@@ -80,99 +71,98 @@ export class MockUserService extends AbstractUserService {
 
   add(user: Omit<User, 'id' | 'createdDate'>): Observable<OperationResult> {
     const newUser: User = {
-    ...user,
-    id: Math.max(0, ...this._users().map(u => u.id)) + 1,
-    createdDate: new Date(),
-    isDonor: user.type_user === 'Doador'
-  };
-  
-  this._users.update(users => [...users, newUser]);
-  return of({ success: true, status: 200 });
-}
+      ...user,
+      id: Math.max(0, ...this._users().map((u) => u.id)) + 1,
+      isdonor: user.type_user === 'Doador',
+    };
+
+    this._users.update((users) => [...users, newUser]);
+    return of({ success: true, status: 200 });
+  }
 
   remove(id: number): Observable<OperationResult> {
-    const userExists = this._users().some(u => u.id === id);
-    
+    const userExists = this._users().some((u) => u.id === id);
+
     if (!userExists) {
-      return of({ 
-        success: false, 
+      return of({
+        success: false,
         status: 404,
-        error: `Usuário com ID ${id} não encontrado`
-      })
+        error: `Usuário com ID ${id} não encontrado`,
+      });
     }
-    
-    this._users.update(users => users.filter(u => u.id !== id));
-    
-    return of({ 
-      success: true, 
-      status: 200 
+
+    this._users.update((users) => users.filter((u) => u.id !== id));
+
+    return of({
+      success: true,
+      status: 200,
     });
   }
 
   update(user: User): Observable<OperationResult> {
-    const existingUser = this._users().find(u => u.id === user.id);
-    
+    const existingUser = this._users().find((u) => u.id === user.id);
+
     if (!existingUser) {
-      return of({ 
-        success: false, 
+      return of({
+        success: false,
         status: 404,
-        error: `Usuário com ID ${user.id} não encontrado`
+        error: `Usuário com ID ${user.id} não encontrado`,
       });
     }
-    
-    this._users.update(users => 
-      users.map(u => u.id === user.id ? user : u)
+
+    this._users.update((users) =>
+      users.map((u) => (u.id === user.id ? user : u))
     );
-    
-    return of({ 
-      success: true, 
-      status: 200 
+
+    return of({
+      success: true,
+      status: 200,
     });
   }
 
   search_by_id(id: number): Observable<OperationResult> {
-    const user = this._users().find(u => u.id === id);
-    
+    const user = this._users().find((u) => u.id === id);
+
     if (!user) {
-      return of({ 
-        success: false, 
+      return of({
+        success: false,
         status: 404,
-        error: `Usuário com ID ${id} não encontrado`
+        error: `Usuário com ID ${id} não encontrado`,
       });
     }
-    
-    return of({ 
-      success: true, 
-      status: 200 
+
+    return of({
+      success: true,
+      status: 200,
     });
   }
 
   login(query: any): Observable<OperationResult> {
-  const { email, password } = query;
-  const user = this._users().find(u => 
-    u.email === email && u.password === password
-  );
-  
-  if (!user) {
-    return of({ 
-      success: false, 
-      status: 401,
-      error: 'Credenciais inválidas'
+    const { login, password } = query;
+    const user = this._users().find(
+      (u) => u.login === login && u.password === password
+    );
+
+    if (!user) {
+      return of({
+        success: false,
+        status: 401,
+        error: 'Credenciais inválidas',
+      });
+    }
+
+    this.authService.login(user);
+
+    return of({
+      success: true,
+      status: 200,
+      data: user,
     });
   }
-  
-  this.authService.login(user);
-  
-  return of({ 
-    success: true, 
-    status: 200,
-    data: user
-  });
-}
 
   user = computed(() => this._users());
 
   getUserById(id: number): Signal<User | undefined> {
-    return computed(() => this._users().find(u => u.id === id));
+    return computed(() => this._users().find((u) => u.id === id));
   }
 }

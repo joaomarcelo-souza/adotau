@@ -9,6 +9,11 @@ def create_user(db: Session, user_data: UserCreate):
     user_dict = user_data.model_dump()
     user_dict["password"] = get_password_hash(user_dict.pop("password"))
 
+    if user_dict["type_user"] == "Doador":
+        user_dict["isdonor"] = True
+    elif user_dict["type_user"] == "Adotante":
+        user_dict["isdonor"] = False
+
     user = User(**user_dict)
     db.add(user)
     db.commit()
@@ -62,12 +67,12 @@ def delete_user(db: Session, user_id: int):
 
 
 def login_user(db: Session, credentials: UserLogin):
-    user = db.query(User).filter(User.email == credentials.email).first()
+    user = db.query(User).filter(User.login == credentials.login).first()
 
     if not user or not verify_password(credentials.password, user.password):
         return False
 
-    token = create_access_token(data={"sub": user.email})
+    token = create_access_token(data={"sub": user.login})
 
     user_data = UserRead.from_orm(user)
 

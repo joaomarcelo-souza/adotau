@@ -17,7 +17,7 @@ def secure_endpoint():
 def login_user_token(
     form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)
 ):
-    user_input = UserLogin(email=form_data.username, password=form_data.password)
+    user_input = UserLogin(login=form_data.username, password=form_data.password)
 
     user = login_user(db, user_input)
 

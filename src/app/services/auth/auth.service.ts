@@ -1,9 +1,16 @@
 import { User } from '../../users/models/user.model';
-import { Injectable, PLATFORM_ID, signal, inject, computed, effect } from '@angular/core';
+import {
+  Injectable,
+  PLATFORM_ID,
+  signal,
+  inject,
+  computed,
+  effect,
+} from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class AuthService {
   private currentUser = signal<User | null>(null);
@@ -13,7 +20,7 @@ export class AuthService {
 
   isDonor = computed(() => {
     const user = this.currentUser();
-    return user ? user.isDonor : false;
+    return user ? user.isdonor : false;
   });
 
   isLoggedIn = computed(() => this._isAuthenticated());
@@ -39,7 +46,10 @@ export class AuthService {
         console.log('autoLogin: User loaded from localStorage', user);
         this.currentUser.set(user);
       } catch (error) {
-        console.error('autoLogin error: Failed to parse user from localStorage', error);
+        console.error(
+          'autoLogin error: Failed to parse user from localStorage',
+          error
+        );
         localStorage.removeItem(this.AUTH_KEY);
       }
     } else {
@@ -55,7 +65,10 @@ export class AuthService {
         localStorage.setItem(this.AUTH_KEY, JSON.stringify(user));
         console.log('login: User saved to localStorage', user);
       } catch (error) {
-        console.error('login error: Failed to save user to localStorage', error);
+        console.error(
+          'login error: Failed to save user to localStorage',
+          error
+        );
       }
     }
   }
