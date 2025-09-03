@@ -62,12 +62,12 @@ def delete_user(db: Session, user_id: int):
 
 
 def login_user(db: Session, credentials: UserLogin):
-    user = db.query(User).filter(User.email == credentials.email).first()
+    user = db.query(User).filter(User.login == credentials.login).first()
 
     if not user or not verify_password(credentials.password, user.password):
         return False
 
-    token = create_access_token(data={"sub": user.email})
+    token = create_access_token(data={"sub": user.login})
 
     user_data = UserRead.from_orm(user)
 

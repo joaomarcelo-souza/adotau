@@ -1,9 +1,14 @@
 import { Component, inject } from '@angular/core';
-import { MatCard } from "@angular/material/card";
+import { MatCard } from '@angular/material/card';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { AbstractUserService } from '../service/abstract-user.service';
 import { Router } from '@angular/router';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -14,12 +19,19 @@ import { OperationResult } from '../../models/operation-result.model';
 @Component({
   selector: 'app-login-form',
   standalone: true,
-  imports: [MatCard, MatInputModule, MatFormFieldModule, MatIconModule, MatProgressSpinnerModule, ReactiveFormsModule, RouterModule],
+  imports: [
+    MatCard,
+    MatInputModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatProgressSpinnerModule,
+    ReactiveFormsModule,
+    RouterModule,
+  ],
   templateUrl: './login-form.component.html',
-  styleUrl: './login-form.component.scss'
+  styleUrl: './login-form.component.scss',
 })
 export class LoginForm {
-  
   private fb = inject(FormBuilder);
   private userService = inject(AbstractUserService);
   private router = inject(Router);
@@ -31,8 +43,8 @@ export class LoginForm {
 
   constructor() {
     this.loginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', Validators.required]
+      login: ['', [Validators.required]],
+      password: ['', Validators.required],
     });
   }
 
@@ -57,7 +69,7 @@ export class LoginForm {
       error: () => {
         this.isLoading = false;
         this.feedbackService.error('Erro na conexão com o servidor');
-      }
+      },
     });
   }
 

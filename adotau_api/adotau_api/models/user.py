@@ -18,6 +18,7 @@ class User(Base):
     isdonor: Mapped[bool]
     photourl: Mapped[str]
     phone: Mapped[str]
+    login: Mapped[str] = mapped_column(unique=True)
     password: Mapped[str]
 
     animals: Mapped[List["Animal"]] = relationship(

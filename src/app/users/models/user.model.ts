@@ -11,7 +11,7 @@ export interface User {
     isDonor: boolean;
     photoUrl: string;
     phone: number;
-    email: string;
+  login: string;
     password: string;
     isActive: boolean;
     createdDate: Date;

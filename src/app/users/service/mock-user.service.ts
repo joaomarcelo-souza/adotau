@@ -28,6 +28,7 @@ export class MockUserService extends AbstractUserService {
       photoUrl: 'avatar.avif',
       phone: 995313111,
       email: 'robert@gmail.com',
+      login: 'robert21',
       password: '123456',
       isActive: true,
       createdDate: new Date()
@@ -46,6 +47,7 @@ export class MockUserService extends AbstractUserService {
       photoUrl: 'avatar.avif',
       phone: 895489623,
       email: 'jose@gmail.com',
+      login: 'jose22',
       password: '123456',
       isActive: true,
       createdDate: new Date()
@@ -64,6 +66,7 @@ export class MockUserService extends AbstractUserService {
       photoUrl: 'avatar.avif',
       phone:  991145654,
       email: 'renata@gmail.com',
+      login: 'renata123',
       password: '123456',
       isActive: true,
       createdDate: new Date()
@@ -148,9 +151,9 @@ export class MockUserService extends AbstractUserService {
   }
 
   login(query: any): Observable<OperationResult> {
-  const { email, password } = query;
-  const user = this._users().find(u => 
-    u.email === email && u.password === password
+    const { login, password } = query;
+    const user = this._users().find(
+      (u) => u.login === login && u.password === password
   );
   
   if (!user) {

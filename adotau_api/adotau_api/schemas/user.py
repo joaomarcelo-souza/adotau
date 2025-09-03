@@ -14,6 +14,7 @@ class UserBase(BaseModel):
     isdonor: bool
     photourl: str
     phone: str
+    login: str
     password: str
 
 
@@ -44,5 +45,5 @@ class UserUpdate(BaseModel):
 
 
 class UserLogin(BaseModel):
-    email: EmailStr
+    login: str
     password: str
