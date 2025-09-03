@@ -1,6 +1,12 @@
+from enum import Enum
 from typing import List, Optional
 from pydantic import BaseModel, EmailStr
 from adotau_api.schemas.animal import AnimalRead
+
+
+class UserType(str, Enum):
+    DOADOR = "Doador"
+    ADOTANTE = "Adotante"
 
 
 class UserBase(BaseModel):
@@ -10,8 +16,7 @@ class UserBase(BaseModel):
     city: str
     state: str
     neighborhood: str
-    type_user: str
-    isdonor: bool
+    type_user: UserType
     photourl: str
     phone: str
     login: str
@@ -39,8 +44,7 @@ class UserUpdate(BaseModel):
     city: Optional[str] = None
     state: Optional[str] = None
     neighborhood: Optional[str] = None
-    type_user: Optional[str] = None
-    isdonor: Optional[bool] = None
+    type_user: Optional[UserType] = None
     photourl: Optional[str] = None
     phone: Optional[str] = None
 

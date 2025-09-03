@@ -9,6 +9,11 @@ def create_user(db: Session, user_data: UserCreate):
     user_dict = user_data.model_dump()
     user_dict["password"] = get_password_hash(user_dict.pop("password"))
 
+    if user_dict["type_user"] == "Doador":
+        user_dict["isdonor"] = True
+    elif user_dict["type_user"] == "Adotante":
+        user_dict["isdonor"] = False
+
     user = User(**user_dict)
     db.add(user)
     db.commit()
