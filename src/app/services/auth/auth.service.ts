@@ -1,88 +1,70 @@
-import { User } from '../../users/models/user.model';
 import {
   Injectable,
   PLATFORM_ID,
-  signal,
   inject,
+  signal,
   computed,
   effect,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { User } from '../../users/models/user.model';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable({ providedIn: 'root' })
 export class AuthService {
-  private currentUser = signal<User | null>(null);
-  private _isAuthenticated = signal(false);
-  private readonly AUTH_KEY = 'auth_data';
   private platformId = inject(PLATFORM_ID);
 
-  isDonor = computed(() => {
-    const user = this.currentUser();
-    return user ? user.isdonor : false;
-  });
+  private _currentUser = signal<User | null>(null);
+  private _isAuthenticated = signal(false);
 
   isLoggedIn = computed(() => this._isAuthenticated());
+  isDonor = computed(() => !!this._currentUser()?.isdonor);
 
   constructor() {
+    // Atualiza o estado de autenticação sempre que o usuário mudar
     effect(() => {
-      this._isAuthenticated.set(!!this.currentUser());
+      this._isAuthenticated.set(!!this._currentUser());
     });
 
+    // Auto login assim que o serviço é instanciado
     this.autoLogin();
   }
 
-  autoLogin() {
-    if (!isPlatformBrowser(this.platformId)) {
-      console.log('autoLogin skipped: not browser environment');
-      return;
-    }
+  private readonly AUTH_KEY = 'auth_data';
+
+  async autoLogin(): Promise<void> {
+    if (!isPlatformBrowser(this.platformId)) return;
 
     const savedUser = localStorage.getItem(this.AUTH_KEY);
     if (savedUser) {
       try {
         const user: User = JSON.parse(savedUser);
-        console.log('autoLogin: User loaded from localStorage', user);
-        this.currentUser.set(user);
-      } catch (error) {
-        console.error(
-          'autoLogin error: Failed to parse user from localStorage',
-          error
-        );
+        this._currentUser.set(user);
+      } catch {
         localStorage.removeItem(this.AUTH_KEY);
       }
-    } else {
-      console.log('autoLogin: No user found in localStorage');
     }
   }
 
-  login(user: User, isAutoLogin = false) {
-    this.currentUser.set(user);
-
-    if (!isAutoLogin && isPlatformBrowser(this.platformId)) {
-      try {
-        localStorage.setItem(this.AUTH_KEY, JSON.stringify(user));
-        console.log('login: User saved to localStorage', user);
-      } catch (error) {
-        console.error(
-          'login error: Failed to save user to localStorage',
-          error
-        );
-      }
+  login(user: User, save = true) {
+    this._currentUser.set(user);
+    if (save && isPlatformBrowser(this.platformId)) {
+      localStorage.setItem('auth_data', JSON.stringify(user));
     }
   }
 
   logout() {
-    this.currentUser.set(null);
-
+    this._currentUser.set(null);
     if (isPlatformBrowser(this.platformId)) {
-      localStorage.removeItem(this.AUTH_KEY);
-      console.log('logout: User removed from localStorage');
+      localStorage.removeItem('auth_data');
     }
   }
 
-  getCurrentUser() {
-    return this.currentUser();
+  getCurrentUser(): User | null {
+    return this._currentUser();
+  }
+
+  // Se precisar de um signal direto para usar no template
+  currentUserSignal() {
+    return this._currentUser;
   }
 }

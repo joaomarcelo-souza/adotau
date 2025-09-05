@@ -2,7 +2,7 @@ import { computed, inject, Injectable, Signal, signal } from '@angular/core';
 import { AbstractUserService } from './abstract-user.service';
 import { User } from '../models/user.model';
 import { OperationResult } from '../../models/operation-result.model';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Injectable()
@@ -160,7 +160,19 @@ export class MockUserService extends AbstractUserService {
     });
   }
 
-  user = computed(() => this._users());
+  fetchUserById(id: number): Observable<User> {
+    const user = this._users().find((u) => u.id === id);
+    if (!user)
+      return throwError(() => ({
+        status: 404,
+        error: `Usuário com ID ${id} não encontrado`,
+      }));
+    return of(user);
+  }
+
+  fetchAll(): void {
+    this._users.set([...this._users()]);
+  }
 
   getUserById(id: number): Signal<User | undefined> {
     return computed(() => this._users().find((u) => u.id === id));
