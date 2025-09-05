@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { Router, RouterModule } from '@angular/router';
@@ -17,15 +17,22 @@ import { Search } from '../search/search.component';
     MatMenuModule,
     MatIcon,
     RouterModule,
-    Search
+    Search,
   ],
   templateUrl: './navbar.component.html',
-  styleUrl: './navbar.component.scss'
+  styleUrl: './navbar.component.scss',
 })
 export class Navbar {
   authService = inject(AuthService);
   router = inject(Router);
   private feedbackService = inject(FeedbackService);
+
+  constructor() {
+    this.authService.autoLogin();
+  }
+
+  user = computed(() => this.authService.getCurrentUser());
+  isLoggedIn = computed(() => this.authService.isLoggedIn());
 
   logout() {
     this.authService.logout();

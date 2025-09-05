@@ -42,6 +42,11 @@ def update_user(db: Session, user_id: int, user_data: UserUpdate):
     if user:
         user_dict = user_data.model_dump(exclude_unset=True)
 
+        if user_dict["type_user"] == "Doador":
+            user_dict["isdonor"] = True
+        elif user_dict["type_user"] == "Adotante":
+            user_dict["isdonor"] = False
+
         if "password" in user_dict:
             user_dict["password"] = get_password_hash(user_dict.pop("password"))
 

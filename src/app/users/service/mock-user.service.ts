@@ -2,7 +2,7 @@ import { computed, inject, Injectable, Signal, signal } from '@angular/core';
 import { AbstractUserService } from './abstract-user.service';
 import { User } from '../models/user.model';
 import { OperationResult } from '../../models/operation-result.model';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { AuthService } from '../../services/auth/auth.service';
 
 @Injectable()
@@ -24,7 +24,7 @@ export class MockUserService extends AbstractUserService {
       type_user: 'Doador',
       isdonor: true,
       photourl: 'avatar.avif',
-      phone: 995313111,
+      phone: '99531-3111',
       email: 'robert@gmail.com',
       login: 'robert21',
       password: '123456',
@@ -39,7 +39,7 @@ export class MockUserService extends AbstractUserService {
       type_user: 'Adotante',
       isdonor: false,
       photourl: 'avatar.avif',
-      phone: 895489623,
+      phone: '89548-9623',
       email: 'jose@gmail.com',
       login: 'jose22',
       password: '123456',
@@ -54,7 +54,7 @@ export class MockUserService extends AbstractUserService {
       type_user: 'Doador',
       isdonor: true,
       photourl: 'avatar.avif',
-      phone: 991145654,
+      phone: '99114-5654',
       email: 'renata@gmail.com',
       login: 'renata123',
       password: '123456',
@@ -160,7 +160,19 @@ export class MockUserService extends AbstractUserService {
     });
   }
 
-  user = computed(() => this._users());
+  fetchUserById(id: number): Observable<User> {
+    const user = this._users().find((u) => u.id === id);
+    if (!user)
+      return throwError(() => ({
+        status: 404,
+        error: `Usuário com ID ${id} não encontrado`,
+      }));
+    return of(user);
+  }
+
+  fetchAll(): void {
+    this._users.set([...this._users()]);
+  }
 
   getUserById(id: number): Signal<User | undefined> {
     return computed(() => this._users().find((u) => u.id === id));

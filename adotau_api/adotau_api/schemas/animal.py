@@ -13,6 +13,7 @@ class AnimalBase(BaseModel):
     state: str
     neighborhood: str
     photourl: str
+    donor_id: int
 
 
 class AnimalCreate(AnimalBase):
@@ -23,7 +24,7 @@ class AnimalRead(AnimalBase):
     id: int
 
     class Config:
-        orm_mode: True
+        from_attributes = True
 
 
 class AnimalUpdate(BaseModel):

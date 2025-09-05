@@ -11,8 +11,10 @@ export const authGuard: CanActivateFn = (route, state) => {
   if (authService.isLoggedIn()) {
     return true;
   } else {
-    feedbackService.error('Você precisa ser doador para acessar esta página.');
     router.navigate(['/']);
+    feedbackService.error(
+      'Você precisa estar logado para acessar esta página.'
+    );
     return false;
   }
 };

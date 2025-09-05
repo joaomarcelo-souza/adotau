@@ -19,4 +19,8 @@ export class CatList {
   );
 
   trackById = (index: number, animal: Animal) => animal.id;
+
+  ngOnInit(): void {
+    this.animalService.fetchAll();
+  }
 }

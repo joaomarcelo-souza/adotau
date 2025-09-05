@@ -1,5 +1,4 @@
 export interface User {
-  id: number;
   name: string;
   last_name: string;
   email: string;
@@ -7,9 +6,10 @@ export interface User {
   state: string;
   neighborhood: string;
   type_user: string;
-  isdonor: boolean;
   photourl: string;
-  phone: number;
+  phone: string;
   login: string;
   password: string;
+  isdonor: boolean;
+  id: number;
 }

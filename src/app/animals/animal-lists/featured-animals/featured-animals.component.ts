@@ -19,4 +19,8 @@ export class FeaturedAnimals {
   get featuredAnimals() {
     return this.animals().slice(0, 4);
   }
+
+  ngOnInit(): void {
+    this.animalService.fetchAll();
+  }
 }

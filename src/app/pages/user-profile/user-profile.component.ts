@@ -28,7 +28,7 @@ import { RouterModule } from '@angular/router';
     MatProgressSpinnerModule,
     AnimalUserCard,
     Breadcrumb,
-    RouterModule
+    RouterModule,
   ],
   templateUrl: './user-profile.component.html',
   styleUrl: './user-profile.component.scss',
@@ -43,9 +43,7 @@ export class UserProfile {
 
   userAnimals: Signal<Animal[]> = computed(() => {
     const user = this.user();
-    if (!user) return [];
-    return this.animalService
-      .animals()
-      .filter((animal) => animal.donorId === user.id);
+    const animals: Animal[] = this.animalService.animals();
+    return user ? animals.filter((a: Animal) => a.donor_id === user.id) : [];
   });
 }

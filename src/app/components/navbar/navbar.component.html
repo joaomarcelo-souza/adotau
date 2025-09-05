@@ -1,48 +1,43 @@
 <mat-toolbar class="navbar">
-  <a routerLink="/" class="logo-link"
-    ><img
+  <a routerLink="/" class="logo-link">
+    <img
       src="logo_sem_texto_adotau-removebg-preview.png"
       alt="Adotau"
       class="logo-img"
     />
-    <span class="logo">Adotau!</span></a
-  >
+    <span class="logo">Adotau!</span>
+  </a>
 
   <span class="spacer"></span>
 
   @if(router.url === "/animais" || router.url === "/animais/cachorros" ||
-  router.url === "/animais/gatos" ){
+  router.url === "/animais/gatos") {
   <div class="search-bar-center">
     <app-search></app-search>
   </div>
-  } @else{ }
+  }
 
   <div class="nav-links">
     <button mat-button routerLink="/">Home</button>
-
     <button mat-button routerLink="/animais">Animais</button>
-
     <button mat-button routerLink="/animais/cachorros">Cachorros</button>
-
     <button mat-button routerLink="/animais/gatos">Gatos</button>
 
-    @if (!authService.isLoggedIn()) {
+    @if(!authService.isLoggedIn()) {
     <button mat-button routerLink="/login">Entrar</button>
     } @else {
-    <button mat-button [matMenuTriggerFor]="userMenu" class="user-menu-button">
+    <button mat-button [matMenuTriggerFor]="userMenu">
       <mat-icon>account_circle</mat-icon>
-      {{ authService.getCurrentUser()?.name }}
+      {{ user()?.name }}
     </button>
-
     <mat-menu #userMenu="matMenu">
       <button mat-menu-item routerLink="/profile">
         <mat-icon>person</mat-icon>
-        <span>Perfil</span>
+        Perfil
       </button>
-
       <button mat-menu-item (click)="logout()">
         <mat-icon>logout</mat-icon>
-        <span>Sair</span>
+        Sair
       </button>
     </mat-menu>
     }
