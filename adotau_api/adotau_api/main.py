@@ -4,6 +4,8 @@ from fastapi import FastAPI
 from adotau_api.api.v1.routes import router
 from adotau_api.api.v1.user_routes import router as user_router
 from adotau_api.api.v1.animal_routes import router as animal_router
+from fastapi.middleware.cors import CORSMiddleware
+from fastapi import FastAPI
 
 from adotau_api.db.database_config import Base, engine
 
