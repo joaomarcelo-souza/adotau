@@ -8,17 +8,18 @@
       <div class="profile-position">
         <div class="profile-image">
           <img
-            [src]="user.photoUrl || 'assets/default-avatar.png'"
+            [src]="user.photourl || 'assets/default-avatar.png'"
             alt="Foto do usuário"
           />
         </div>
       </div>
 
       <div class="profile-info">
-        <h1>{{ user.name }} {{ user.last_name }}
+        <h1>
+          {{ user.name }} {{ user.last_name }}
           <button
             mat-icon-button
-            [routerLink]= "['/profile/alterar-user', user.id]"
+            [routerLink]="['/profile/alterar-user', user.id]"
             class="edit-button"
             aria-label="Editar perfil"
           >

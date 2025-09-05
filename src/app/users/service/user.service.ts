@@ -16,7 +16,7 @@ export class UserService extends AbstractUserService {
 
   refresh(): void {}
 
-  add(user: Omit<User, 'id' | 'createdDate'>): Observable<OperationResult> {
+  add(user: Omit<User, 'id'>): Observable<OperationResult> {
     const newUser: User = {
       ...user,
       id: this.generateId(),
