@@ -58,7 +58,7 @@ export class UserForm implements OnInit {
       city: ['', Validators.required],
       state: ['', [Validators.required, Validators.maxLength(2)]],
       neighborhood: ['', Validators.required],
-      photoUrl: ['', Validators.required],
+      photourl: ['', Validators.required],
     });
   }
 
@@ -92,7 +92,7 @@ export class UserForm implements OnInit {
         city: user.city,
         state: user.state,
         neighborhood: user.neighborhood,
-        photoUrl: user.photourl,
+        photourl: user.photourl,
       });
     } else {
       this.feedbackService.error('Usuário não encontrado');
