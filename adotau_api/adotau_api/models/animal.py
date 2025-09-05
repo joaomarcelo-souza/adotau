@@ -17,7 +17,6 @@ class Animal(Base):
     state: Mapped[str]
     neighborhood: Mapped[str]
     photourl: Mapped[str]
-
     donor_id: Mapped[int] = mapped_column(ForeignKey("user.id"))
 
     user: Mapped["User"] = relationship(back_populates="animals")

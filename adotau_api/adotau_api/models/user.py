@@ -25,5 +25,4 @@ class User(Base):
         back_populates="user", cascade="all, delete"
     )
 
-
 from adotau_api.models.animal import Animal

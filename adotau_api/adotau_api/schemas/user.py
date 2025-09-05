@@ -1,7 +1,6 @@
 from enum import Enum
-from typing import List, Optional
+from typing import Optional
 from pydantic import BaseModel, EmailStr
-from adotau_api.schemas.animal import AnimalRead
 
 
 class UserType(str, Enum):
@@ -30,7 +29,6 @@ class UserCreate(UserBase):
 class UserRead(UserBase):
     isdonor: bool
     id: int
-    animals: List[AnimalRead] = []
 
     class Config:
         from_attributes = True
