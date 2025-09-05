@@ -13,14 +13,11 @@ import { Animal } from '../../models/animal.model';
 export class AnimalList implements OnInit {
   private animalService = inject(AbstractAnimalService);
 
-  // Signal do array de animais
   animals = this.animalService.animals;
 
-  // TrackBy para otimizar renderização do *ngFor
   trackById = (index: number, animal: Animal) => animal.id;
 
   ngOnInit(): void {
-    // Busca todos os animais do backend quando o componente inicia
     this.animalService.fetchAll();
   }
 }
