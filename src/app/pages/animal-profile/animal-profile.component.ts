@@ -53,9 +53,9 @@ export class AnimalProfile {
   }
 
   user = computed(() => {
-    const donorId = this.animal()?.donorId;
-    if (!donorId) return undefined;
-    return this.userService.getUserById(donorId)();
+    const donor_id = this.animal()?.donor_id;
+    if (!donor_id) return undefined;
+    return this.userService.getUserById(donor_id)();
   });
 
   openContactDialog(): void {

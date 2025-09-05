@@ -33,9 +33,9 @@ export class ContactDialog {
   isLoading = computed(() => !this.animal());
 
   user = computed(() => {
-    const donorId = this.animal()?.donorId;
-    if (!donorId) return undefined;
-    return this.userService.getUserById(donorId)();
+    const donor_id = this.animal()?.donor_id;
+    if (!donor_id) return undefined;
+    return this.userService.getUserById(donor_id)();
   });
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: { animalId: number }) {

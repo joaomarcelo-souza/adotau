@@ -53,7 +53,7 @@ export class AnimalForm implements OnInit {
       description: ['', Validators.required],
       city: ['', Validators.required],
       neighborhood: ['', Validators.required],
-      photoUrl: ['', Validators.required],
+      photourl: ['', Validators.required],
     });
   }
 
@@ -79,7 +79,7 @@ export class AnimalForm implements OnInit {
         description: animal.description,
         city: animal.city,
         neighborhood: animal.neighborhood,
-        photoUrl: animal.photoUrl,
+        photourl: animal.photourl,
       });
     } else {
       this.feedbackService.error('Animal não encontrado');
