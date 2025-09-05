@@ -2,7 +2,7 @@
 name = "adotau-api"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["João Souza <joaomarcelo.souza.dev@gmail.com>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
@@ -11,7 +11,7 @@ fastapi = {extras = ["standard"], version = "^0.116.1"}
 sqlalchemy = "^2.0.42"
 python-jose = "^3.5.0"
 passlib = "^1.7.4"
-bcrypt = "^4.3.0"
+bcrypt = "^4.0.1"
 
 
 [build-system]
