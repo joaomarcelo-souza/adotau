@@ -13,7 +13,7 @@ import {
 } from '@angular/platform-browser';
 import { animalServiceProvider } from '../animals/services/animal.provider.service';
 import { userServiceProvider } from '../users/service/user.provider.service';
-import { HttpClientModule } from '@angular/common/http';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -23,6 +23,6 @@ export const appConfig: ApplicationConfig = {
     provideClientHydration(withEventReplay()),
     animalServiceProvider,
     userServiceProvider,
-    importProvidersFrom(HttpClientModule),
+    provideHttpClient(withFetch()),
   ],
 };
