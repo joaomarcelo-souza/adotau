@@ -1,0 +1,81 @@
+.footer {
+  background-color: #0f1111;
+  color: white;
+  padding: 2rem 15rem;
+  font-family: "Baloo 2", cursive;
+
+  &__info {
+    display: flex;
+    padding-bottom: 2rem;
+    gap: 2rem;
+
+    > * {
+      flex: 1;
+    }
+
+    &__nav {
+      &__links {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        > a {
+          color: white;
+          text-decoration: none;
+          transition: color 0.2s ease;
+
+          &:hover {
+            color: #f8cd7e;
+          }
+        }
+      }
+    }
+
+    &__contact {
+      &__items {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        > section {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+        }
+      }
+    }
+
+    &__schedule {
+      &__items {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        > section {
+          display: flex;
+          align-items: center;
+          gap: 1rem;
+        }
+      }
+    }
+  }
+
+  &__privacy {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 2rem;
+    border-top: 1px solid #616b69;
+    &__terms {
+      display: flex;
+      gap: 1rem;
+
+      > a {
+        color: white;
+        text-decoration: none;
+        transition: color 0.2s ease;
+
+        &:hover {
+          color: #f8cd7e;
+        }
+      }
+    }
+  }
+}
