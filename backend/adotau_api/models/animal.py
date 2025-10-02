@@ -4,7 +4,7 @@ from adotau_api.db.database_config import Base
 
 
 class Animal(Base):
-    __tablename__ = "animal"
+    __tablename__ = "animals"
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
     name: Mapped[str]
@@ -17,7 +17,7 @@ class Animal(Base):
     state: Mapped[str]
     neighborhood: Mapped[str]
     photourl: Mapped[str]
-    donor_id: Mapped[int] = mapped_column(ForeignKey("user.id"))
+    donor_id: Mapped[int] = mapped_column(ForeignKey("users.id"))
 
     user: Mapped["User"] = relationship(back_populates="animals")
 
