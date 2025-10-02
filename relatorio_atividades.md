@@ -2,7 +2,7 @@
 
 **Projeto: Adotau!**  
 **Dupla: João Souza e Davi de Carvalho**  
-**Período: 02 de julho a 07 de agosto de 2025**
+**Período: 02 de julho a 02 de outubro de 2025**
 
 ---
 
@@ -131,16 +131,103 @@
   - Criação das rotas dos CRUDS de animais e de usuários da api
 - **Davi de Carvalho**
   - Ajustes de UI (cores, logo, espaçamentos)
+  - Edição de perfil de usuário
+
+### 09/08
+
+- **João Souza**
+  - Sistema de autenticação completo no backend
+  - Tokens JWT e OAuth2
+  - Rotas protegidas e middlewares
+  - Atualização de modelos User e Animal
+
+### 22/08
+
+- **João Souza**
+  - Criação do componente Home
+  - Adição da Home nas rotas e navbar
+
+### 25/08
+
+- **João Souza**
+  - Desenvolvimento do header da Home
+
+### 28/08
+
+- **João Souza**
+  - Seção de animais em destaque na Home
+  - Seção de como funciona (steps) na Home
+  - Uso de Material Icons
+
+### 29/08
+
+- **João Souza**
+  - Componente de avaliações (reviews) na Home
+  - Componente de footer
+  - Diálogo de contato no Animal Profile
+
+---
+
+## Setembro 2025
+
+### 02/09
+
+- **João Souza**
+  - Diálogo de adoção no Animal Profile
+  - Atualização de modelos (User, Animal) para incluir campo login e ajustes de nomes (isDonor, photoUrl)
+
+### 03/09
+
+- **João Souza**
+  - Atualização de modelos (User, Animal) para melhor integração
+  - Campo login adicionado para autenticação
+  - Restrição de tipo de usuário para "Doador" ou "Adotante"
+
+### 05/09
+
+- **João Souza**
+  - Integração completa do frontend com o backend
+  - Ajustes de environment e middlewares
+  - Login com backend
+
+### 10/09
+
+- **João Souza**
+  - Uso de HttpClient para comunicação com backend
+
+### 11/09
+
+- **João Souza**
+  - Criação do componente Footer (estrutura e estilos iniciais)
+
+### 16/09
+
+- **João Souza**
+  - Finalização do componente Footer
+
+---
+
+## Outubro 2025
+
+### 02/10
+
+- **João Souza**
+  - Migração para PostgreSQL
+  - Uso de dotenv e psycopg para conexão com banco
+  - Renomeação de tabelas e configurações
+  - Reestruturação de pastas e rotas no backend
 
 ---
 
 ## Resumo de Contribuições
 
-| Área              | João Souza                           | Davi de Carvalho                        |
-| ----------------- | ------------------------------------ | --------------------------------------- |
-| **Backend**       | Serviços API, Banco                  |                                         |
-| **UI Components** | Animal Card/Form, Breadcrumb         | Search Bar, User Profile, CRUD Usuários |
-| **Navegação**     | Rotas protegidas, Filtros            | Links dinâmicos                         |
-| **UX/UI**         | Layouts responsivos, Material Design | Ajustes visuais, Formulários            |
+| Área              | João Souza                                                            | Davi de Carvalho                        |
+| ----------------- | --------------------------------------------------------------------- | --------------------------------------- |
+| **Backend**       | Serviços API, Banco, Autenticação, Migração para PostgreSQL, Modelos  |                                         |
+| **Frontend**      | Componentes (Home, Footer, Reviews, Diálogos), Integração com backend | Componentes (Search Bar, User Profile)  |
+| **UI Components** | Animal Card/Form, Breadcrumb, Home, Footer, Reviews                   | Search Bar, User Profile, CRUD Usuários |
+| **Navegação**     | Rotas protegidas, Filtros, Home, Breadcrumb                           | Links dinâmicos                         |
+| **UX/UI**         | Layouts responsivos, Material Design, Home, Footer                    | Ajustes visuais, Formulários            |
+| **Autenticação**  | Sistema de autenticação no frontend e backend                         |                                         |
 
-**Atualizado em: 07/08/2025**
+**Atualizado em: 02/10/2025**
