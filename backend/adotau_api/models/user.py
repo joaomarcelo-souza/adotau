@@ -4,7 +4,7 @@ from adotau_api.db.database_config import Base
 
 
 class User(Base):
-    __tablename__ = "user"
+    __tablename__ = "users"
 
     id: Mapped[int] = mapped_column(primary_key=True, index=True)
 
@@ -24,5 +24,6 @@ class User(Base):
     animals: Mapped[List["Animal"]] = relationship(
         back_populates="user", cascade="all, delete"
     )
+
 
 from adotau_api.models.animal import Animal
