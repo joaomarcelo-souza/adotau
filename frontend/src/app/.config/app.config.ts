@@ -1,12 +1,11 @@
 import {
   ApplicationConfig,
-  importProvidersFrom,
   provideBrowserGlobalErrorListeners,
   provideZonelessChangeDetection,
 } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
-import { routes } from '../routes/app.routes';
+import { routes } from '../.routes/app.routes';
 import {
   provideClientHydration,
   withEventReplay,
