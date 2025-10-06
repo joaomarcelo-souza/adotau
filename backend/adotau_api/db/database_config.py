@@ -36,5 +36,3 @@ def get_db():
 
 class Base(DeclarativeBase):
     """Declarative Base for models"""
-
-    pass
