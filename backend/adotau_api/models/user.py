@@ -20,9 +20,13 @@ class User(Base):
     password: Mapped[str] = mapped_column(nullable=False)
     isdonor: Mapped[bool] = mapped_column(default=False)
 
-    animals: Mapped[List["Animal"]] = relationship(
+    animals: Mapped[list["Animal"]] = relationship(
+        back_populates="user", cascade="all, delete"
+    )
+    reviews: Mapped[list["Review"]] = relationship(
         back_populates="user", cascade="all, delete"
     )
 
 
 from adotau_api.models.animal import Animal
+from adotau_api.models.review import Review
