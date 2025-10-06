@@ -10,7 +10,7 @@
           <div class="photo-preview">
             <img
               [src]="
-                animalForm.get('´photourl')?.value || 'assets/default-pet.png'
+                animalForm.get('photourl')?.value || 'assets/default-pet.png'
               "
               alt="Preview da foto"
               class="photo-img"
@@ -20,7 +20,7 @@
             <mat-label>URL da Foto</mat-label>
             <input
               matInput
-              formControlName="´photourl"
+              formControlName="photourl"
               placeholder="https://..."
             />
           </mat-form-field>
