@@ -104,7 +104,20 @@
             </mat-form-field>
           </div>
 
-          <div *ngIf="isCadastroPage" class="form-row">
+          <div class="form-row">
+            <mat-icon class="form-icon">person</mat-icon>
+            <mat-form-field
+              appearance="outline"
+              floatLabel="always"
+              class="email-field"
+            >
+              <mat-label>Username</mat-label>
+              <input matInput formControlName="login" required />
+            </mat-form-field>
+          </div>
+
+          @if(isCadastroPage){
+          <div class="form-row">
             <mat-icon class="form-icon">lock</mat-icon>
             <mat-form-field
               appearance="outline"
