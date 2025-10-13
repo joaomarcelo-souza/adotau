@@ -21,6 +21,7 @@ export class MockAnimalService extends AbstractAnimalService {
       city: 'Manaus',
       neighborhood: 'Centro',
       photourl: 'assets/dog-1.jpg',
+      state: 'AM',
       donor_id: 101,
     },
     {
@@ -34,6 +35,7 @@ export class MockAnimalService extends AbstractAnimalService {
       city: 'Manaus',
       neighborhood: 'Flores',
       photourl: 'assets/cat-1.jpg',
+      state: 'AM',
       donor_id: 101,
     },
     {
@@ -47,6 +49,7 @@ export class MockAnimalService extends AbstractAnimalService {
       city: 'Manaus',
       neighborhood: 'Aleixo',
       photourl: 'assets/dog-1.jpg',
+      state: 'AM',
       donor_id: 101,
     },
     {
@@ -60,6 +63,7 @@ export class MockAnimalService extends AbstractAnimalService {
       city: 'Manaus',
       neighborhood: 'Adrianópolis',
       photourl: 'assets/cat-1.jpg',
+      state: 'AM',
       donor_id: 101,
     },
     {
@@ -73,6 +77,7 @@ export class MockAnimalService extends AbstractAnimalService {
       city: 'Manaus',
       neighborhood: 'Cidade Nova',
       photourl: 'assets/dog-1.jpg',
+      state: 'AM',
       donor_id: 101,
     },
     {
@@ -86,6 +91,7 @@ export class MockAnimalService extends AbstractAnimalService {
       city: 'Manaus',
       neighborhood: 'São Jorge',
       photourl: 'assets/cat-1.jpg',
+      state: 'AM',
       donor_id: 103,
     },
     {
@@ -99,6 +105,7 @@ export class MockAnimalService extends AbstractAnimalService {
       city: 'Manaus',
       neighborhood: 'Japiim',
       photourl: 'assets/dog-1.jpg',
+      state: 'AM',
       donor_id: 103,
     },
     {
@@ -112,6 +119,7 @@ export class MockAnimalService extends AbstractAnimalService {
       city: 'Manaus',
       neighborhood: 'Ponta Negra',
       photourl: 'assets/cat-1.jpg',
+      state: 'AM',
       donor_id: 103,
     },
     {
@@ -125,6 +133,7 @@ export class MockAnimalService extends AbstractAnimalService {
       city: 'Manaus',
       neighborhood: 'Coroado',
       photourl: 'assets/dog-1.jpg',
+      state: 'AM',
       donor_id: 103,
     },
     {
@@ -138,6 +147,7 @@ export class MockAnimalService extends AbstractAnimalService {
       city: 'Manaus',
       neighborhood: 'Compensa',
       photourl: 'assets/cat-1.jpg',
+      state: 'AM',
       donor_id: 103,
     },
   ]);

@@ -53,7 +53,8 @@ export class AnimalForm implements OnInit {
       description: ['', Validators.required],
       city: ['', Validators.required],
       neighborhood: ['', Validators.required],
-      photourl: ['', Validators.required],
+      state: ['', Validators.required],
+      photourl: [''],
     });
   }
 
@@ -79,6 +80,7 @@ export class AnimalForm implements OnInit {
         description: animal.description,
         city: animal.city,
         neighborhood: animal.neighborhood,
+        state: animal.state,
         photourl: animal.photourl,
       });
     } else {

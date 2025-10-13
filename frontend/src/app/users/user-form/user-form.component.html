@@ -104,7 +104,20 @@
             </mat-form-field>
           </div>
 
-          <div *ngIf="isCadastroPage" class="form-row">
+          <div class="form-row">
+            <mat-icon class="form-icon">person</mat-icon>
+            <mat-form-field
+              appearance="outline"
+              floatLabel="always"
+              class="email-field"
+            >
+              <mat-label>Username</mat-label>
+              <input matInput formControlName="login" required />
+            </mat-form-field>
+          </div>
+
+          @if(isCadastroPage){
+          <div class="form-row">
             <mat-icon class="form-icon">lock</mat-icon>
             <mat-form-field
               appearance="outline"
@@ -120,6 +133,7 @@
               />
             </mat-form-field>
           </div>
+          }
 
           <div class="form-row">
             <mat-icon class="form-icon">phone</mat-icon>
@@ -134,8 +148,8 @@
           </div>
 
           <div class="form-actions">
+            @if(!isEditMode){
             <button
-              *ngIf="!isEditMode"
               mat-raised-button
               color="primary"
               type="submit"
@@ -143,9 +157,8 @@
             >
               <mat-icon>save</mat-icon> Cadastrar Usuário
             </button>
-
+            } @if(isEditMode){
             <button
-              *ngIf="isEditMode"
               mat-raised-button
               color="accent"
               type="submit"
@@ -154,6 +167,7 @@
             >
               <mat-icon>update</mat-icon> Atualizar Perfil
             </button>
+            }
           </div>
         </div>
       </div>
