@@ -7,6 +7,7 @@ export interface Animal {
   description: string;
   city: string;
   neighborhood: string;
+  state: string;
   photourl: string;
   donor_id: number;
   id: number;
