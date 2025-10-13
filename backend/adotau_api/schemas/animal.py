@@ -13,7 +13,6 @@ class AnimalBase(BaseModel):
     state: str
     neighborhood: str
     photourl: str
-    donor_id: int
 
 
 class AnimalCreate(AnimalBase):
@@ -22,6 +21,7 @@ class AnimalCreate(AnimalBase):
 
 class AnimalRead(AnimalBase):
     id: int
+    donor_id: int
 
     class Config:
         from_attributes = True

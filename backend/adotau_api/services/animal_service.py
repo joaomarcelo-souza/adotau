@@ -7,6 +7,7 @@ def create_animal(db: Session, animal_data: AnimalCreate, donor_id: int):
     """Creates an animal on database"""
 
     animal = Animal(**animal_data.model_dump(), donor_id=donor_id)
+
     db.add(animal)
     db.commit()
     db.refresh(animal)
