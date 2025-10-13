@@ -52,13 +52,14 @@ export class UserForm implements OnInit {
       name: ['', Validators.required],
       last_name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      login: ['', [Validators.required]],
       password: ['', [Validators.required, Validators.minLength(8)]],
       phone: ['', Validators.required],
       type_user: ['', Validators.required],
       city: ['', Validators.required],
       state: ['', [Validators.required, Validators.maxLength(2)]],
       neighborhood: ['', Validators.required],
-      photourl: ['', Validators.required],
+      photourl: [''],
     });
   }
 
@@ -92,6 +93,7 @@ export class UserForm implements OnInit {
         city: user.city,
         state: user.state,
         neighborhood: user.neighborhood,
+        login: user.login,
         photourl: user.photourl,
       });
     } else {
@@ -143,7 +145,7 @@ export class UserForm implements OnInit {
         this.isLoading = false;
         if (result.success) {
           this.feedbackService.success('Usuário cadastrado com sucesso!');
-          this.router.navigate(['/profile']);
+          this.router.navigate(['/login']);
         } else {
           this.handleError(result);
         }
