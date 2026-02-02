@@ -1,3 +1,4 @@
+@use "sass:color";
 @import url("https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700;800&display=swap");
 
 .home-container {
@@ -122,7 +123,7 @@
   box-shadow: 0 4px 16px 0 #f8cd7e55;
 
   &:hover {
-    background: darken(#f8cd7e, 7%);
+    background: color.adjust(#f8cd7e, $lightness: -7%);
     color: #111;
     box-shadow: 0 6px 20px 0 #f8cd7e77;
   }
