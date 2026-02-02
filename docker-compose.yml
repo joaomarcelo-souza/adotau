@@ -1,4 +1,3 @@
-version: "3.9"
 
 services:
   api:
@@ -14,14 +13,6 @@ services:
     volumes:
       - ./backend:/adotau_api
     command: uvicorn adotau_api.main:app --host 0.0.0.0 --port 8000 --reload
-
-  frontend:
-    build: ./frontend
-    container_name: adotau_frontend
-    ports:
-      - "4200:80"
-    depends_on:
-      - api
 
   db:
     image: postgres:16
