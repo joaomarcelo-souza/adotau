@@ -33,7 +33,7 @@ export class AnimalService extends AbstractAnimalService {
       `${environment.apiUrl}/v1/animal/${animalId}`,
       {
         headers: this.authHeaders(),
-      }
+      },
     );
   }
 
@@ -55,8 +55,8 @@ export class AnimalService extends AbstractAnimalService {
           success: false,
           status: 404,
           error: `Animal com ID ${animalId} não encontrado`,
-        })
-      )
+        }),
+      ),
     );
   }
 
@@ -89,8 +89,8 @@ export class AnimalService extends AbstractAnimalService {
             success: false,
             status: error.status,
             error: error.error?.detail || 'Erro ao criar animal',
-          }))
-        )
+          })),
+        ),
       );
   }
 
@@ -103,7 +103,7 @@ export class AnimalService extends AbstractAnimalService {
       .pipe(
         map((updatedAnimal) => {
           this._animals.update((animals) =>
-            animals.map((a) => (a.id === updatedAnimal.id ? updatedAnimal : a))
+            animals.map((a) => (a.id === updatedAnimal.id ? updatedAnimal : a)),
           );
           return { success: true, status: 200, data: updatedAnimal };
         }),
@@ -112,21 +112,21 @@ export class AnimalService extends AbstractAnimalService {
             success: false,
             status: error.status,
             error: error.error?.detail || 'Erro ao atualizar animal',
-          }))
-        )
+          })),
+        ),
       );
   }
 
   // --- DELETE ---
   remove(animalId: number): Observable<OperationResult> {
     return this.http
-      .delete<any>(`${environment.apiUrl}/v1/animal/${animalId}`, {
+      .delete<void>(`${environment.apiUrl}/v1/animal/${animalId}`, {
         headers: this.authHeaders(),
       })
       .pipe(
         map(() => {
           this._animals.update((animals) =>
-            animals.filter((a) => a.id !== animalId)
+            animals.filter((a) => a.id !== animalId),
           );
           return { success: true, status: 200 };
         }),
@@ -135,12 +135,12 @@ export class AnimalService extends AbstractAnimalService {
             success: false,
             status: error.status,
             error: error.error?.detail || 'Erro ao remover animal',
-          }))
-        )
+          })),
+        ),
       );
   }
 
-  override search(query: string): Observable<OperationResult> {
+  override search(): Observable<OperationResult> {
     return of();
   }
 }

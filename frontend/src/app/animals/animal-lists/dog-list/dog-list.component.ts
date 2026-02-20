@@ -1,4 +1,4 @@
-import { Component, computed, inject } from '@angular/core';
+import { Component, computed, inject, OnInit } from '@angular/core';
 import { AbstractAnimalService } from '../../services/abstract-animal.service';
 import { Animal } from '../../models/animal.model';
 import { AnimalCard } from '../../animal-cards/animal-card/animal-card.component';
@@ -9,7 +9,7 @@ import { AnimalCard } from '../../animal-cards/animal-card/animal-card.component
   templateUrl: './dog-list.component.html',
   styleUrl: './dog-list.component.scss',
 })
-export class DogList {
+export class DogList implements OnInit {
   private animalService = inject(AbstractAnimalService);
 
   animals = computed(() =>

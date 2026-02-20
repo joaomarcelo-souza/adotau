@@ -58,8 +58,8 @@ export class UserService extends AbstractUserService {
             success: false,
             status: error.status,
             error: error.error?.detail || 'Falha no login',
-          })
-        )
+          }),
+        ),
       );
   }
 
@@ -79,8 +79,8 @@ export class UserService extends AbstractUserService {
             success: false,
             status: error.status,
             error: error.error?.detail || 'Erro ao criar usuário',
-          }))
-        )
+          })),
+        ),
       );
   }
 
@@ -112,8 +112,8 @@ export class UserService extends AbstractUserService {
           success: false,
           status: 404,
           error: `Usuário com ID ${id} não encontrado`,
-        })
-      )
+        }),
+      ),
     );
   }
 
@@ -130,7 +130,7 @@ export class UserService extends AbstractUserService {
       .pipe(
         map((updatedUser) => {
           this._users.update((users) =>
-            users.map((u) => (u.id === updatedUser.id ? updatedUser : u))
+            users.map((u) => (u.id === updatedUser.id ? updatedUser : u)),
           );
           return { success: true, status: 200, data: updatedUser };
         }),
@@ -139,8 +139,8 @@ export class UserService extends AbstractUserService {
             success: false,
             status: error.status,
             error: error.error?.detail || 'Erro ao atualizar usuário',
-          }))
-        )
+          })),
+        ),
       );
   }
 
@@ -160,8 +160,8 @@ export class UserService extends AbstractUserService {
             success: false,
             status: error.status,
             error: error.error?.detail || 'Erro ao remover usuário',
-          }))
-        )
+          })),
+        ),
       );
   }
 }

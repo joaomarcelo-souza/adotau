@@ -40,7 +40,7 @@ export class UserForm implements OnInit {
   private feedbackService = inject(FeedbackService);
   private route = inject(ActivatedRoute);
 
-  public isCadastroPage: boolean = false;
+  public isCadastroPage = false;
   userForm: FormGroup;
   isEditMode = false;
   isLoading = false;

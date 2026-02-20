@@ -1,4 +1,4 @@
-import { Component, computed, inject, Signal } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { Navbar } from '../../components/navbar/navbar.component';
 import { MatIconModule } from '@angular/material/icon';
 import { MatCardModule } from '@angular/material/card';
@@ -37,7 +37,7 @@ export class AnimalProfile {
   private dialog = inject(MatDialog);
 
   animalId = toSignal(
-    this.route.params.pipe(map((params) => parseInt(params['id'])))
+    this.route.params.pipe(map((params) => parseInt(params['id']))),
   );
 
   animal = computed(() => {

@@ -3,7 +3,7 @@ import { CanActivateFn, Router } from '@angular/router';
 import { AuthService } from './auth.service';
 import { FeedbackService } from '../feedback/feedback.service';
 
-export const authGuard: CanActivateFn = (route, state) => {
+export const authGuard: CanActivateFn = () => {
   const authService = inject(AuthService);
   const router = inject(Router);
   const feedbackService = inject(FeedbackService);
@@ -13,7 +13,7 @@ export const authGuard: CanActivateFn = (route, state) => {
   } else {
     router.navigate(['/']);
     feedbackService.error(
-      'Você precisa estar logado para acessar esta página.'
+      'Você precisa estar logado para acessar esta página.',
     );
     return false;
   }
