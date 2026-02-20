@@ -1,0 +1,45 @@
+<mat-toolbar class="navbar">
+  <a routerLink="/" class="logo-link">
+    <img
+      src="logo_sem_texto_adotau-removebg-preview.png"
+      alt="Adotau"
+      class="logo-img"
+    />
+    <span class="logo">Adotau!</span>
+  </a>
+
+  <span class="spacer"></span>
+
+  @if(router.url === "/animais" || router.url === "/animais/cachorros" ||
+  router.url === "/animais/gatos") {
+  <div class="search-bar-center">
+    <app-search></app-search>
+  </div>
+  }
+
+  <div class="nav-links">
+    <button mat-button routerLink="/">Home</button>
+    <button mat-button routerLink="/animais">Animais</button>
+    <button mat-button routerLink="/animais/cachorros">Cachorros</button>
+    <button mat-button routerLink="/animais/gatos">Gatos</button>
+
+    @if(!authService.isLoggedIn()) {
+    <button mat-button routerLink="/login">Entrar</button>
+    } @else {
+    <button mat-button [matMenuTriggerFor]="userMenu">
+      <mat-icon>account_circle</mat-icon>
+      {{ user()?.name }}
+    </button>
+    <mat-menu #userMenu="matMenu">
+      <button mat-menu-item routerLink="/profile">
+        <mat-icon>person</mat-icon>
+        Perfil
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>logout</mat-icon>
+        Sair
+      </button>
+    </mat-menu>
+    }
+  </div>
+</mat-toolbar>

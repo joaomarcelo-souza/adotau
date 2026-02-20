@@ -1,0 +1,23 @@
+import { Component, inject, OnInit } from '@angular/core';
+import { AbstractAnimalService } from '../../services/abstract-animal.service';
+import { AnimalCard } from '../../animal-cards/animal-card/animal-card.component';
+import { Animal } from '../../models/animal.model';
+
+@Component({
+  selector: 'app-animal-list',
+  standalone: true,
+  imports: [AnimalCard],
+  templateUrl: './animal-list.component.html',
+  styleUrls: ['./animal-list.component.scss'],
+})
+export class AnimalList implements OnInit {
+  private animalService = inject(AbstractAnimalService);
+
+  animals = this.animalService.animals;
+
+  trackById = (index: number, animal: Animal) => animal.id;
+
+  ngOnInit(): void {
+    this.animalService.fetchAll();
+  }
+}

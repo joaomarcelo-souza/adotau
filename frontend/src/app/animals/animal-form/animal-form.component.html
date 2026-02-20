@@ -1,0 +1,126 @@
+<section class="form-container">
+  <mat-card class="form-card">
+    <h2 class="form-title">
+      {{ isEditMode ? "Editar Animal" : "Cadastrar Novo Animal" }}
+    </h2>
+
+    <form [formGroup]="animalForm" (ngSubmit)="onSubmit()" class="animal-form">
+      <div class="form-header">
+        <div class="photo-section">
+          <div class="photo-preview">
+            <img
+              [src]="
+                animalForm.get('photourl')?.value || 'assets/default-pet.png'
+              "
+              alt="Preview da foto"
+              class="photo-img"
+            />
+          </div>
+          <mat-form-field appearance="outline" floatLabel="always">
+            <mat-label>URL da Foto</mat-label>
+            <input
+              matInput
+              formControlName="photourl"
+              placeholder="Cole o link da foto"
+            />
+          </mat-form-field>
+        </div>
+
+        <div class="info-section">
+          <mat-form-field appearance="outline" floatLabel="always">
+            <mat-label>Nome</mat-label>
+            <input matInput formControlName="name" required />
+            @if (animalForm.get('name')?.hasError('required')) {
+            <mat-error>Nome obrigatório</mat-error>
+            }
+          </mat-form-field>
+
+          <div class="form-row">
+            <mat-form-field appearance="outline" floatLabel="always">
+              <mat-label>Espécie</mat-label>
+              <mat-select formControlName="species" required>
+                <mat-option value="Cachorro">Cachorro</mat-option>
+                <mat-option value="Gato">Gato</mat-option>
+              </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" floatLabel="always">
+              <mat-label>Sexo</mat-label>
+              <mat-select formControlName="sex" required>
+                <mat-option value="Macho">Macho</mat-option>
+                <mat-option value="Fêmea">Fêmea</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="form-row">
+            <mat-form-field appearance="outline" floatLabel="always">
+              <mat-label>Idade (anos)</mat-label>
+              <input
+                matInput
+                formControlName="age"
+                type="number"
+                min="0"
+                required
+              />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" floatLabel="always">
+              <mat-label>Porte</mat-label>
+              <mat-select formControlName="size" required>
+                <mat-option value="Pequeno">Pequeno</mat-option>
+                <mat-option value="Médio">Médio</mat-option>
+                <mat-option value="Grande">Grande</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <div class="form-row">
+            <mat-form-field appearance="outline" floatLabel="always">
+              <mat-label>Cidade</mat-label>
+              <input matInput formControlName="city" required />
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" floatLabel="always">
+              <mat-label>Bairro</mat-label>
+              <input matInput formControlName="neighborhood" required />
+            </mat-form-field>
+          </div>
+
+          <mat-form-field appearance="outline" floatLabel="always">
+            <mat-label>Estado</mat-label>
+            <input matInput formControlName="state" required />
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="description-section">
+        <h3 class="section-title">Sobre</h3>
+        <mat-form-field
+          appearance="outline"
+          floatLabel="always"
+          class="full-width"
+        >
+          <mat-label>Descrição</mat-label>
+          <textarea
+            matInput
+            formControlName="description"
+            required
+            rows="4"
+          ></textarea>
+        </mat-form-field>
+      </div>
+
+      <div class="form-actions">
+        <button
+          mat-button
+          type="submit"
+          class="submit-button"
+          [disabled]="isLoading || animalForm.invalid"
+        >
+          {{ isEditMode ? "Atualizar" : "Cadastrar" }}
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</section>

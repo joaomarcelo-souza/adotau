@@ -1,0 +1,26 @@
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  border-radius: 0.25rem;
+}
+
+.breadcrumb-item {
+  display: flex;
+  align-items: center;
+
+  & + &::before {
+    content: ">";
+    padding: 0 0.5rem;
+    color: #6c757d;
+  }
+
+  &.active {
+    color: #000;
+  }
+
+  a {
+    color: #6c757d;
+    text-decoration: none;
+  }
+}

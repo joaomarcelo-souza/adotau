@@ -1,0 +1,202 @@
+@use "sass:color";
+
+// Variables
+$primary-color: #0f1111;
+$secondary-color: #ffffff;
+$text-color: #565959;
+$border-color: #d5d9d9;
+$border-radius: 8px;
+$spacing: 16px;
+$shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+// Main container
+.profile-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: $spacing * 2;
+  font-family: "Roboto", Arial, sans-serif;
+  color: $text-color;
+  background-color: $secondary-color;
+}
+
+// Profile section
+.profile-section {
+  background: $secondary-color;
+  border-radius: $border-radius;
+  box-shadow: $shadow;
+  padding: $spacing * 2;
+  margin-bottom: $spacing * 2;
+  border: 1px solid $border-color;
+}
+
+// Profile header - horizontal layout
+.profile-header {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: $spacing * 3;
+  padding-bottom: $spacing * 2;
+  border-bottom: 1px solid $border-color;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    gap: $spacing;
+  }
+}
+
+.profile-position {
+  margin-top: 15px;
+  margin-left: 30px;
+
+  .profile-image {
+    width: 270px;
+    height: 270px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid $border-color;
+    flex-shrink: 0;
+    position: relative;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+}
+
+
+.profile-info {
+  flex: 1;
+  text-align: left;
+  margin-left: 0px;
+  margin-top: 19px;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
+
+  .profile-title {
+    display: flex;
+    align-items: center;
+    gap: calc($spacing / 2);
+
+    @media (max-width: 768px) {
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: 40px;
+      color: $primary-color;
+    }
+
+    .edit-button {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: $primary-color;
+      color: $secondary-color;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0;
+      box-shadow: $shadow;
+      transition: background-color 0.3s ease;
+
+      mat-icon {
+        font-size: 30px;
+        color: $secondary-color;
+      }
+
+      &:hover {
+        background-color: color.adjust($primary-color, $lightness: 10%);
+      }
+    }
+  }
+
+  p {
+    margin: 8px 0;
+    color: $text-color;
+    font-size: 25px;
+    display: flex;
+    align-items: center;
+
+    @media (max-width: 768px) {
+      justify-content: center;
+    }
+
+    mat-icon {
+      margin-right: calc($spacing / 2);
+      color: $primary-color;
+    }
+  }
+
+  button {
+    margin-top: $spacing;
+    display: inline-flex;
+    align-items: center;
+    background-color: $primary-color;
+    color: $secondary-color;
+
+    mat-icon {
+      color: $secondary-color;
+      margin-right: calc($spacing / 2);
+    }
+  }
+}
+
+// Animals section
+.animals-section {
+  margin-top: $spacing * 3;
+  text-align: left;
+  background-color: $secondary-color;
+  border: 1px solid $border-color;
+  border-radius: $border-radius;
+  padding: $spacing * 2;
+
+  h2 {
+    font-size: 2rem;
+    margin-bottom: $spacing * 1.5;
+    color: $primary-color;
+    text-align: center;
+    position: relative;
+    font-family: "Baloo 2", cursive;
+
+    &::after {
+      content: "";
+      display: block;
+      width: 80px;
+      height: 3px;
+      background: $primary-color;
+      margin: $spacing auto 0;
+    }
+  }
+}
+
+.animals-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: $spacing * 1.5;
+  margin-top: $spacing;
+}
+
+.no-animals {
+  text-align: center;
+  padding: $spacing * 2;
+  color: $text-color;
+  font-style: italic;
+  background-color: color.adjust($border-color, $lightness: 10%);
+  border-radius: $border-radius;
+}
+
+// Spinner
+mat-spinner {
+  margin: $spacing * 4 auto;
+
+  circle {
+    stroke: $primary-color;
+  }
+}

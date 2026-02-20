@@ -1,0 +1,60 @@
+<h2 mat-dialog-title>Contato para Adoção</h2>
+
+<mat-dialog-content>
+  @if (!isLoading()) {
+  <div class="contact-container">
+    <div class="donor-info">
+      <h3>Informações do Doador</h3>
+
+      <div class="contact-item">
+        <mat-icon>person</mat-icon>
+        <span>{{ user()?.name || "Nome não disponível" }}</span>
+      </div>
+
+      @if (user()?.phone) {
+      <div class="contact-item">
+        <mat-icon>phone</mat-icon>
+        <span>{{ user()?.phone }}</span>
+      </div>
+      } @if (user()?.email) {
+      <div class="contact-item">
+        <mat-icon>email</mat-icon>
+        <span>{{ user()?.email }}</span>
+      </div>
+      } @if (user()?.state && user()?.city && user()?.neighborhood) {
+      <div class="contact-item">
+        <mat-icon>location_on</mat-icon>
+        <span>{{ user()?.city }}</span
+        >-<span>{{ user()?.state }}</span
+        >,
+        <span>{{ user()?.neighborhood }}</span>
+      </div>
+      }
+    </div>
+
+    <div class="instructions">
+      <p>Entre em contato com o doador para combinar os detalhes da adoção.</p>
+    </div>
+  </div>
+  } @else {
+  <div class="loading-message">
+    <p>Carregando informações...</p>
+  </div>
+  }
+</mat-dialog-content>
+
+<mat-dialog-actions align="end">
+  <button mat-button (click)="closeDialog()">Fechar</button>
+
+  @if (user()?.phone) {
+  <button mat-raised-button color="primary" (click)="contactViaWhatsApp()">
+    <mat-icon>chat</mat-icon>
+    WhatsApp
+  </button>
+  } @if (user()?.email) {
+  <button mat-raised-button color="primary" (click)="contactViaEmail()">
+    <mat-icon>email</mat-icon>
+    Email
+  </button>
+  }
+</mat-dialog-actions>

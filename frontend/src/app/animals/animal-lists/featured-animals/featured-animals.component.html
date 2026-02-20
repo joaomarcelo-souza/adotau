@@ -1,0 +1,9 @@
+<ul class="list__grid">
+  @for (animal of featuredAnimals; track trackById($index, animal)) {
+  <li>
+    <app-animal-card [animal]="animal" />
+  </li>
+  } @empty {
+  <p class="list__empty">Nenhum animal encontrado</p>
+  }
+</ul>

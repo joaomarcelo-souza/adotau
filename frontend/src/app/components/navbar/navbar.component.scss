@@ -1,0 +1,50 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 24px;
+  height: 80px;
+  background-color: #f8cd7e;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: "Baloo 2", cursive;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  height: 100%;
+}
+
+.logo-img {
+  height: 100%;
+  object-fit: contain;
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 600;
+  color: #150f03;
+  margin-left: 8px;
+}
+
+.search-bar-center {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 16px;
+}
+
+.nav-links button {
+  background: none;
+  border: none;
+  color: #150f03;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.3s;
+  font-family: "Baloo 2", cursive;
+}
