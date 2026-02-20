@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, OnInit } from '@angular/core';
 import { Navbar } from '../../components/navbar/navbar.component';
 import { AnimalList } from '../../animals/animal-lists/animal-list/animal-list.component';
 import { CatList } from '../../animals/animal-lists/cat-list/cat-list.component';
@@ -13,7 +13,7 @@ import { Breadcrumb } from '../../components/breadcrumb/breadcrumb.component';
   templateUrl: './animals.component.html',
   styleUrl: './animals.component.scss',
 })
-export class Animals {
+export class Animals implements OnInit {
   private router = inject(Router);
   currentRoute = signal('');
 

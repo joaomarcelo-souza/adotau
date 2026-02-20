@@ -1,5 +1,5 @@
 // src/app/services/breadcrumb.service.ts
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { Breadcrumb } from '../models/breadcrumb.model';
@@ -8,7 +8,10 @@ import { Breadcrumb } from '../models/breadcrumb.model';
 export class BreadcrumbService {
   breadcrumbs: Breadcrumb[] = [];
 
-  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+  private router = inject(Router);
+  private activatedRoute = inject(ActivatedRoute);
+
+  constructor() {
     this.router.events
       .pipe(filter((event) => event instanceof NavigationEnd))
       .subscribe(() => {

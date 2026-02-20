@@ -111,7 +111,7 @@ export class MockUserService extends AbstractUserService {
     }
 
     this._users.update((users) =>
-      users.map((u) => (u.id === user.id ? user : u))
+      users.map((u) => (u.id === user.id ? user : u)),
     );
 
     return of({
@@ -137,10 +137,10 @@ export class MockUserService extends AbstractUserService {
     });
   }
 
-  login(query: any): Observable<OperationResult> {
+  login(query: { login: string; password: string }): Observable<OperationResult> {
     const { login, password } = query;
     const user = this._users().find(
-      (u) => u.login === login && u.password === password
+      (u) => u.login === login && u.password === password,
     );
 
     if (!user) {

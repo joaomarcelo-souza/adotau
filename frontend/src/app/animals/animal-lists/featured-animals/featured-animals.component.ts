@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { AbstractAnimalService } from '../../services/abstract-animal.service';
 import { Animal } from '../../models/animal.model';
 import { AnimalCard } from '../../animal-cards/animal-card/animal-card.component';
@@ -9,7 +9,7 @@ import { AnimalCard } from '../../animal-cards/animal-card/animal-card.component
   templateUrl: './featured-animals.component.html',
   styleUrl: './featured-animals.component.scss',
 })
-export class FeaturedAnimals {
+export class FeaturedAnimals implements OnInit {
   private animalService = inject(AbstractAnimalService);
 
   animals = this.animalService.animals;

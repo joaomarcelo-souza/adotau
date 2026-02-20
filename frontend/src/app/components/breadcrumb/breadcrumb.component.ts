@@ -9,5 +9,5 @@ import { RouterModule } from '@angular/router';
   styleUrl: './breadcrumb.component.scss',
 })
 export class Breadcrumb {
-  constructor(public breadcrumbService: BreadcrumbService) {}
+  public breadcrumbService = inject(BreadcrumbService);
 }

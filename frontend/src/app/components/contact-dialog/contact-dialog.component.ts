@@ -1,5 +1,5 @@
 // contact-dialog.component.ts
-import { Component, computed, inject, Inject } from '@angular/core';
+import { Component, computed, inject } from '@angular/core';
 import { AbstractAnimalService } from '../../animals/services/abstract-animal.service';
 import { AbstractUserService } from '../../users/service/abstract-user.service';
 import {
@@ -24,6 +24,10 @@ export class ContactDialog {
   private feedbackService = inject(FeedbackService);
   private dialogRef = inject(MatDialogRef<ContactDialog>);
 
+  constructor() {
+    this.animalId = inject(MAT_DIALOG_DATA).animalId;
+  }
+
   animalId: number;
 
   animal = computed(() => {
@@ -38,10 +42,6 @@ export class ContactDialog {
     return this.userService.getUserById(donor_id)();
   });
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: { animalId: number }) {
-    this.animalId = data.animalId;
-  }
-
   contactViaWhatsApp(): void {
     const phone = this.user()?.phone;
     if (phone) {
@@ -49,7 +49,7 @@ export class ContactDialog {
       window.open(`https://wa.me/${phoneString}`, '_blank');
     } else {
       this.feedbackService.error(
-        'Número de telefone não disponível para contato via WhatsApp.'
+        'Número de telefone não disponível para contato via WhatsApp.',
       );
     }
   }

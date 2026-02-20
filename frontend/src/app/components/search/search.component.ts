@@ -18,7 +18,7 @@ export class Search {
   private router = inject(Router);
 
   filteredAnimals: Animal[] = [];
-  searchQuery: string = '';
+  searchQuery = '';
   showSuggestions = true;
 
   async onSearchChange(query: string): Promise<void> {
